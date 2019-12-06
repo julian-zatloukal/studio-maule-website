@@ -4,11 +4,37 @@
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
 
+$bd-download: #5a5a5a;
+
 body {
   padding-top: 3rem;
   padding-bottom: 3rem;
   color: #5a5a5a;
 }
+
+.logo-studio-maule{
+  width: 150px;
+  height: auto;
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(66deg) brightness(103%) contrast(101%);
+}
+
+.btn-language-select {
+  font-weight: 500;
+  color: $bd-download;
+  border-color: $bd-download;
+
+  &:hover,
+  &:active {
+    color: $bd-dark;
+    background-color: $bd-download;
+    border-color: $bd-download;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 3px rgba($bd-download, .25);
+  }
+}
+
 
 
 /* CUSTOMIZE THE CAROUSEL

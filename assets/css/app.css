@@ -10760,6 +10760,20 @@ body {
   color: #5a5a5a;
 }
 
+.logo-studio-maule {
+  width: 150px;
+  height: auto;
+  -webkit-filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(66deg) brightness(103%) contrast(101%);
+          filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(66deg) brightness(103%) contrast(101%);
+}
+
+.btn-language-select {
+  font-weight: 500;
+  color: whitesmoke;
+  border-color: whitesmoke;
+  border: 1px solid whitesmoke;
+}
+
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
 /* Carousel base class */
