@@ -47,7 +47,8 @@ gulp.task('vendor:build', function() {
   var jsStream = gulp.src([
     './assets/js/vendor/bootstrap.bundle.min.js',
     './assets/js/vendor/jquery.slim.min.js',
-    './assets/js/vendor/popper.min.js'
+    './assets/js/vendor/popper.min.js',
+    './assets/js/vendor/holder.min.js'
   ])
     .pipe(gulp.dest('./dist/assets/js/vendor'));
   var fontStream = gulp.src(['./assets/fonts/font-awesome/**/*.*']).pipe(gulp.dest('./dist/assets/fonts/font-awesome'));
@@ -127,7 +128,8 @@ gulp.task('dev', function browserDev(done) {
 gulp.task("build", gulp.series(gulp.parallel('css:minify', 'js:minify', 'vendor'), 'vendor:build', function copyAssets() {
   return gulp.src([
     '*.html',
-    "assets/img/**"
+    "assets/img/**",
+	"assets/ico/**"
   ], { base: './'})
     .pipe(gulp.dest('dist'));
 }));
