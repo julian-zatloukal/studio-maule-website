@@ -1,0 +1,55 @@
+#border_collie_img {
+    clip-path: circle(28.3% at 44% 51%);
+}
+
+#carousel_1_img {
+    //clip-path: polygon(12% 30%, 75% 31%, 77% 62%, 11% 63%);
+    width: 50%;
+    height: 50%;
+    object-fit: none;
+    object-position: 30% 50%;
+}
+
+img#carousel_first {
+    object-fit: none;
+    object-position: 60% 50%;
+}
+
+img#carousel_second {
+    object-fit: cover;
+    //object-fit: none;
+    //object-position: 60% 50%;
+
+}
+
+img#carousel_third {
+    height: 100%;
+    object-fit: cover;
+    //object-fit: none;
+    object-position: 50% 66%;
+   
+}
+
+img#heading_1{
+
+    object-fit: cover;
+    object-position: 60% 50%;
+
+}
+
+img#heading_2{
+ 
+    object-fit: cover;
+    object-position: 61% 70%;
+    //transform: scale(2,2);
+    //clip-path: circle(50% at 50% 50%);
+
+}
+
+img#heading_3{
+  
+    object-fit: cover;
+    object-position: 60% 50%;
+
+}
+
