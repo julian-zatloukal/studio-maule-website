@@ -3,11 +3,12 @@
 // An object literal
 var app = {
   init: function() {
-    app.functionOne();
+    app.mainFunction();
   },
-  functionOne: function () {
+  mainFunction: function () {
+    //alert("This is working as intended!");
   }
 };
-$("document").ready(function () {
+$(function() {
   app.init();
 });

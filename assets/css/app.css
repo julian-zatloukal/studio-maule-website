@@ -10869,11 +10869,11 @@ body {
 
 .switch {
   display: inline-block;
-  width: 60px;
-  height: 24px;
+  width: 50px;
+  height: 18px;
   margin: 0px;
-  -webkit-transform: translateY(28%);
-          transform: translateY(28%);
+  -webkit-transform: translateY(56%);
+          transform: translateY(56%);
   position: relative;
 }
 

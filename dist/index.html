@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="utf-8">
@@ -21,7 +21,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.1.0/css/flag-icon.min.css" rel="stylesheet">
 
   <!-- Bootstrap core CSS -->
-  <link href="./assets/css/app.css" rel="stylesheet">
+  <link href="./assets/css/app.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
   <!-- <link href="carousel.css" rel="stylesheet"> -->
@@ -135,8 +135,6 @@
     <!-- Wrap the rest of the page in another container to center all the content. -->
 
     <div class="container marketing">
-
-      <!-- Three columns of text below the carousel -->
       <div class="row">
         <div class="col-lg-4">
           <img class="rounded-circle" src="./assets/img/heading_1.jpg" id="heading_1" alt="Generic placeholder image"
@@ -148,8 +146,10 @@
           <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-          <img class="rounded-circle" id="heading_2" src="./assets/img/heading_2.jpeg" alt="Generic placeholder image"
-            width="140" height="140">
+          <div id="clipper_container" width="140" height="140">
+            <img class="rounded-circle" id="heading_2" src="./assets/img/heading_2.jpeg" alt="Generic placeholder image"
+              width="140" height="140">
+          </div>
           <h2>Heading</h2>
           <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras
             mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris
@@ -168,24 +168,6 @@
       </div><!-- /.row -->
 
 
-      <!-- START THE FEATURETTES -->
-
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="col-md-7">
-          <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span>
-          </h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod
-            semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus
-            commodo.</p>
-        </div>
-        <div class="col-md-5">
-          <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto"
-            alt="Generic placeholder image">
-        </div>
-      </div>
-
       <hr class="featurette-divider">
 
       <div class="row featurette">
@@ -196,21 +178,6 @@
             commodo.</p>
         </div>
         <div class="col-md-5 order-md-1">
-          <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto"
-            alt="Generic placeholder image">
-        </div>
-      </div>
-
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="col-md-7">
-          <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod
-            semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus
-            commodo.</p>
-        </div>
-        <div class="col-md-5">
           <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto"
             alt="Generic placeholder image">
         </div>
@@ -233,16 +200,77 @@
 
       <hr class="featurette-divider">
 
-      <div class="row featurette">
-        <div class="col-md-8">
-          <img class="featurette-image img-fluid mx-auto" id="carousel_1_img" src="./assets/img/carousel_1_jpg.jpg"
-            alt="Generic placeholder image">
+      <h1>Contacto</h1>
+
+      <form id="contact-form" method="post" action="#" role="form">
+
+        <div class="messages"></div>
+
+        <div class="controls">
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="form_name">Nombre</label>
+                <input id="form_name" type="text" name="name" class="form-control" placeholder="Ingrese su nombre"
+                  required="required" data-error="Su nombre es requerido">
+                <div class="help-block with-errors"></div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group has-error has-danger">
+                <label for="form_tel">Numero de teléfono (Opcional)</label>
+                <input id="form_tel" type="tel" name="telephone" class="form-control" placeholder="+54 9 11 3741-7423"
+                  data-error="Numero invalido">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="form_email">Correo electrónico</label>
+                <input id="form_email" type="email" name="email" class="form-control"
+                  placeholder="Ingrese su correo electrónico" required="required"
+                  data-error="Un email válido es requerido">
+                <div class="help-block with-errors"></div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="form_need">Asunto</label>
+                <select id="form_need" name="need" class="form-control" required="required"
+                  data-error="Por favor, especifique el asunto.">
+                  <option value=""></option>
+                  <option value="Traducción publica de actas">Traducción publica de actas</option>
+                  <option value="Traducción publica general">Traducción publica general</option>
+                  <option value="Armado de carpera para ciudadania">Armado de carpera para ciudadanía</option>
+                  <option value="Declaración de valor de titulos">Declaración de valor de titulos</option>
+                  <option value="Traducciónes no publicas">Traducción no publica</option>
+                  <option value="Otro">Otro</option>
+                </select>
+                <div class="help-block with-errors"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="form_message">Mensaje</label>
+                <textarea id="form_message" name="message" class="form-control" placeholder="¿En que podemos ayudarle?"
+                  rows="4" required="required" data-error="Por favor, dejenos un mensaje."></textarea>
+                <div class="help-block with-errors"></div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <input type="submit" class="btn btn-success btn-send" value="Enviar mensaje">
+            </div>
+          </div>
         </div>
-        <div class="col-md-4">
-        </div>
-      </div>
+
+      </form>
 
       <hr class="featurette-divider">
+
 
     </div>
 
@@ -254,18 +282,18 @@
 
     <!-- FOOTER -->
     <footer class="container">
-      <p class="float-right"><a href="#">Back to top</a></p>
-      <p>&copy; 2017-2018 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+      <p class="float-right"><a href="#">Volver arriba</a></p>
+      <p>&copy; 2019 Studio Maule &middot; <a href="#">Privacidad</a> &middot; <a href="#">Términos</a></p>
     </footer>
   </main>
 
-  <!-- Bootstrap core JavaScript
-    ================================================== -->
-  <!-- Placed at the end of the document so the pages load faster -->
+  <!-- jQuery, Bootstrap, and holder.js -->
   <script src="./assets/js/vendor/jquery.slim.min.js"></script>
   <script src="./assets/js/vendor/bootstrap.bundle.min.js"></script>
-  <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
   <script src="./assets/js/vendor/holder.min.js"></script>
+
+  <!-- App JavaScript -->
+  <script src="./assets/js/app.js"></script>
 </body>
 
 </html>
