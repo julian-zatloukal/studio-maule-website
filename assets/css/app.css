@@ -10775,6 +10775,19 @@ body {
   margin: 8rem 0;
 }
 
+.card {
+  overflow: hidden;
+}
+
+.card-img-top {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: 80% 53%;
+     object-position: 80% 53%;
+  width: 100%;
+  height: 6rem;
+}
+
 .btn-language-select {
   font-weight: 500;
   color: #5a5a5a;
@@ -10959,21 +10972,42 @@ img#carousel_third {
      object-position: 50% 66%;
 }
 
-img#heading_1 {
+img#image-trad-publica-actas {
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: 60% 50%;
      object-position: 60% 50%;
 }
 
-img#heading_2 {
+img#image-trad-publica-general {
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: 61% 70%;
      object-position: 61% 70%;
 }
 
-img#heading_3 {
+img#image-armado-carpeta {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: 60% 50%;
+     object-position: 60% 50%;
+}
+
+img#image-declaracion-valor-titulo {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: 60% 50%;
+     object-position: 60% 50%;
+}
+
+img#image-trad-no-publicas {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: 61% 70%;
+     object-position: 61% 70%;
+}
+
+img#image-otro {
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: 60% 50%;

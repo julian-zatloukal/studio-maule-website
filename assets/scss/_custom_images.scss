@@ -30,14 +30,14 @@ img#carousel_third {
    
 }
 
-img#heading_1{
+img#image-trad-publica-actas{
 
     object-fit: cover;
     object-position: 60% 50%;
 
 }
 
-img#heading_2{
+img#image-trad-publica-general{
  
     object-fit: cover;
     object-position: 61% 70%;
@@ -46,7 +46,30 @@ img#heading_2{
 
 }
 
-img#heading_3{
+img#image-armado-carpeta{
+  
+    object-fit: cover;
+    object-position: 60% 50%;
+
+}
+
+img#image-declaracion-valor-titulo{
+
+    object-fit: cover;
+    object-position: 60% 50%;
+
+}
+
+img#image-trad-no-publicas{
+ 
+    object-fit: cover;
+    object-position: 61% 70%;
+    //transform: scale(2,2);
+    //clip-path: circle(50% at 50% 50%);
+
+}
+
+img#image-otro{
   
     object-fit: cover;
     object-position: 60% 50%;
