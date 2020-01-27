@@ -20,13 +20,10 @@
 
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.1.0/css/flag-icon.min.css" rel="stylesheet">
 
-  <!-- Bootstrap core CSS -->
+  <!-- build:css -->
   <link href="./assets/css/app.css" rel="stylesheet">
+  <!-- endbuild -->
 
-
-
-  <!-- Custom styles for this template -->
-  <!-- <link href="carousel.css" rel="stylesheet"> -->
 </head>
 
 <body>
@@ -318,8 +315,10 @@
                   <div class="help-block with-errors"></div>
                 </div>
               </div>
-              <input type="hidden" id="token" name="token">
+  
               <div class="col-md-12">
+                <div class="g-recaptcha" data-sitekey="6LfBRdMUAAAAAFEYhfH9JLBVbQhgO8LU7fIML1ne"></div>
+                <br/>
                 <input type="submit" class="btn btn-success btn-send" value="Enviar mensaje">
               </div>
             </div>
@@ -347,7 +346,7 @@
   </main>
 
   <!-- Recaptcha -->
-  <script src="https://www.google.com/recaptcha/api.js?render=6Lea19EUAAAAAAfIv-yvbpA-GH4hSAEDdPG--q-C"></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
   <!-- jQuery, Bootstrap, and holder.js -->
   <script src="./assets/js/vendor/jquery.min.js"></script>
@@ -357,8 +356,9 @@
   
 
 
-  <!-- App JavaScript -->
+  <!-- build:js -->
   <script src="./assets/js/app.js"></script>
+  <!-- endbuild -->
 </body>
 
 </html>
