@@ -264,16 +264,16 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="form_name">Nombre</label>
-                  <input id="form_name" type="text" name="name" class="form-control" placeholder="Ingrese su nombre"
+                  <label for="name-input">Nombre</label>
+                  <input id="name-input" type="text" name="name" class="form-control" placeholder="Ingrese su nombre"
                     required="required" data-error="Su nombre es requerido">
                   <div class="help-block with-errors"></div>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group has-error has-danger">
-                  <label for="form_tel">Numero de teléfono (Opcional)</label>
-                  <input id="form_tel" type="tel" name="telephone" class="form-control" placeholder="+54 9 11 3741-7423"
+                  <label for="phone-input">Numero de teléfono (Opcional)</label>
+                  <input id="phone-input" type="tel" name="telephone" class="form-control" placeholder="+54 9 11 3741-7423"
                     data-error="Numero invalido">
                 </div>
               </div>
@@ -281,8 +281,8 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="form_email">Correo electrónico</label>
-                  <input id="form_email" type="email" name="email" class="form-control"
+                  <label for="email-input">Correo electrónico</label>
+                  <input id="email-input" type="email" name="email" class="form-control"
                     placeholder="Ingrese su correo electrónico" required="required"
                     data-error="Un email válido es requerido">
                   <div class="help-block with-errors"></div>
@@ -290,8 +290,8 @@
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="form_need">Asunto</label>
-                  <select id="form_need" name="need" class="form-control" required="required"
+                  <label for="subject-input">Asunto</label>
+                  <select id="subject-input" name="need" class="form-control" required="required"
                     data-error="Por favor, especifique el asunto.">
                     <option value=""></option>
                     <option value="Traducción publica de actas">Traducción publica de actas</option>
@@ -308,18 +308,18 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="form_message">Mensaje</label>
-                  <textarea id="form_message" name="message" class="form-control"
+                  <label for="description-input">Mensaje</label>
+                  <textarea id="description-input" name="message" class="form-control"
                     placeholder="¿En que podemos ayudarle?" rows="4" required="required"
                     data-error="Por favor, dejenos un mensaje."></textarea>
                   <div class="help-block with-errors"></div>
                 </div>
               </div>
-  
+
               <div class="col-md-12">
                 <div class="g-recaptcha" data-sitekey="6LfBRdMUAAAAAFEYhfH9JLBVbQhgO8LU7fIML1ne"></div>
-                <br/>
-                <input type="submit" class="btn btn-success btn-send" value="Enviar mensaje">
+                <br />
+                <input type="submit" onClick="submitToAPI(event)" class="btn btn-success btn-send" value="Enviar mensaje">
               </div>
             </div>
           </div>
@@ -352,9 +352,6 @@
   <script src="./assets/js/vendor/jquery.min.js"></script>
   <script src="./assets/js/vendor/bootstrap.bundle.min.js"></script>
   <script src="./assets/js/vendor/holder.min.js"></script>
-
-  
-
 
   <!-- build:js -->
   <script src="./assets/js/app.js"></script>
