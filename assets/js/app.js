@@ -53,7 +53,7 @@ var app = {
         dataType: "json",
         crossDomain: "true",
         contentType: "application/json; charset=utf-8",
-        data: JSON.stringify(ata_form),
+        data: JSON.stringify(data_form),
         statusCode: 200,
         headers: {
           "Access-Control-Allow-Origin": "*", // Required for CORS support to work
