@@ -49,17 +49,16 @@ var app = {
 
       $.ajax({
         type: "POST",
-        url: "https://uhsj6eim16.execute-api.us-east-1.amazonaws.com/default",
-        dataType: "json",
-        crossDomain: "true",
-        contentType: "application/json; charset=utf-8",
-        data: JSON.stringify(data_form),
         statusCode: 200,
         headers: {
           "Access-Control-Allow-Origin": "*", // Required for CORS support to work
           "Access-Control-Allow-Credentials": true // Required for cookies, authorization headers with HTTPS 
         },
-
+        url: "https://uhsj6eim16.execute-api.us-east-1.amazonaws.com/default",
+        dataType: "json",
+        crossDomain: "true",
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(data_form),
 
         success: function () {
           // clear form and show a success message
