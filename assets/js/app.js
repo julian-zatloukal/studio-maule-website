@@ -39,21 +39,12 @@ var app = {
       var subject = $("#subject-input").val();
       var desc = $("#description-input").val();
 
-      var data = {
+      var data_form = {
         name: name,
         phone: phone,
         email: email,
         subject: subject,
         desc: desc
-      };
-
-      const response = {
-        statusCode: 200,
-        headers: {
-          "Access-Control-Allow-Origin": "*", // Required for CORS support to work
-          "Access-Control-Allow-Credentials": true // Required for cookies, authorization headers with HTTPS 
-        },
-        body: JSON.stringify(data)
       };
 
       $.ajax({
@@ -62,7 +53,12 @@ var app = {
         dataType: "json",
         crossDomain: "true",
         contentType: "application/json; charset=utf-8",
-        data: response,
+        data: JSON.stringify(ata_form),
+        statusCode: 200,
+        headers: {
+          "Access-Control-Allow-Origin": "*", // Required for CORS support to work
+          "Access-Control-Allow-Credentials": true // Required for cookies, authorization headers with HTTPS 
+        },
 
 
         success: function () {
