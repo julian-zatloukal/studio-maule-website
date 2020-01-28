@@ -109,6 +109,10 @@ var app = {
       body.stop().animate({ scrollTop: 0 }, 2000, 'swing');
     });
 
+    $("#contact-form").submit(function(e) {
+      e.preventDefault();
+      submitToAPI(e);
+    });
 
 
   }
