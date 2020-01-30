@@ -10,7 +10,7 @@ var app = {
 
     function submitToAPI(e) {
       e.preventDefault();
-      var URL = "https://d8wgnuyah9.execute-api.us-east-1.amazonaws.com/default";
+      var URL = "https://d8wgnuyah9.execute-api.us-east-1.amazonaws.com/default/mailfwd";
 
       var Namere = /[A-Za-z]{1}[A-Za-z]/;
       if (!Namere.test($("#name-input").val())) {
@@ -49,11 +49,7 @@ var app = {
 
       $.ajax({
         type: "POST",
-        statusCode: 200,
-        beforeSend: function(request) {
-          request.setRequestHeader("Access-Control-Allow-Origin", "*");
-        },
-        url: "https://d8wgnuyah9.execute-api.us-east-1.amazonaws.com/default",
+        url: "https://d8wgnuyah9.execute-api.us-east-1.amazonaws.com/default/mailfwd",
         dataType: "json",
         crossDomain: "true",
         contentType: "application/json; charset=utf-8",
