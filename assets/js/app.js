@@ -10,7 +10,7 @@ var app = {
 
     function submitToAPI(e) {
       e.preventDefault();
-      var URL = "https://uhsj6eim16.execute-api.us-east-1.amazonaws.com/default";
+      var URL = "https://d8wgnuyah9.execute-api.us-east-1.amazonaws.com/default";
 
       var Namere = /[A-Za-z]{1}[A-Za-z]/;
       if (!Namere.test($("#name-input").val())) {
@@ -50,11 +50,10 @@ var app = {
       $.ajax({
         type: "POST",
         statusCode: 200,
-        headers: {
-          "Access-Control-Allow-Origin": "*", // Required for CORS support to work
-          "Access-Control-Allow-Credentials": true // Required for cookies, authorization headers with HTTPS 
+        beforeSend: function(request) {
+          request.setRequestHeader("Access-Control-Allow-Origin", "*");
         },
-        url: "https://uhsj6eim16.execute-api.us-east-1.amazonaws.com/default",
+        url: "https://d8wgnuyah9.execute-api.us-east-1.amazonaws.com/default",
         dataType: "json",
         crossDomain: "true",
         contentType: "application/json; charset=utf-8",
