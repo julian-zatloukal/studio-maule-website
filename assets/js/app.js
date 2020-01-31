@@ -62,7 +62,7 @@ var app = {
         success: function () {
           // clear form and show a success message
           document.getElementById("contact-form").reset();
-          location.reload();
+          // location.reload();
           $("#submit_result_area").html("<section style='border-style:solid !important; border-width: 2px !important;' class='jumbotron border border-success bg-transparent text-success text-center pt-1 pb-1 my-3'>  <div class='container'>	<h5 style='margin-bottom: 0.25rem !important;' class='jumbotron-heading'>¡Mensaje enviado exitosamente, gracias por su tiempo!</h3>  </div></section>");
         },
         error: function () {
