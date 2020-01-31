@@ -10,7 +10,7 @@ var app = {
 
     function submitToAPI(e) {
       e.preventDefault();
-      var URL = "https://d8wgnuyah9.execute-api.us-east-1.amazonaws.com/default";
+      var URL = "https://s19rftjwb7.execute-api.us-east-1.amazonaws.com/test";
 
       var Namere = /[A-Za-z]{1}[A-Za-z]/;
       if (!Namere.test($("#name-input").val())) {
@@ -49,8 +49,7 @@ var app = {
       
       $.ajax({
         type: "POST",
-        headers: { 'Origin': 'https://studiomaule.com.ar/' },
-        url: "https://d8wgnuyah9.execute-api.us-east-1.amazonaws.com/default",
+        url: "https://s19rftjwb7.execute-api.us-east-1.amazonaws.com/test",
         dataType: "json",
         crossDomain: "true",
         contentType: "application/json; charset=utf-8",
