@@ -29,6 +29,14 @@ gulp.task('vendor:js', function () {
     .pipe(gulp.dest('./assets/js/vendor'));
 });
 
+// Copy additional files to dist
+gulp.task('additonal_files', function () {
+  return gulp.src([
+    './sitemap.xml'
+  ])
+    .pipe(gulp.dest('dist'));
+});
+
 // Copy font-awesome from node_modules into /fonts
 gulp.task('vendor:fonts', function () {
   return gulp.src([
@@ -146,4 +154,4 @@ gulp.task("build", gulp.series(gulp.parallel('css:minify', 'js:minify', 'vendor'
 }));
 
 // Default task
-gulp.task("default", gulp.series("clean", 'build', 'replaceHtmlBlock'));
+gulp.task("default", gulp.series("clean", 'build', 'additonal_files', 'replaceHtmlBlock'));
