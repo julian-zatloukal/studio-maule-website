@@ -72,6 +72,29 @@ var app = {
       });
     }
 
+    const subject_list = [
+      "Traducción publica de actas",
+      "Traducción publica general",
+      "Armado de carpeta para ciudadania",
+      "Declaración de valor de titulos",
+      "Traducciónes no publicas"
+    ]
+
+
+
+    function scrollToContactForm(subject) {
+      //var subject = $("select#subject-input").map(function() {return $(this).val();}).get();
+      $('html, body').animate({
+        scrollTop: $("#contact-form-whole").offset().top - $("#main-navbar").outerHeight()
+      }, 2000, function(){
+        $("select#subject-input").val(subject).change();
+      });
+    }
+    
+    $("[role='button'].service-card").click(function (event) {
+      scrollToContactForm($(this).parent().siblings(".service-card").text());
+    });
+
     $("#nav-item-contacto").click(function (event) {
       event.preventDefault();
 
