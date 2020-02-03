@@ -37,6 +37,17 @@ var app = {
         return;
       }
 
+      var response = grecaptcha.getResponse();
+      //recaptcha failed validation
+      if (response.length == 0) {
+        $('.g-recaptcha div div iframe').css('border', '1px solid red');
+        showAlertRecaptcha();
+        return false;
+      }else {
+        hideAlertRecaptcha();
+      }
+
+
       var name = $("#name-input").val();
       var phone = $("#phone-input").val();
       var email = $("#email-input").val();
@@ -72,14 +83,35 @@ var app = {
       });
     }
 
-    const subject_list = [
-      "Traducción publica de actas",
-      "Traducción publica general",
-      "Armado de carpeta para ciudadania",
-      "Declaración de valor de titulos",
-      "Traducciónes no publicas"
-    ]
+    Object.defineProperty(window, 'show', {
+      get: function() {
+        showAlertRecaptcha();
+        return null;
+      }
+    });
+    Object.defineProperty(window, 'hide', {
+      get: function() {
+        hideAlertRecaptcha();
+        return null;
+      }
+    });
 
+    function showAlertRecaptcha(){
+      $('.g-recaptcha div div iframe').css({ 
+        "border-style": "solid",
+        "border-width": "0.125em",
+        "border-color": getComputedStyle(document.body).getPropertyValue('--danger'),
+        "border-radius": "0.25em"
+      });
+      $('.g-recaptcha div div').addClass('alert-validate');
+    }
+
+    function hideAlertRecaptcha(){
+      $('.g-recaptcha div div iframe').css({ 
+        "border-style": "hidden"
+      });
+      $('.g-recaptcha div div').removeClass('alert-validate');
+    }
 
 
     function scrollToContactForm(subject) {
