@@ -8,7 +8,7 @@ var app = {
   mainFunction: function () {
     // jQuery code
 
-    function submitToAPI(e) {
+    async function submitToAPI(e) {
       e.preventDefault();
       var URL = "https://s19rftjwb7.execute-api.us-east-1.amazonaws.com/test/contact-us";
 
@@ -43,7 +43,7 @@ var app = {
         $('.g-recaptcha div div iframe').css('border', '1px solid red');
         showAlertRecaptcha();
         return false;
-      }else {
+      } else {
         hideAlertRecaptcha();
       }
 
@@ -83,21 +83,88 @@ var app = {
       });
     }
 
+
+    
+
+    async function getIPv4(callback){
+      let promise = new Promise(function(resolve, reject) {
+        $.ajax({
+          type: 'GET',
+          timeout: 1200,
+          url: 'https://www.cloudflare.com/cdn-cgi/trace',
+          success: function (data) {
+            const regex = /(?<=ip=)(.*)(?=[\r\n])/gm;
+            var ipv4_string;
+            if ((ipv4_string = data.match(regex)) !== null) {
+              resolve(ipv4_string[0]);
+            } else {
+              reject("Could not fetch IPv4");
+            }
+          }
+        });
+      });
+
+      promise.then(
+        result => callback(result)
+      );
+    }
+
+
+    function getIPv4Premise(){
+      return new Promise(function(resolve, reject) {
+        $.ajax({
+          type: 'GET',
+          timeout: 1200,
+          url: 'https://www.cloudflare.com/cdn-cgi/trace',
+          success: function (data) {
+            const regex = /(?<=ip=)(.*)(?=[\r\n])/gm;
+            var ipv4_string;
+            if ((ipv4_string = data.match(regex)) !== null) {
+              resolve(ipv4_string[0]);
+            } else {
+              reject("Could not fetch IPv4");
+            }
+          }
+        });
+      });
+    }
+
+
+    //#region development
     Object.defineProperty(window, 'show', {
-      get: function() {
+      get: function () {
         showAlertRecaptcha();
         return null;
       }
     });
     Object.defineProperty(window, 'hide', {
-      get: function() {
+      get: function () {
         hideAlertRecaptcha();
         return null;
       }
     });
+    Object.defineProperty(window, 'ipv4', {
+      get: function () {
+        // promise
+        // getIPv4(function(result) {
+        //   console.log(result);
+        // });
+        
+        getIPv4Premise().then(
+          result => console.log("IPv4: " + result), 
+          error => alert(error) 
+        );
 
-    function showAlertRecaptcha(){
-      $('.g-recaptcha div div iframe').css({ 
+
+        return;
+      }
+    });
+    //#endregion
+
+
+
+    function showAlertRecaptcha() {
+      $('.g-recaptcha div div iframe').css({
         "border-style": "solid",
         "border-width": "0.125em",
         "border-color": getComputedStyle(document.body).getPropertyValue('--danger'),
@@ -106,8 +173,8 @@ var app = {
       $('.g-recaptcha div div').addClass('alert-validate');
     }
 
-    function hideAlertRecaptcha(){
-      $('.g-recaptcha div div iframe').css({ 
+    function hideAlertRecaptcha() {
+      $('.g-recaptcha div div iframe').css({
         "border-style": "hidden"
       });
       $('.g-recaptcha div div').removeClass('alert-validate');
@@ -118,11 +185,11 @@ var app = {
       //var subject = $("select#subject-input").map(function() {return $(this).val();}).get();
       $('html, body').animate({
         scrollTop: $("#contact-form-whole").offset().top - $("#main-navbar").outerHeight()
-      }, 2000, function(){
+      }, 2000, function () {
         $("select#subject-input").val(subject).change();
       });
     }
-    
+
     $("[role='button'].service-card").click(function (event) {
       scrollToContactForm($(this).parent().siblings(".service-card").text());
     });
