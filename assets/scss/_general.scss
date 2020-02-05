@@ -40,6 +40,12 @@ body {
 
 }
 
+#quienes-somos-img{
+  height: 500px;
+  object-fit: cover;
+    object-position: 50% 50%;
+}
+
 .alert-validate::after {
   content: "\f12a";
   font-family: FontAwesome;

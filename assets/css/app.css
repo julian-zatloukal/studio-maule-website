@@ -10788,6 +10788,14 @@ body {
   height: 6rem;
 }
 
+#quienes-somos-img {
+  height: 500px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: 50% 50%;
+     object-position: 50% 50%;
+}
+
 .alert-validate::after {
   content: "\f12a";
   font-family: FontAwesome;
