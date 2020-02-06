@@ -24,7 +24,8 @@ gulp.task('vendor:js', function () {
     './node_modules/bootstrap/dist/js/*',
     './node_modules/jquery/dist/*',
     '!./node_modules/jquery/dist/core.js',
-    './node_modules/popper.js/dist/umd/popper.*'
+    './node_modules/popper.js/dist/umd/popper.*',
+	'./node_modules/moment/min/moment.min.js'
   ])
     .pipe(gulp.dest('./assets/js/vendor'));
 });
@@ -60,7 +61,9 @@ gulp.task('vendor:build', function () {
     './assets/js/vendor/jquery.min.js',
     './assets/js/vendor/popper.min.js',
     './assets/js/vendor/holder.min.js',
-    './assets/js/vendor/bootstrap.bundle.min.js'
+    './assets/js/vendor/bootstrap.bundle.min.js',
+	'./assets/js/vendor/moment.min.js'
+	
   ])
     .pipe(gulp.dest('./dist/assets/js/vendor'));
   var fontStream = gulp.src(['./assets/fonts/font-awesome/**/*.*']).pipe(gulp.dest('./dist/assets/fonts/font-awesome'));

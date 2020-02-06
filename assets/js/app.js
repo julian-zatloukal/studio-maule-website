@@ -53,14 +53,22 @@ var app = {
       var email = $("#email-input").val();
       var subject = $("#subject-input").val();
       var desc = $("#description-input").val();
+      var ipv4 = await getIPv4Promise();
+      var timestamp = moment().format();
+      var grecaptcha_response = grecaptcha.getResponse();
 
       var data_form = {
+        ipv4: ipv4,
+        timestamp: timestamp,
+        grecaptcha_response: grecaptcha_response,
         name: name,
         phone: phone,
         email: email,
         subject: subject,
-        desc: desc
+        desc: desc,
       };
+
+      console.log(data_form);
 
       $.ajax({
         type: "POST",
@@ -110,7 +118,7 @@ var app = {
     }
 
 
-    function getIPv4Premise(){
+    function getIPv4Promise(){
       return new Promise(function(resolve, reject) {
         $.ajax({
           type: 'GET',
@@ -145,17 +153,16 @@ var app = {
     });
     Object.defineProperty(window, 'ipv4', {
       get: function () {
-        // promise
-        // getIPv4(function(result) {
-        //   console.log(result);
-        // });
-        
-        getIPv4Premise().then(
+        getIPv4Promise().then(
           result => console.log("IPv4: " + result), 
           error => alert(error) 
         );
-
-
+        return;
+      }
+    });
+    Object.defineProperty(window, 'time', {
+      get: function () {
+        console.log(moment().format());
         return;
       }
     });
