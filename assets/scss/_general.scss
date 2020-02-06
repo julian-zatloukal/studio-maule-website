@@ -67,6 +67,17 @@ body {
   //transform: translate(0%, 60%);
 }
 
+.stretch_it{
+  white-space: nowrap;
+}
+.justify{
+  text-align:justify;
+}
+
+
+.light{
+  -webkit-text-stroke: 0.01em white;
+}
 
 
 .btn-language-select {
@@ -153,6 +164,8 @@ body {
 /* RESPONSIVE CSS
 -------------------------------------------------- */
 
+
+
 @media (min-width: 40em) {
 
   /* Bump up size of carousel content */
@@ -170,5 +183,57 @@ body {
 @media (min-width: 62em) {
   .featurette-heading {
     margin-top: 7rem;
+  }
+}
+
+
+
+@include media-breakpoint-up(sm) {
+  #carousel-caption-first{
+    width: 90%;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  #carousel-caption-first{
+    width: 70%;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  #carousel-caption-first{
+    width: 65%;
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  #carousel-caption-first{
+    width: 50%;
+  }
+}
+
+
+
+@include media-breakpoint-up(sm) {
+  #carousel-caption-second{
+    width: 90%;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  #carousel-caption-second{
+    width: 70%;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  #carousel-caption-second{
+    width: 75%;
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  #carousel-caption-second{
+    width: 80%;
   }
 }
