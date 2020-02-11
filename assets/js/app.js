@@ -93,6 +93,9 @@ var app = {
 
 
     
+    $("#description-input").on('input', function () {
+      $('#character-count').text($("#description-input").val().length);
+    });
 
     async function getIPv4(callback){
       let promise = new Promise(function(resolve, reject) {

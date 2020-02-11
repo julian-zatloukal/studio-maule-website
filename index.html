@@ -166,50 +166,44 @@
         </section>
         <div class="row">
           <div class="col-md-4">
-            <p class="h3 font-weight-bold text-black service-card">Traducción publica de actas</p>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-              condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod.
-              Donec sed odio dui. </p>
-            <p><a class="btn btn-secondary service-card" href="#" role="button">Consultar »</a></p>
-          </div>
-          <div class="col-md-4">
-            <p class="h3 font-weight-bold text-black service-card">Traducción publica general</p>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+            <p class="h3 font-weight-bold text-black service-card">Traducción publica de actas.<a class="btn-sm ml-3 mb-1 py-0 btn-secondary view-more-btn" href="#" role="button">Ver más</a></p>
+            <p class="stretch">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
               condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod.
               Donec sed odio dui. </p>
             <p><a class="btn btn-secondary service-card" href="#" role="button">Consultar »</a></p>
           </div>
           <div class="col-md-4">
             <p class="h3 font-weight-bold text-black service-card">Armado de carpeta para ciudadania</p>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula
+            <p class="stretch">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+              condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod.
+              Donec sed odio dui. <img class="view-more-icon" src="./assets/ico/see_more-01.svg"> </p>
+            <p><a class="btn btn-secondary service-card" href="#" role="button">Consultar »</a></p>
+          </div>
+          <div class="col-md-4">
+            <p class="h3 font-weight-bold text-black service-card">Declaración de valor de titulos</p>
+            <p class="stretch">Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula
               porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
-              fermentum massa justo sit amet risus.</p>
+              fermentum massa justo sit amet risus.  </p>
             <p><a class="btn btn-secondary service-card" href="#" role="button">Consultar »</a></p>
           </div>
         </div>
 
         <div class="row">
           <div class="col-md-4">
-            <p class="h3 font-weight-bold text-black service-card">Declaración de valor de titulos</p>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-              condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod.
-              Donec sed odio dui. </p>
-            <p><a class="btn btn-secondary service-card" href="#" role="button">Consultar »</a></p>
-          </div>
-          <div class="col-md-4">
             <p class="h3 font-weight-bold text-black service-card">Traducción no publica</p>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+            <p class="stretch">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
               condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod.
-              Donec sed odio dui. </p>
+              Donec sed odio dui.  </p>
             <p><a class="btn btn-secondary service-card" href="#" role="button">Consultar »</a></p>
           </div>
           <div class="col-md-4">
-            <p class="h3 font-weight-bold text-black service-card">Otro</p>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula
-              porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
-              fermentum massa justo sit amet risus.</p>
+            <p class="h3 font-weight-bold text-black service-card">Otro <img class="view-more-icon" src="./assets/ico/see_more-01.svg"></p>
+            <p class="stretch">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+              condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod.
+              Donec sed odio dui.  </p>
             <p><a class="btn btn-secondary service-card" href="#" role="button">Consultar »</a></p>
           </div>
+
         </div>
       </div>
 
@@ -337,10 +331,11 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="description-input">Mensaje</label>
-                  <textarea id="description-input" name="message" class="form-control"
+                  <textarea maxlength="5000" id="description-input" name="message" class="form-control"
                     placeholder="¿En que podemos ayudarle?" rows="4" required="required"
                     data-error="Por favor, dejenos un mensaje."></textarea>
                   <div class="help-block with-errors"></div>
+                  <p id="character-count" class="float-right pr-3">5000</p>
                 </div>
               </div>
 

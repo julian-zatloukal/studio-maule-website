@@ -10816,6 +10816,19 @@ body {
   left: 0;
 }
 
+.view-more-icon {
+  position: relative;
+  width: 1.5em;
+  -webkit-filter: invert(35%) sepia(1%) saturate(2862%) hue-rotate(103deg) brightness(97%) contrast(88%);
+          filter: invert(35%) sepia(1%) saturate(2862%) hue-rotate(103deg) brightness(97%) contrast(88%);
+  bottom: 0.125em;
+}
+
+.view-more-btn {
+  position: relative;
+  bottom: 0.175em;
+}
+
 .stretch_it {
   white-space: nowrap;
 }
@@ -10950,7 +10963,7 @@ body {
 
 @media (min-width: 576px) {
   #carousel-caption-second {
-    width: 90%;
+    width: 80%;
   }
 }
 
@@ -10962,13 +10975,13 @@ body {
 
 @media (min-width: 992px) {
   #carousel-caption-second {
-    width: 75%;
+    width: 70%;
   }
 }
 
 @media (min-width: 1200px) {
   #carousel-caption-second {
-    width: 80%;
+    width: 60%;
   }
 }
 

@@ -67,6 +67,20 @@ body {
   //transform: translate(0%, 60%);
 }
 
+
+.view-more-icon{
+  position: relative;
+  width: 1.5em;
+  filter: invert(35%) sepia(1%) saturate(2862%) hue-rotate(103deg) brightness(97%) contrast(88%);
+  bottom: 0.125em;
+}
+
+.view-more-btn{
+  position: relative;
+  bottom: 0.175em;
+}
+
+
 .stretch_it{
   white-space: nowrap;
 }
@@ -216,7 +230,7 @@ body {
 
 @include media-breakpoint-up(sm) {
   #carousel-caption-second{
-    width: 90%;
+    width: 80%;
   }
 }
 
@@ -228,12 +242,12 @@ body {
 
 @include media-breakpoint-up(lg) {
   #carousel-caption-second{
-    width: 75%;
+    width: 70%;
   }
 }
 
 @include media-breakpoint-up(xl) {
   #carousel-caption-second{
-    width: 80%;
+    width: 60%;
   }
 }
