@@ -226,10 +226,10 @@ var app = {
       }, 2000);
     });
 
-    $("#nav-item-ultimos-trabajos").click(function (event) {
+    $("#nav-item-nuestros-clientes").click(function (event) {
       event.preventDefault();
       $('html, body').animate({
-        scrollTop: $("#ultimos-trabajos-divider").offset().top - ($("#ultimos-trabajos-divider").outerHeight(true) / 2) - $("#main-navbar").outerHeight()
+        scrollTop: $("#nuestros-clientes-divider").offset().top - ($("#nuestros-clientes-divider").outerHeight(true) / 2) - $("#main-navbar").outerHeight()
       }, 2000);
     });
 

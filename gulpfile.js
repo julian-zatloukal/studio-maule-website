@@ -25,7 +25,8 @@ gulp.task('vendor:js', function () {
     './node_modules/jquery/dist/*',
     '!./node_modules/jquery/dist/core.js',
     './node_modules/popper.js/dist/umd/popper.*',
-	'./node_modules/moment/min/moment.min.js'
+  './node_modules/moment/min/moment.min.js',
+  './node_modules/hyphenopoly/min/**/*'
   ])
     .pipe(gulp.dest('./assets/js/vendor'));
 });
@@ -62,13 +63,28 @@ gulp.task('vendor:build', function () {
     './assets/js/vendor/popper.min.js',
     './assets/js/vendor/holder.min.js',
     './assets/js/vendor/bootstrap.bundle.min.js',
-	'./assets/js/vendor/moment.min.js'
-	
+  './assets/js/vendor/moment.min.js'
   ])
     .pipe(gulp.dest('./dist/assets/js/vendor'));
   var fontStream = gulp.src(['./assets/fonts/font-awesome/**/*.*']).pipe(gulp.dest('./dist/assets/fonts/font-awesome'));
   return merge(jsStream, fontStream);
 })
+
+// Add Hyphenopoly_Loader
+gulp.task('vendor:build:hyphenopoly', function () {
+  var jsStream = gulp.src([
+  './assets/js/vendor/Hyphenopoly_Loader.js',
+  './assets/js/vendor/Hyphenopoly.js'
+  ])
+    .pipe(gulp.dest('./dist/assets/js/vendor'));
+  return gulp.src([
+    './assets/js/vendor/patterns/es.wasm',
+    './assets/js/vendor/patterns/it.wasm'
+    ])
+      .pipe(gulp.dest('./dist/assets/js/vendor/patterns'));
+})
+
+
 
 // Copy Bootstrap SCSS(SASS) from node_modules to /assets/scss/bootstrap
 gulp.task('bootstrap:scss', function () {
@@ -147,7 +163,7 @@ gulp.task('dev', function browserDev(done) {
 });
 
 // Build task
-gulp.task("build", gulp.series(gulp.parallel('css:minify', 'js:minify', 'vendor'), 'vendor:build', function copyAssets() {
+gulp.task("build", gulp.series(gulp.parallel('css:minify', 'js:minify', 'vendor'), 'vendor:build','vendor:build:hyphenopoly',  function copyAssets() {
   return gulp.src([
     '*.html',
     "assets/img/**",
@@ -157,4 +173,4 @@ gulp.task("build", gulp.series(gulp.parallel('css:minify', 'js:minify', 'vendor'
 }));
 
 // Default task
-gulp.task("default", gulp.series("clean", 'build', 'additonal_files', 'replaceHtmlBlock'));
+gulp.task("default", gulp.series("clean", 'build', 'additonal_files', 'vendor:build:hyphenopoly', 'replaceHtmlBlock'));

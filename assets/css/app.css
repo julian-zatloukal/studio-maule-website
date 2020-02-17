@@ -10779,13 +10779,31 @@ body {
   overflow: hidden;
 }
 
-.card-img-top {
+.card-review-img-1 {
   -o-object-fit: cover;
      object-fit: cover;
-  -o-object-position: 80% 53%;
-     object-position: 80% 53%;
+  -o-object-position: 80% 49%;
+     object-position: 80% 49%;
   width: 100%;
-  height: 6rem;
+  height: 9rem;
+}
+
+.card-review-img-2 {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: 80% 48%;
+     object-position: 80% 48%;
+  width: 100%;
+  height: 9rem;
+}
+
+.card-review-img-3 {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: 80% 62%;
+     object-position: 80% 62%;
+  width: 100%;
+  height: 9rem;
 }
 
 #quienes-somos-img {
@@ -10808,12 +10826,28 @@ body {
 }
 
 .alert-validate-border::after {
-  content: '';
+  content: "";
   border: medium solid #c80000;
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
+}
+
+.entry-footer .excerpt p {
+  word-wrap: break-word;
+}
+
+.indent-enable {
+  text-indent: 10%;
+  text-align: justify;
+  text-justify: distribute;
+  -moz-text-align-last: left;
+       text-align-last: left;
+  hyphens: auto;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
 }
 
 .view-more-icon {

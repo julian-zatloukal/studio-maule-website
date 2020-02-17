@@ -44,6 +44,24 @@
   <link href="./assets/css/app.css" rel="stylesheet">
   <!-- endbuild -->
 
+  <script>
+    var Hyphenopoly = {
+      require: {
+        "es": "FORCEHYPHENOPOLY",
+        "it": "FORCEHYPHENOPOLY"
+      },
+      setup: {
+        selectors: {
+          ".container": {}
+        }
+      },
+      paths: {
+        "patterndir": "./assets/js/vendor/patterns/", //path to the directory of pattern files
+        "maindir": "./assets/js/vendor/" //path to the directory where the other ressources are stored
+      }
+    };
+  </script>
+  <script src="./assets/js/vendor/Hyphenopoly_Loader.js"></script>
 
 
 </head>
@@ -76,7 +94,7 @@
             <a class="nav-link" id="nav-item-quienes-somos" href="#">¿Quiénes somos?</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="nav-item-ultimos-trabajos" href="#">Ultimos trabajos</a>
+            <a class="nav-link" id="nav-item-nuestros-clientes" href="#">Nuestros clientes</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" id="nav-item-contacto" href="#">Contacto</a>
@@ -112,7 +130,8 @@
           <div class="container">
             <div class="carousel-caption text-right ">
               <h1>Traducciónes publicas.</h1>
-              <p id="carousel-caption-first" class="stretch ml-auto">¿Necesita realizar traducciones? Del español al italiano y del Italiano al español,
+              <p id="carousel-caption-first" class="stretch ml-auto">¿Necesita realizar traducciones? Del español al
+                italiano y del Italiano al español,
                 traductora con más de 25 años de experiencia.</p>
               <p><a class="btn btn-lg btn-primary" href="#" role="button">Contactar</a></p>
             </div>
@@ -122,8 +141,9 @@
           <img class="second-slide" src="./assets/img/carousel_2_jpg.jpg" id="carousel_second" alt="Second slide">
           <div class="container">
             <div class="carousel-caption text-left">
-              <h1>Refencias de todo el mundo.</h1>
-              <p id="carousel-caption-second"  class="stretch mr-auto">Traducciones realizadas y enviadas a Brasil, Italia, Alemania, Israel, EEUU, y Perú. Enviadas a
+              <h1>Referencias de todo el mundo.</h1>
+              <p id="carousel-caption-second" class="stretch mr-auto">Traducciones realizadas y enviadas a Brasil,
+                Italia, Alemania, Israel, EEUU, y Perú. Enviadas a
                 los respectivos países con todos los sellados previos para la
                 validez internacional.</p>
               <p><a class="btn btn-lg btn-primary" href="#" role="button">Ver historial</a></p>
@@ -135,8 +155,9 @@
           <div class="container">
             <div class="carousel-caption">
               <h1>Ciudadanía italiana</h1>
-              <p id="carousel-caption-second"  class="stretch mx-auto">La Ciudadanía italiana es otorgada, sin límite de generaciones, a los descendientes de los italianos
-                emigrados a través del Ius sanguinis,  Derecho de Sangre. Permite el acceso ilimitado todos los
+              <p id="carousel-caption-second" class="stretch mx-auto">La Ciudadanía italiana es otorgada, sin límite de
+                generaciones, a los descendientes de los italianos
+                emigrados a través del Ius sanguinis, Derecho de Sangre. Permite el acceso ilimitado todos los
                 países
                 dentro de la Unión Europea, incluyendo Reino Unido.</p>
               <p><a class="btn btn-lg btn-primary" href="#" role="button">Contactar</a></p>
@@ -166,41 +187,67 @@
         </section>
         <div class="row">
           <div class="col-md-4">
-            <p class="h3 font-weight-bold text-black service-card">Traducción publica de actas.<a class="btn-sm ml-3 mb-1 py-0 btn-secondary view-more-btn" href="#" role="button">Ver más</a></p>
-            <p class="stretch">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-              condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod.
-              Donec sed odio dui. </p>
+            <p class="h3 font-weight-bold text-black service-card">Traducción publica.<span><a
+                  class="d-inline-block btn-sm ml-sm-2 ml-2 mb-1 py-0 btn-secondary view-more-btn" href="#"
+                  role="button">Ver
+                  más</a></span></p>
+            <p class="justify indent-enable">La traducción de un documento de un idioma extranjero al nacional, del
+              idioma nacional al
+              extranjero o de un idioma extranjero a otro, tiene carácter público cuando lleva la firma y el sello de un
+              traductor matriculado en los idiomas en los que interviene, en estricto cumplimiento con las formalidades
+              establecidas por el CTPCBA que legaliza la firma y el sello del profesional insertos en la traducción.</p>
             <p><a class="btn btn-secondary service-card" href="#" role="button">Consultar »</a></p>
           </div>
           <div class="col-md-4">
-            <p class="h3 font-weight-bold text-black service-card">Armado de carpeta para ciudadania</p>
-            <p class="stretch">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-              condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod.
-              Donec sed odio dui. <img class="view-more-icon" src="./assets/ico/see_more-01.svg"> </p>
+            <p class="h3 font-weight-bold text-black service-card">Traducción publica de actas.<a
+                class="d-inline-block btn-sm ml-sm-2 ml-2 mb-1 py-0 btn-secondary view-more-btn" href="#"
+                role="button">Ver más</a></p>
+            <p class="indent-enable">La traducción publica de Actas de nacimiento, matrimonio y defunción; Divorcios,
+              certificado de cosa juzgada; Adopciones con cosa juzgada; Informaciones sumarias de identidad de persona;
+              Balances; Estatutos; Poderes; Rectificaciones.</p>
             <p><a class="btn btn-secondary service-card" href="#" role="button">Consultar »</a></p>
           </div>
           <div class="col-md-4">
-            <p class="h3 font-weight-bold text-black service-card">Declaración de valor de titulos</p>
-            <p class="stretch">Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula
-              porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
-              fermentum massa justo sit amet risus.  </p>
+            <p class="h3 font-weight-bold text-black service-card">Armado de carpeta para ciudadanía.<a
+                class="d-inline-block btn-sm ml-sm-2 ml-2 mb-1 py-0 btn-secondary view-more-btn" href="#"
+                role="button">Ver más</a> </p>
+            <p class="stretch indent-enable">El pasaporte italiano concede el derecho de entrada a 187 países y
+              territorios; siendo
+              uno de los pasaportes más valorados. La ciudadanía italiana se basa en el principio del <i>ius
+                sanguinis</i>,
+              derecho de sangre, que sostiene que es italiano el hijo nacido de padre italiano o madre italiana.</p>
             <p><a class="btn btn-secondary service-card" href="#" role="button">Consultar »</a></p>
           </div>
         </div>
 
         <div class="row">
           <div class="col-md-4">
-            <p class="h3 font-weight-bold text-black service-card">Traducción no publica</p>
-            <p class="stretch">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-              condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod.
-              Donec sed odio dui.  </p>
+            <p class="h3 font-weight-bold text-black service-card">Declaración de valor de títulos.<a
+                class="d-inline-block btn-sm ml-sm-2 ml-2 mb-1 py-0 btn-secondary view-more-btn" href="#"
+                role="button">Ver más</a> </p>
+            <p class="stretch indent-enable">La declaración de valor es un documento expedido por las autoridades
+              consulares italianas
+              a quienes, habiendo conseguido un título de estudio ante instituciones de instrucción extranjeras, desean
+              proseguir los estudios en Italia o bien iniciar los procedimientos de equiparación de Títulos de Estudio o
+              bien de Reconocimiento profesional.</p>
             <p><a class="btn btn-secondary service-card" href="#" role="button">Consultar »</a></p>
           </div>
           <div class="col-md-4">
-            <p class="h3 font-weight-bold text-black service-card">Otro <img class="view-more-icon" src="./assets/ico/see_more-01.svg"></p>
-            <p class="stretch">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-              condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod.
-              Donec sed odio dui.  </p>
+            <p class="h3 font-weight-bold text-black service-card">Traducción no <br /> pública.<a
+                class="d-inline-block btn-sm ml-sm-2 ml-2 mb-1 py-0 btn-secondary view-more-btn" href="#"
+                role="button">Ver más</a></p>
+            <p class="stretch indent-enable">La traducción es la actividad que consiste en comprender el significado de
+              un texto en un
+              idioma, llamado texto origen, para producir un texto con significado equivalente, en otro idioma, llamado
+              texto traducido.</p>
+            <p><a class="btn btn-secondary service-card" href="#" role="button">Consultar »</a></p>
+          </div>
+          <div class="col-md-4">
+            <p class="h3 font-weight-bold text-black service-card">Otros.<a
+                class="d-inline-block btn-sm ml-sm-2 ml-2 mb-1 py-0 btn-secondary view-more-btn" href="#"
+                role="button">Ver más</a></p>
+            <p class="stretch indent-enable">En caso de precisar un servicio personalizado, especifico o de consultoría.
+            </p>
             <p><a class="btn btn-secondary service-card" href="#" role="button">Consultar »</a></p>
           </div>
 
@@ -222,19 +269,19 @@
         </div>
       </div>
 
-      <hr id="ultimos-trabajos-divider" class="featurette-divider">
+      <hr id="nuestros-clientes-divider" class="featurette-divider">
 
       <section class="jumbotron bg-transparent text-dark text-center pt-1 pb-1">
         <div class="container">
-          <h1 class="jumbotron-heading">Ultimos trabajos</h1>
+          <h1 class="jumbotron-heading">Nuestros clientes</h1>
         </div>
       </section>
 
       <div class="card-deck">
         <div class="card">
-          <img src="./assets/img/collie.jpeg" class="card-img-top" alt="...">
+          <img src="./assets/img/review_img_1.jpeg" class="card-review-img-1" alt="...">
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
+            <h5 class="card-title">Mali L.</h5>
             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
               content. This content is a little bit longer.</p>
           </div>
@@ -243,9 +290,9 @@
           </div>
         </div>
         <div class="card">
-          <img src="./assets/img/collie.jpeg" class="card-img-top" alt="...">
+          <img src="./assets/img/review_img_2.jpeg" class="card-review-img-2" alt="...">
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
+            <h5 class="card-title">Antonella F.</h5>
             <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
           </div>
           <div class="card-footer">
@@ -253,9 +300,9 @@
           </div>
         </div>
         <div class="card">
-          <img src="./assets/img/collie.jpeg" class="card-img-top" alt="...">
+          <img src="./assets/img/review_img_3.jpg" class="card-review-img-3" alt="...">
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
+            <h5 class="card-title">Laura N.</h5>
             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
               content. This card has even longer content than the first to show that equal height action.</p>
           </div>
@@ -335,7 +382,7 @@
                     placeholder="¿En que podemos ayudarle?" rows="4" required="required"
                     data-error="Por favor, dejenos un mensaje."></textarea>
                   <div class="help-block with-errors"></div>
-                  <p id="character-count" class="float-right pr-3">5000</p>
+                  <p id="character-count" class="float-right pr-3">0</p>
                 </div>
               </div>
 
@@ -382,7 +429,7 @@
                 class="st0" /></svg>
           </span>
           &middot;
-          <span style="display: inline-block;" > 
+          <span style="display: inline-block;">
             <i class="fab fa-whatsapp"></i>
             <svg style="height: 0.70em; position: relative; left: 0; bottom: 0.190em;"
               xmlns="http://www.w3.org/2000/svg" id="Layer_1" x="0" y="0" version="1.1" viewBox="0 0 172.4 13.1"
@@ -391,9 +438,9 @@
               <path style="fill: #5a5a5a"
                 d="M8.3 8.2H4.7v3.5H3.5V8.2H0V7h3.5V3.5h1.2V7h3.6v1.2zM19.7 9c0 .6-.1 1.2-.3 1.7s-.5.9-.9 1.3-.9.6-1.4.8-1.2.3-1.8.3c-1.2 0-2-.2-2.6-.5V11c.9.6 1.7.8 2.6.8.5 0 .9-.1 1.2-.2.4-.1.7-.3.9-.6s.5-.5.6-.9c.1-.3.2-.7.2-1.1 0-.8-.3-1.5-.8-1.9S16 6.5 15 6.5h-2.1l.4-6.3h5.8v1.3h-4.6l-.3 3.7h1.2c.7 0 1.3.1 1.8.3s1 .4 1.3.8c.4.3.6.7.8 1.2s.4.9.4 1.5zM29.2.3v8.3h1.6v1.3h-1.6v3h-1.4v-3h-5.9V8.7c.6-.6 1.1-1.3 1.7-2s1.1-1.4 1.6-2.1c.5-.7 1-1.5 1.4-2.2.4-.7.8-1.4 1.1-2.1h1.5zm-5.7 8.3h4.3V2.4c-.4.8-.9 1.5-1.2 2.1s-.8 1.2-1.1 1.6-.7.9-1 1.3-.7.8-1 1.2zM47 5.8c0 1.2-.1 2.2-.3 3.1s-.6 1.7-1 2.3-1 1.1-1.6 1.4-1.4.5-2.2.5c-.8 0-1.6-.1-2.2-.4v-1.4c.7.4 1.4.6 2.2.6.6 0 1.1-.1 1.5-.4.4-.2.8-.6 1.1-1s.5-1 .7-1.7.2-1.4.2-2.3c-.5 1.1-1.5 1.6-2.8 1.6-.5 0-1-.1-1.5-.3s-.8-.5-1.2-.8-.6-.8-.8-1.2-.1-.9-.1-1.5.1-1.2.3-1.7c.2-.5.5-1 .8-1.3.4-.4.8-.7 1.3-.9s1-.3 1.6-.3c.6 0 1.2.1 1.7.4s.9.6 1.2 1.1.6 1.1.8 1.8.3 1.5.3 2.4zm-1.5-1.3c0-.5-.1-.9-.2-1.3s-.3-.7-.5-1-.5-.5-.8-.7c-.3-.2-.6-.2-1-.2-.3 0-.7.1-1 .2s-.6.3-.8.6c-.2.2-.4.5-.5.9-.1.3-.2.7-.2 1.1 0 .4.1.8.2 1.2s.3.6.5.9.5.4.8.6.7.2 1 .2c.3 0 .6-.1.9-.2s.6-.3.8-.5c.3-.3.5-.5.6-.8.1-.3.2-.6.2-1zM61 12.9h-1.4V2c-.1.1-.3.2-.5.4s-.5.3-.7.4-.5.3-.8.4l-.9.3V2c.3-.1.7-.2 1-.4s.7-.3 1-.5c.3-.2.7-.4 1-.6s.6-.4.8-.6h.5v13zM71.6 12.9h-1.4V2c-.1.1-.3.2-.5.4s-.5.3-.7.4-.5.3-.8.4l-.9.3V2c.3-.1.7-.2 1-.4s.7-.3 1-.5c.3-.2.7-.4 1-.6s.6-.4.8-.6h.5v13zM90.7 8.9c0 .6-.1 1.2-.3 1.7s-.5 1-.8 1.3-.8.7-1.3.9-1 .3-1.6.3c-.6 0-1.2-.1-1.7-.4-.5-.3-.9-.6-1.3-1.1s-.6-1.1-.8-1.8-.3-1.5-.3-2.4c0-1.1.1-2.1.4-3s.6-1.7 1-2.3c.4-.6 1-1.1 1.6-1.5s1.3-.5 2.1-.5c.9 0 1.6.1 2.1.4v1.4c-.7-.3-1.3-.5-2.1-.5-.6 0-1.1.1-1.5.4s-.8.6-1.2 1.1-.6 1-.7 1.7S84 6 84 6.8c.6-1 1.5-1.6 2.9-1.6.6 0 1 .1 1.5.3.4.2.8.5 1.1.8s.6.8.7 1.2.5.8.5 1.4zm-1.5.2c0-.4-.1-.8-.2-1.2s-.3-.7-.5-.9-.5-.4-.8-.6-.7-.2-1-.2c-.4 0-.7.1-1 .2s-.5.3-.7.6-.4.5-.5.8-.2.6-.2 1 .1.8.2 1.2.3.7.5 1 .5.5.8.7c.3.2.6.2 1 .2s.7-.1 1-.2.6-.3.8-.6.4-.5.5-.9.1-.7.1-1.1zM93.1 9.4c0-.3.1-.7.2-1s.3-.7.5-.9c.2-.3.4-.6.7-.8.3-.2.6-.4 1-.6-.5-.3-1-.7-1.3-1.2s-.5-1-.5-1.6c0-.5.1-.9.3-1.3s.4-.7.7-1 .7-.5 1.1-.7.9-.2 1.4-.2c.5 0 1 .1 1.4.2s.8.4 1.1.7.6.6.7 1 .3.8.3 1.3c0 .6-.2 1.1-.5 1.6s-.7.8-1.3 1.1c.4.1.7.3 1 .6s.5.5.7.8.3.6.5.9.2.7.2 1c0 .6-.1 1.1-.3 1.5s-.5.8-.8 1.2c-.4.3-.8.6-1.3.8-.5.2-1.1.3-1.7.3-.6 0-1.1-.1-1.6-.3s-.9-.4-1.3-.8-.6-.7-.8-1.2c-.3-.4-.4-.9-.4-1.4zm1.5-.2c0 .4.1.7.2 1.1s.3.6.5.8c.2.2.5.4.8.5.3.1.7.2 1 .2.4 0 .7-.1 1-.2s.6-.3.8-.5c.2-.2.4-.5.5-.8.1-.3.2-.7.2-1.1 0-.4-.1-.7-.2-1s-.2-.5-.4-.8-.5-.4-.8-.5-.7-.2-1-.2c-.4 0-.7.1-1 .2-.3.1-.6.3-.8.5s-.4.5-.6.8-.2.7-.2 1zm.5-5.8c0 .3.1.6.2.8.1.3.3.5.4.7s.4.3.7.4.5.2.8.2.6-.1.8-.2c.3-.1.5-.3.7-.5s.3-.4.4-.7.2-.5.2-.8c0-.3-.1-.6-.2-.8-.1-.3-.3-.5-.4-.7s-.5-.2-.7-.4c-.3-.1-.5-.2-.8-.2-.3 0-.6.1-.8.2-.3.1-.5.3-.7.5-.2.2-.3.4-.4.7s-.2.5-.2.8zM111.7 5.8c0 1.2-.1 2.2-.3 3.1s-.6 1.7-1 2.3-1 1.1-1.6 1.4-1.4.5-2.2.5c-.8 0-1.6-.1-2.2-.4v-1.4c.7.4 1.4.6 2.2.6.6 0 1.1-.1 1.5-.4.4-.2.8-.6 1.1-1s.5-1 .7-1.7.2-1.4.2-2.3c-.5 1.1-1.5 1.6-2.8 1.6-.5 0-1-.1-1.5-.3s-.8-.5-1.2-.8-.6-.8-.8-1.2-.3-1-.3-1.6c0-.6.1-1.2.3-1.7.2-.5.5-1 .8-1.3.4-.4.8-.7 1.3-.9s1-.3 1.6-.3c.6 0 1.2.1 1.7.4s.9.6 1.2 1.1.6 1.1.8 1.8.5 1.6.5 2.5zm-1.5-1.3c0-.5-.1-.9-.2-1.3s-.3-.7-.5-1-.5-.5-.8-.7c-.3-.2-.6-.2-1-.2-.3 0-.7.1-1 .2s-.6.3-.8.6c-.2.2-.4.5-.5.9-.1.3-.2.7-.2 1.1 0 .4.1.8.2 1.2s.3.6.5.9.5.4.8.6.7.2 1 .2c.3 0 .6-.1.9-.2s.6-.3.8-.5c.2-.2.4-.5.5-.8.2-.3.3-.6.3-1zM114.3 9.4c0-.3.1-.7.2-1s.3-.7.5-.9c.2-.3.4-.6.7-.8.3-.2.6-.4 1-.6-.5-.3-1-.7-1.3-1.2s-.5-1-.5-1.6c0-.5.1-.9.3-1.3s.4-.7.7-1 .7-.5 1.1-.7.9-.2 1.4-.2c.5 0 1 .1 1.4.2s.8.4 1.1.7.6.6.7 1 .3.8.3 1.3c0 .6-.2 1.1-.5 1.6s-.8.9-1.3 1.2c.4.1.7.3 1 .6s.5.5.7.8.3.6.5.9.2.7.2 1c0 .6-.1 1.1-.3 1.5s-.5.8-.8 1.2c-.4.3-.8.6-1.3.8-.5.2-1.1.3-1.7.3-.6 0-1.1-.1-1.6-.3s-.9-.4-1.3-.8-.6-.7-.8-1.2c-.3-.5-.4-1-.4-1.5zm1.5-.2c0 .4.1.7.2 1.1s.3.6.5.8c.2.2.5.4.8.5.3.1.7.2 1 .2.4 0 .7-.1 1-.2s.6-.3.8-.5c.2-.2.4-.5.5-.8.1-.3.2-.7.2-1.1 0-.4-.1-.7-.2-1s-.3-.6-.5-.8-.5-.4-.8-.6-.7-.2-1-.2c-.4 0-.7.1-1 .2-.3.1-.6.3-.8.5s-.4.5-.5.8-.2.8-.2 1.1zm.5-5.8c0 .3.1.6.2.8.1.3.3.5.4.7s.4.3.7.4.5.2.8.2.6-.1.8-.2c.3-.1.5-.3.7-.5s.3-.4.4-.7.2-.5.2-.8c0-.3-.1-.6-.2-.8-.1-.3-.3-.5-.4-.7s-.4-.3-.7-.4c-.3-.1-.5-.2-.8-.2-.3 0-.6.1-.8.2-.3.1-.5.3-.7.5-.2.2-.3.4-.4.7s-.2.5-.2.8zM130.2 8.4h-4.8V7.3h4.8v1.1zM140.6 9.3c0 .6-.1 1.1-.3 1.6s-.5.9-.9 1.2c-.4.3-.9.6-1.4.8s-1.1.3-1.8.3c-1.2 0-2.2-.2-2.9-.7V11c.8.7 1.8 1 2.9 1 .4 0 .8-.1 1.2-.2s.7-.3.9-.5c.3-.2.5-.5.6-.8.1-.3.2-.6.2-1 0-1.6-1.2-2.5-3.5-2.5h-1V5.8h1c2.1 0 3.1-.8 3.1-2.3 0-1.4-.8-2.1-2.4-2.1-.9 0-1.7.3-2.5.9V.8c.8-.5 1.8-.7 2.9-.7.5 0 1 .1 1.4.2s.8.4 1.1.6.5.6.7.9c.2.4.3.8.3 1.2 0 1.7-.8 2.7-2.5 3.2.4 0 .8.2 1.2.3s.7.4.9.6.5.6.6.9c.1.5.2.9.2 1.3zM151.8 6.5c0 1.1-.1 2-.3 2.8-.2.8-.5 1.5-.8 2.1-.4.6-.8 1-1.3 1.3s-1.1.4-1.8.4c-.6 0-1.2-.1-1.7-.4s-.9-.7-1.3-1.2-.6-1.2-.8-2-.3-1.7-.3-2.7c0-1.1.1-2.1.3-2.9.2-.8.5-1.6.8-2.1s.8-1 1.3-1.3c.5-.3 1.1-.4 1.8-.4 2.7 0 4.1 2.1 4.1 6.4zm-1.5.2c0-3.6-.9-5.4-2.6-5.4-1.8 0-2.7 1.8-2.7 5.5 0 3.4.9 5.1 2.6 5.1 1.8 0 2.7-1.8 2.7-5.2zM154.2 9.4c0-.3.1-.7.2-1s.3-.7.5-.9c.2-.3.4-.6.7-.8.3-.2.6-.4 1-.6-.5-.3-1-.7-1.3-1.2s-.5-1-.5-1.6c0-.5.1-.9.3-1.3s.4-.7.7-1 .7-.5 1.1-.7c.4-.2.9-.2 1.4-.2.5 0 1 .1 1.4.2s.8.4 1.1.7.6.6.7 1 .3.8.3 1.3c0 .6-.2 1.1-.5 1.6s-.8.9-1.3 1.2c.4.1.7.3 1 .6s.5.5.7.8.3.6.5.9.2.7.2 1c0 .6-.1 1.1-.3 1.5s-.5.8-.8 1.2c-.4.3-.8.6-1.3.8-.5.2-1.1.3-1.7.3-.6 0-1.1-.1-1.6-.3-.5-.2-.9-.4-1.3-.8s-.6-.7-.8-1.2c-.3-.5-.4-1-.4-1.5zm1.6-.2c0 .4.1.7.2 1.1s.3.6.5.8c.2.2.5.4.8.5.3.1.7.2 1 .2.4 0 .7-.1 1-.2s.6-.3.8-.5c.2-.2.4-.5.5-.8.1-.3.2-.7.2-1.1 0-.4-.1-.7-.2-1s-.3-.6-.5-.8-.5-.4-.8-.6-.7-.2-1-.2c-.4 0-.7.1-1 .2-.3.1-.6.3-.8.5-.2.2-.4.5-.5.8s-.2.8-.2 1.1zm.4-5.8c0 .3.1.6.2.8.1.3.3.5.4.7s.4.3.7.4.5.2.8.2.6-.1.8-.2c.3-.1.5-.3.7-.5s.3-.4.4-.7.2-.5.2-.8c0-.3-.1-.6-.2-.8-.1-.3-.3-.5-.4-.7s-.4-.3-.7-.4c-.3-.1-.5-.2-.8-.2-.3 0-.6.1-.8.2-.3.1-.5.3-.7.5-.2.2-.3.4-.4.7s-.2.5-.2.8zM172.4 9.3c0 .6-.1 1.1-.3 1.6s-.5.9-.9 1.2c-.4.3-.9.6-1.4.8s-1.1.3-1.8.3c-1.2 0-2.2-.2-2.9-.7V11c.8.7 1.8 1 2.9 1 .4 0 .8-.1 1.2-.2s.7-.3.9-.5c.3-.2.5-.5.6-.8.1-.3.2-.6.2-1 0-1.6-1.2-2.5-3.5-2.5h-1V5.8h1c2.1 0 3.1-.8 3.1-2.3 0-1.4-.8-2.1-2.4-2.1-.9 0-1.7.3-2.5.9V.8c.8-.5 1.8-.7 2.9-.7.5 0 1 .1 1.4.2s.8.4 1.1.6.5.6.7.9c.2.4.3.8.3 1.2 0 1.7-.8 2.7-2.5 3.2.4 0 .8.2 1.2.3s.7.4.9.6.5.6.6.9c.1.5.2.9.2 1.3z"
                 class="st0" /></svg></p>
-          </span>
-            
-      
+      </span>
+
+
     </footer>
   </main>
 
