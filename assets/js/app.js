@@ -92,13 +92,13 @@ var app = {
     }
 
 
-    
+
     $("#description-input").on('input', function () {
       $('#character-count').text($("#description-input").val().length);
     });
 
-    async function getIPv4(callback){
-      let promise = new Promise(function(resolve, reject) {
+    async function getIPv4(callback) {
+      let promise = new Promise(function (resolve, reject) {
         $.ajax({
           type: 'GET',
           timeout: 1200,
@@ -121,8 +121,8 @@ var app = {
     }
 
 
-    function getIPv4Promise(){
-      return new Promise(function(resolve, reject) {
+    function getIPv4Promise() {
+      return new Promise(function (resolve, reject) {
         $.ajax({
           type: 'GET',
           timeout: 1200,
@@ -157,8 +157,8 @@ var app = {
     Object.defineProperty(window, 'ipv4', {
       get: function () {
         getIPv4Promise().then(
-          result => console.log("IPv4: " + result), 
-          error => alert(error) 
+          result => console.log("IPv4: " + result),
+          error => alert(error)
         );
         return;
       }
@@ -172,13 +172,30 @@ var app = {
     //#endregion
 
 
-    
 
-    
 
-    
+    function showAlertRecaptcha() {
+      $(".g-recaptcha div div iframe").css({
+        "border-style": "solid",
+        "border-width": "0.125em",
+        "border-color": getComputedStyle(document.body).getPropertyValue(
+          "--danger"
+        ),
+        "border-radius": "0.25em"
+      });
+      $(".g-recaptcha div div").addClass("alert-validate");
+    }
 
-    
+    function hideAlertRecaptcha() {
+      $(".g-recaptcha div div iframe").css({
+        "border-style": "hidden"
+      });
+      $(".g-recaptcha div div").removeClass("alert-validate");
+    }
+
+
+
+
 
 
     function scrollToContactForm(subject) {
@@ -240,47 +257,47 @@ var app = {
       submitToAPI(e);
     });
 
-    $.fn.strech_text = function(){
-      var elmt          = jQuery(this),
-          cont_width    = elmt.width();
-          
-      if(jQuery(this).find('.stretch_it').length > 0){
-          var txt           = jQuery(this).find('.stretch_it').html();
-          jQuery(this).html(txt);
-      }else{
-          var txt           = elmt.html();
+    $.fn.strech_text = function () {
+      var elmt = jQuery(this),
+        cont_width = elmt.width();
+
+      if (jQuery(this).find('.stretch_it').length > 0) {
+        var txt = jQuery(this).find('.stretch_it').html();
+        jQuery(this).html(txt);
+      } else {
+        var txt = elmt.html();
       }
-  
-      var one_line      = jQuery('<span class="stretch_it">' + txt + '</span>'),
-          nb_char       = elmt.text().length,
-          spacing       = cont_width/nb_char,
-          txt_width;
-      
+
+      var one_line = jQuery('<span class="stretch_it">' + txt + '</span>'),
+        nb_char = elmt.text().length,
+        spacing = cont_width / nb_char,
+        txt_width;
+
       elmt.html(one_line);
       txt_width = one_line.width();
-      
-      if (txt_width < cont_width){
-          var  char_width     = txt_width/nb_char,
-               ltr_spacing    = spacing - char_width + (spacing - char_width)/nb_char ; 
-    
-          one_line.css({'letter-spacing': ltr_spacing});
+
+      if (txt_width < cont_width) {
+        var char_width = txt_width / nb_char,
+          ltr_spacing = spacing - char_width + (spacing - char_width) / nb_char;
+
+        one_line.css({ 'letter-spacing': ltr_spacing });
       } else {
-          one_line.contents().unwrap();
-          elmt.addClass('justify');
+        one_line.contents().unwrap();
+        elmt.addClass('justify');
       }
-  };
+    };
 
-  
-  
-    jQuery(window).resize(function(){
-      jQuery('.stretch').each(function(){
-          jQuery(this).strech_text();
+
+
+    jQuery(window).resize(function () {
+      jQuery('.stretch').each(function () {
+        jQuery(this).strech_text();
       });
-  });
+    });
 
-  $('.stretch').each(function(){
-    $(this).strech_text();
-});
+    $('.stretch').each(function () {
+      $(this).strech_text();
+    });
 
   }
 };
