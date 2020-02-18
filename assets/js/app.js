@@ -172,30 +172,13 @@ var app = {
     //#endregion
 
 
-    var grecaptchaSuccessfulEvent = function() {
-      hideAlertRecaptcha();
-    };
+    
 
-    var grecaptchaExpiredEvent = function() {
-      showAlertRecaptcha();
-    };
+    
 
-    function showAlertRecaptcha() {
-      $('.g-recaptcha div div iframe').css({
-        "border-style": "solid",
-        "border-width": "0.125em",
-        "border-color": getComputedStyle(document.body).getPropertyValue('--danger'),
-        "border-radius": "0.25em"
-      });
-      $('.g-recaptcha div div').addClass('alert-validate');
-    }
+    
 
-    function hideAlertRecaptcha() {
-      $('.g-recaptcha div div iframe').css({
-        "border-style": "hidden"
-      });
-      $('.g-recaptcha div div').removeClass('alert-validate');
-    }
+    
 
 
     function scrollToContactForm(subject) {
