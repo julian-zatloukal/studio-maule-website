@@ -172,6 +172,13 @@ var app = {
     //#endregion
 
 
+    var grecaptchaSuccessfulEvent = function() {
+      hideAlertRecaptcha();
+    };
+
+    var grecaptchaExpiredEvent = function() {
+      showAlertRecaptcha();
+    };
 
     function showAlertRecaptcha() {
       $('.g-recaptcha div div iframe').css({
