@@ -6,7 +6,32 @@ var app = {
     app.mainFunction();
   },
   mainFunction: function () {
+
+
+
+
+
     // jQuery code
+
+
+    function showAlertRecaptcha() {
+      $(".g-recaptcha-container div div iframe").css({
+        "border-style": "solid",
+        "border-width": "0.125em",
+        "border-color": getComputedStyle(document.body).getPropertyValue(
+          "--danger"
+        ),
+        "border-radius": "0.25em"
+      });
+      $(".g-recaptcha-container div div").addClass("alert-validate");
+    }
+
+    function hideAlertRecaptcha() {
+      $(".g-recaptcha-container div div iframe").css({
+        "border-style": "hidden"
+      });
+      $(".g-recaptcha-container div div").removeClass("alert-validate");
+    }
 
     async function submitToAPI(e) {
       e.preventDefault();
@@ -174,24 +199,7 @@ var app = {
 
 
 
-    function showAlertRecaptcha() {
-      $(".g-recaptcha div div iframe").css({
-        "border-style": "solid",
-        "border-width": "0.125em",
-        "border-color": getComputedStyle(document.body).getPropertyValue(
-          "--danger"
-        ),
-        "border-radius": "0.25em"
-      });
-      $(".g-recaptcha div div").addClass("alert-validate");
-    }
 
-    function hideAlertRecaptcha() {
-      $(".g-recaptcha div div iframe").css({
-        "border-style": "hidden"
-      });
-      $(".g-recaptcha div div").removeClass("alert-validate");
-    }
 
 
 
