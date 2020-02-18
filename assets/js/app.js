@@ -201,8 +201,23 @@ var app = {
 
 
 
+    $("#1.carousel-button").click(function (event) {
+      event.preventDefault();
+      scrollToContactForm("");
 
+    });
 
+    $("#2.carousel-button").click(function (event) {
+      event.preventDefault();
+      $('html, body').animate({
+        scrollTop: $("#nuestros-clientes-divider").offset().top - ($("#nuestros-clientes-divider").outerHeight(true) / 2) - $("#main-navbar").outerHeight()
+      }, 2000);
+    });
+
+    $("#3.carousel-button").click(function (event) {
+      event.preventDefault();
+      scrollToContactForm("");
+    });
 
 
 
@@ -216,6 +231,7 @@ var app = {
     }
 
     $("[role='button'].service-card").click(function (event) {
+      event.preventDefault();
       scrollToContactForm($(this).parent().siblings(".service-card").text());
     });
 

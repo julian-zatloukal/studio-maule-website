@@ -198,7 +198,11 @@
                   experiencia.
                 </p>
                 <p>
-                  <a class="btn btn-lg btn-primary" href="#" role="button"
+                  <a
+                    id="1"
+                    class="btn btn-lg btn-primary carousel-button"
+                    href="#"
+                    role="button"
                     >Contactar</a
                   >
                 </p>
@@ -221,8 +225,12 @@
                   todos los sellados previos para la validez internacional.
                 </p>
                 <p>
-                  <a class="btn btn-lg btn-primary" href="#" role="button"
-                    >Ver historial</a
+                  <a
+                    id="2"
+                    class="btn btn-lg btn-primary carousel-button"
+                    href="#"
+                    role="button"
+                    >Ver Nuestros clientes</a
                   >
                 </p>
               </div>
@@ -246,7 +254,11 @@
                   incluyendo Reino Unido.
                 </p>
                 <p>
-                  <a class="btn btn-lg btn-primary" href="#" role="button"
+                  <a
+                    id="3"
+                    class="btn btn-lg btn-primary carousel-button"
+                    href="#"
+                    role="button"
                     >Contactar</a
                   >
                 </p>
@@ -463,15 +475,21 @@
               alt="..."
             />
             <div class="card-body">
-              <h5 class="card-title">Mali L.</h5>
-              <p class="card-text">
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
+              <h5 class="card-title">Mali I.</h5>
+              <p class="card-text justify indent-enable">
+                Gabriella me guio atentamente a través del ofuscado proceso para
+                obtener mi ciudadanía. Logró un excelente compromiso profesional
+                aun con las fechas bastante ajustadas. Nunca voy a dejar de
+                agradecerte por todo el trabajo y el apoyo.
               </p>
             </div>
             <div class="card-footer">
-              <small class="text-muted">Last updated 3 mins ago</small>
+              <small class="text-muted">27 de Marzo de 2017</small>
+              <a
+                href="#"
+                class="text-muted small float-right d-inline-block review-card-see-more"
+                >Ver más</a
+              >
             </div>
           </div>
           <div class="card">
@@ -482,13 +500,21 @@
             />
             <div class="card-body">
               <h5 class="card-title">Antonella F.</h5>
-              <p class="card-text">
-                This card has supporting text below as a natural lead-in to
-                additional content.
+              <p class="card-text indent-enable">
+                Este era un proceso muy importante para mí personalmente, me
+                generaba mucho stress y muchas dudas ya que tenía ciertos
+                desconocimientos y Gaby me dio tranquilidad desde la primera
+                comunicación. Hoy con mi ciudadanía y pasaporte en mano vuelvo a
+                agradecerte por acompañarme en este proceso.
               </p>
             </div>
             <div class="card-footer">
-              <small class="text-muted">Last updated 3 mins ago</small>
+              <small class="text-muted">12 de Noviembre de 2019</small>
+              <a
+                href="#"
+                class="text-muted small float-right d-inline-block review-card-see-more"
+                >Ver más</a
+              >
             </div>
           </div>
           <div class="card">
@@ -499,14 +525,20 @@
             />
             <div class="card-body">
               <h5 class="card-title">Laura N.</h5>
-              <p class="card-text">
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content. This card has even longer content
-                than the first to show that equal height action.
+              <p class="card-text indent-enable">
+                Conocí a Gabriella a través de una recomendación, ya que
+                necesitaba traducir algunos documentos para el trámite de la
+                Ciudadanía Italiana. Desde el primer momento que la contacté,
+                fue muy servicial y atenta. Recomiendo su trabajo sin dudarlo!!
               </p>
             </div>
             <div class="card-footer">
-              <small class="text-muted">Last updated 3 mins ago</small>
+              <small class="text-muted">28 de Enero de 2020</small>
+              <a
+                href="#"
+                class="text-muted small float-right d-inline-block review-card-see-more"
+                >Ver más</a
+              >
             </div>
           </div>
         </div>
@@ -620,12 +652,15 @@
                       data-error="Por favor, dejenos un mensaje."
                     ></textarea>
                     <div class="help-block with-errors"></div>
-                    <p id="character-count" class="float-right pr-3">0</p>
+                    <p id="character-count" class="float-right pr-0">0</p>
                   </div>
                 </div>
 
                 <div class="col-md-12">
-                  <div id="g-recaptcha-container" class="g-recaptcha-container"></div>
+                  <div
+                    id="g-recaptcha-container"
+                    class="g-recaptcha-container"
+                  ></div>
                   <br />
                   <input
                     type="submit"
@@ -707,23 +742,23 @@
     <!-- Recaptcha -->
     <script type="text/javascript">
       function showAlertRecaptcha() {
-      $(".g-recaptcha-container div div iframe").css({
-        "border-style": "solid",
-        "border-width": "0.125em",
-        "border-color": getComputedStyle(document.body).getPropertyValue(
-          "--danger"
-        ),
-        "border-radius": "0.25em"
-      });
-      $(".g-recaptcha-container div div").addClass("alert-validate");
-    }
+        $(".g-recaptcha-container div div iframe").css({
+          "border-style": "solid",
+          "border-width": "0.125em",
+          "border-color": getComputedStyle(document.body).getPropertyValue(
+            "--danger"
+          ),
+          "border-radius": "0.25em"
+        });
+        $(".g-recaptcha-container div div").addClass("alert-validate");
+      }
 
-    function hideAlertRecaptcha() {
-      $(".g-recaptcha-container div div iframe").css({
-        "border-style": "hidden"
-      });
-      $(".g-recaptcha-container div div").removeClass("alert-validate");
-    }
+      function hideAlertRecaptcha() {
+        $(".g-recaptcha-container div div iframe").css({
+          "border-style": "hidden"
+        });
+        $(".g-recaptcha-container div div").removeClass("alert-validate");
+      }
 
       var grecaptchaSuccessfulEvent = function() {
         hideAlertRecaptcha();
@@ -741,10 +776,10 @@
       var onloadCallback = function() {
         successfulGRecaptchaLoading = true;
         grecaptcha.render($("#g-recaptcha-container")[0], {
-          'sitekey': "6LfBRdMUAAAAAFEYhfH9JLBVbQhgO8LU7fIML1ne",
-          'callback': grecaptchaSuccessfulEvent,
-          'error-callback': grecaptchaErrorEvent,
-          'expired-callback': grecaptchaExpiredEvent
+          sitekey: "6LfBRdMUAAAAAFEYhfH9JLBVbQhgO8LU7fIML1ne",
+          callback: grecaptchaSuccessfulEvent,
+          "error-callback": grecaptchaErrorEvent,
+          "expired-callback": grecaptchaExpiredEvent
         });
       };
     </script>

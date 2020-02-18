@@ -19,6 +19,14 @@ body {
   filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(66deg) brightness(103%) contrast(101%);
 }
 
+
+.review-card-see-more{
+  position: relative;
+   top: 0.125em;
+}
+
+
+
 #contact-form {
   margin-top: 1.2rem;
 }
@@ -31,28 +39,31 @@ body {
   overflow: hidden;
 }
 
+p.service-card {
+  word-break: break-word;
+  hyphens: none;
+}
 
-.card-review-img-1{
+.card-review-img-1 {
   object-fit: cover;
   object-position: 80% 49%;
   width: 100%;
   height: 9rem;
 }
 
-.card-review-img-2{
+.card-review-img-2 {
   object-fit: cover;
   object-position: 80% 48%;
   width: 100%;
   height: 9rem;
 }
 
-.card-review-img-3{
+.card-review-img-3 {
   object-fit: cover;
   object-position: 80% 62%;
   width: 100%;
   height: 9rem;
 }
-
 
 #quienes-somos-img {
   height: 500px;
@@ -92,9 +103,9 @@ body {
   //word-break: break-all;
   text-align-last: left;
   hyphens: auto;
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
 }
 
 .view-more-icon {
