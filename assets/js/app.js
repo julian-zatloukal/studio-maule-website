@@ -194,6 +194,14 @@ var app = {
         return;
       }
     });
+    Object.defineProperty(window, 'gresponse', {
+      get: function () {
+        var response = grecaptcha.getResponse();
+      //recaptcha failed validation
+        console.log(response);
+        return null;
+      }
+    });
     //#endregion
 
 
