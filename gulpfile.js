@@ -119,7 +119,10 @@ gulp.task('css:minify', gulp.series('scss', function cssMinify() {
 // Minify Js
 gulp.task('js:minify', function () {
   return gulp.src([
-    './assets/js/app.js'
+    './assets/js/app.js',
+    './assets/js/lang.es.js',
+    './assets/js/lang.en.js',
+    './assets/js/lang.it.js'
   ])
     .pipe(terser({
       mangle: {
