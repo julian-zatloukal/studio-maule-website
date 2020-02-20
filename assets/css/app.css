@@ -10831,7 +10831,7 @@ p.service-card {
   font-family: FontAwesome;
   display: inline-block;
   position: absolute;
-  color: #c80000;
+  color: #dc3545;
   font-size: 1.5em;
   -webkit-transform: translate(200%, 50%);
           transform: translate(200%, 50%);
@@ -10839,7 +10839,7 @@ p.service-card {
 
 .alert-validate-border::after {
   content: "";
-  border: medium solid #c80000;
+  border: medium solid #dc3545;
   position: absolute;
   top: 0;
   bottom: 0;

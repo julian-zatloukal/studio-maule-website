@@ -6,114 +6,166 @@ var app = {
     app.mainFunction();
   },
   mainFunction: function () {
-
-
-
-
-
     // jQuery code
 
 
-    function showAlertRecaptcha() {
-      $(".g-recaptcha-container div div iframe").css({
-        "border-style": "solid",
-        "border-width": "0.125em",
-        "border-color": getComputedStyle(document.body).getPropertyValue(
-          "--danger"
-        ),
-        "border-radius": "0.25em"
-      });
-      $(".g-recaptcha-container div div").addClass("alert-validate");
+    class ContactForm {
+      static sanitizeAndVerify() {
+        let allTestPassed = true;
+
+        if (!ContactForm.verifyField("name-input")) allTestPassed = false;
+        if (!ContactForm.verifyField("phone-input")) allTestPassed = false;
+        if (!ContactForm.verifyField("subject-input")) allTestPassed = false;
+        if (!ContactForm.verifyField("email-input")) allTestPassed = false;
+
+
+
+
+
+        var response = grecaptcha.getResponse();
+        //recaptcha failed validation
+        if (response.length == 0) {
+          $('.g-recaptcha div div iframe').css('border', '1px solid red');
+          showAlertRecaptcha();
+          allTestPassed = false;
+        } else {
+          hideAlertRecaptcha();
+        }
+
+
+        return allTestPassed;
+      }
+
+      static hideVerifyAlert(element_selector) {
+        if ($(element_selector).hasClass("is-invalid")) {
+          $(element_selector).removeClass("is-invalid");
+          $(element_selector).next().toggleClass("d-inline d-none");
+        }
+      }
+
+      static showVerifyAlert(element_selector) {
+        if (!$(element_selector).hasClass("is-invalid")) {
+          $(element_selector).addClass("is-invalid");
+          $(element_selector).next().toggleClass("d-none d-inline");
+        }
+      }
+
+      static verifyField(field_id) {
+        switch (field_id) {
+          case "name-input":
+            var namere = /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,72}$/;
+            if (!namere.test($("#name-input").val())) {
+              ContactForm.showVerifyAlert("#name-input");
+              return false;
+            } else {
+              ContactForm.hideVerifyAlert("#name-input");
+            }
+            break;
+          case "phone-input":
+            if ($("#phone-input").val() != "") {
+              var mobilere = /^(?=.{2,22}$)(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[\-\.\ \\\/]?)?((?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(\d+))?$/;
+              if (!mobilere.test($("#phone-input").val())) {
+                ContactForm.showVerifyAlert("#phone-input");
+                return false;
+              } else {
+                ContactForm.hideVerifyAlert("#phone-input");
+              }
+            } else {
+              ContactForm.hideVerifyAlert("#phone-input");
+            }
+            break;
+          case "subject-input":
+            if ($("#subject-input").val() == "") {
+              ContactForm.showVerifyAlert("#subject-input");
+              return false;
+            } else {
+              ContactForm.hideVerifyAlert("#subject-input");
+            }
+            break;
+          case "email-input":
+            var reeamil = /^(?!.{254})([a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)$/;
+            if (!reeamil.test($("#email-input").val())) {
+              ContactForm.showVerifyAlert("#email-input");
+              return false;
+            } else {
+              ContactForm.hideVerifyAlert("#email-input");
+            }
+            break;
+            case "description-input":
+            var descriptionInputRegex = /^.{20,5000}$/;
+            if (!descriptionInputRegex.test($("#description-input").val())) {
+              ContactForm.showVerifyAlert("#description-input");
+              return false;
+            } else {
+              ContactForm.hideVerifyAlert("#description-input");
+            }
+            break;
+        }
+      }
     }
 
-    function hideAlertRecaptcha() {
-      $(".g-recaptcha-container div div iframe").css({
-        "border-style": "hidden"
-      });
-      $(".g-recaptcha-container div div").removeClass("alert-validate");
-    }
+
+    $("#name-input").blur(() => { ContactForm.verifyField("name-input"); });
+    $("#phone-input").blur(() => { ContactForm.verifyField("phone-input"); });
+    $("#subject-input").blur(() => { ContactForm.verifyField("subject-input"); });
+    $("#email-input").blur(() => { ContactForm.verifyField("email-input"); });
+    $("#description-input").blur(() => { ContactForm.verifyField("description-input"); });
+    //$("#description-input").change(() => { ContactForm.verifyField("description-input"); });
+
+
+
+
+
+
+
+
 
     async function submitToAPI(e) {
       e.preventDefault();
-      var URL = "https://s19rftjwb7.execute-api.us-east-1.amazonaws.com/test/contact-us";
 
-      var Namere = /[A-Za-z]{1}[A-Za-z]/;
-      if (!Namere.test($("#name-input").val())) {
-        alert("Name can not less than 2 char");
-        return;
+      if (ContactForm.sanitizeAndVerify()) {
+        let URL = "https://s19rftjwb7.execute-api.us-east-1.amazonaws.com/test/contact-us";
+
+        let name = $("#name-input").val();
+        let phone = $("#phone-input").val();
+        let email = $("#email-input").val();
+        let subject = $("#subject-input").val();
+        let desc = $("#description-input").val();
+        let ipv4 = await getIPv4Promise();
+        let timestamp = moment().format();
+        let grecaptcha_response = grecaptcha.getResponse();
+
+        var data_form = {
+          ipv4: ipv4,
+          timestamp: timestamp,
+          grecaptcha_response: grecaptcha_response,
+          name: name,
+          phone: phone,
+          email: email,
+          subject: subject,
+          desc: desc,
+        };
+
+        $.ajax({
+          type: "POST",
+          url: "https://s19rftjwb7.execute-api.us-east-1.amazonaws.com/test/contact-us",
+          dataType: "json",
+          crossDomain: "true",
+          contentType: "application/json; charset=utf-8",
+          data: JSON.stringify(data_form),
+
+          success: function () {
+            // clear form and show a success message
+            document.getElementById("contact-form").reset();
+            // location.reload();
+            $("#submit_result_area").html("<section style='border-style:solid !important; border-width: 2px !important;' class='jumbotron border border-success bg-transparent text-success text-center pt-1 pb-1 my-3'>  <div class='container'>	<h5 style='margin-bottom: 0.25rem !important;' class='jumbotron-heading'>¡Mensaje enviado exitosamente, gracias por su tiempo!</h3>  </div></section>");
+          },
+          error: function () {
+            // show an error message
+            $("#submit_result_area").html("<section style='border-style:solid !important; border-width: 2px !important;' class='jumbotron border border-danger bg-transparent text-danger text-center pt-1 pb-1 my-3'>  <div class='container'>	<h5 style='margin-bottom: 0.25rem !important;' class='jumbotron-heading'>Se ha producido un error al enviar el mensaje.</h3>  </div></section>");
+          }
+        });
       }
-
-      if ($("#phone-input").val() != "") {
-        var mobilere = /[0-9]{10}/;
-        if (!mobilere.test($("#phone-input").val())) {
-          alert("Please enter valid mobile number");
-          return;
-        }
-      }
-
-      if ($("#email-input").val() == "") {
-        alert("Please enter your email id");
-        return;
-      }
-
-      var reeamil = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,6})?$/;
-      if (!reeamil.test($("#email-input").val())) {
-        alert("Please enter valid email address");
-        return;
-      }
-
-      var response = grecaptcha.getResponse();
-      //recaptcha failed validation
-      if (response.length == 0) {
-        $('.g-recaptcha div div iframe').css('border', '1px solid red');
-        showAlertRecaptcha();
-        return false;
-      } else {
-        hideAlertRecaptcha();
-      }
-
-
-      var name = $("#name-input").val();
-      var phone = $("#phone-input").val();
-      var email = $("#email-input").val();
-      var subject = $("#subject-input").val();
-      var desc = $("#description-input").val();
-      var ipv4 = await getIPv4Promise();
-      var timestamp = moment().format();
-      var grecaptcha_response = grecaptcha.getResponse();
-
-      var data_form = {
-        ipv4: ipv4,
-        timestamp: timestamp,
-        grecaptcha_response: grecaptcha_response,
-        name: name,
-        phone: phone,
-        email: email,
-        subject: subject,
-        desc: desc,
-      };
-
-      console.log(data_form);
-
-      $.ajax({
-        type: "POST",
-        url: "https://s19rftjwb7.execute-api.us-east-1.amazonaws.com/test/contact-us",
-        dataType: "json",
-        crossDomain: "true",
-        contentType: "application/json; charset=utf-8",
-        data: JSON.stringify(data_form),
-
-        success: function () {
-          // clear form and show a success message
-          document.getElementById("contact-form").reset();
-          // location.reload();
-          $("#submit_result_area").html("<section style='border-style:solid !important; border-width: 2px !important;' class='jumbotron border border-success bg-transparent text-success text-center pt-1 pb-1 my-3'>  <div class='container'>	<h5 style='margin-bottom: 0.25rem !important;' class='jumbotron-heading'>¡Mensaje enviado exitosamente, gracias por su tiempo!</h3>  </div></section>");
-        },
-        error: function () {
-          // show an error message
-          $("#submit_result_area").html("<section style='border-style:solid !important; border-width: 2px !important;' class='jumbotron border border-danger bg-transparent text-danger text-center pt-1 pb-1 my-3'>  <div class='container'>	<h5 style='margin-bottom: 0.25rem !important;' class='jumbotron-heading'>Se ha producido un error al enviar el mensaje.</h3>  </div></section>");
-        }
-      });
     }
 
 
@@ -197,7 +249,7 @@ var app = {
     Object.defineProperty(window, 'gresponse', {
       get: function () {
         var response = grecaptcha.getResponse();
-      //recaptcha failed validation
+        //recaptcha failed validation
         console.log(response);
         return null;
       }

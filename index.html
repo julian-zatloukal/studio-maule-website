@@ -563,14 +563,17 @@
                     <label for="name-input">Nombre</label>
                     <input
                       id="name-input"
+                      maxlength="72"
                       type="text"
                       name="name"
                       class="form-control"
                       placeholder="Ingrese su nombre"
-                      required="required"
                       data-error="Su nombre es requerido"
+                      onblur="ContactForm.verifyField('name-input')"
                     />
-                    <div class="help-block with-errors"></div>
+                    <div class="invalid-feedback d-none">
+                      Formato incorrecto.
+                    </div>
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -580,12 +583,16 @@
                     >
                     <input
                       id="phone-input"
+                      maxlength="22"
                       type="tel"
                       name="telephone"
                       class="form-control"
                       placeholder="Ej. +54 9 11 3741-7423"
                       data-error="Numero invalido"
                     />
+                    <div class="invalid-feedback d-none">
+                      Formato incorrecto.
+                    </div>
                   </div>
                 </div>
               </div>
@@ -598,11 +605,13 @@
                       type="email"
                       name="email"
                       class="form-control"
+                      maxlength="254"
                       placeholder="Ingrese su correo electrónico"
-                      required="required"
                       data-error="Un email válido es requerido"
                     />
-                    <div class="help-block with-errors"></div>
+                    <div class="invalid-feedback d-none">
+                      Formato incorrecto.
+                    </div>
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -612,7 +621,7 @@
                       id="subject-input"
                       name="subject"
                       class="form-control"
-                      required="required"
+                      maxlength="40"
                       data-error="Por favor, especifique el asunto."
                     >
                       <option value=""></option>
@@ -633,7 +642,9 @@
                       >
                       <option value="Otro">Otro</option>
                     </select>
-                    <div class="help-block with-errors"></div>
+                    <div class="invalid-feedback d-none">
+                      Formato incorrecto.
+                    </div>
                   </div>
                 </div>
               </div>
@@ -648,10 +659,11 @@
                       class="form-control"
                       placeholder="¿En que podemos ayudarle?"
                       rows="4"
-                      required="required"
                       data-error="Por favor, dejenos un mensaje."
                     ></textarea>
-                    <div class="help-block with-errors"></div>
+                    <div class="invalid-feedback d-none">
+                      Formato incorrecto.
+                    </div>
                     <p id="character-count" class="float-right pr-0">0</p>
                   </div>
                 </div>
@@ -744,7 +756,7 @@
       function showAlertRecaptcha() {
         $(".g-recaptcha-container div div iframe").css({
           "border-style": "solid",
-          "border-width": "0.125em",
+          "border-width": "0.075em",
           "border-color": getComputedStyle(document.body).getPropertyValue(
             "--danger"
           ),
