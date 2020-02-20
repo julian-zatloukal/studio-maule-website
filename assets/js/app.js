@@ -9,6 +9,57 @@ var app = {
     // jQuery code
 
 
+    var grecaptchaSuccessfulEvent = function () {
+      hideAlertRecaptcha();
+    };
+
+    var grecaptchaExpiredEvent = function () {
+      showAlertRecaptcha();
+    };
+
+    var grecaptchaErrorEvent = function () {
+      showAlertRecaptcha();
+    };
+
+    var successfulGRecaptchaLoading = false;
+    var onloadCallback = function () {
+      successfulGRecaptchaLoading = true;
+      grecaptcha.render($("#g-recaptcha-container")[0], {
+        sitekey: "6LfBRdMUAAAAAFEYhfH9JLBVbQhgO8LU7fIML1ne",
+        callback: grecaptchaSuccessfulEvent,
+        "error-callback": grecaptchaErrorEvent,
+        "expired-callback": grecaptchaExpiredEvent
+      });
+    };
+    window.onloadCallback = onloadCallback;
+
+
+
+    function showAlertRecaptcha() {
+      $(".g-recaptcha-container div div iframe").css({
+        "border-style": "solid",
+        "border-width": "0.075em",
+        "border-color": getComputedStyle(document.body).getPropertyValue(
+          "--danger"
+        ),
+        "border-radius": "0.25em"
+      });
+      $(".g-recaptcha-container:first-child").css({
+        "position": "relative",
+      });
+      $(".g-recaptcha-container:first-child").addClass("alert-validate");
+      ContactForm.showVerifyAlert("#g-recaptcha-container", lang.contactForm.nameInput.completeThisField);
+    }
+
+    function hideAlertRecaptcha() {
+      $(".g-recaptcha-container div div iframe").css({
+        "border-style": "hidden"
+      });
+      $(".g-recaptcha-container:first-child").removeClass("alert-validate");
+      ContactForm.hideVerifyAlert("#g-recaptcha-container");
+    }
+
+
     class ContactForm {
       static sanitizeAndVerify() {
         let allTestPassed = true;
@@ -17,7 +68,7 @@ var app = {
         if (!ContactForm.verifyField("phone-input")) allTestPassed = false;
         if (!ContactForm.verifyField("subject-input")) allTestPassed = false;
         if (!ContactForm.verifyField("email-input")) allTestPassed = false;
-
+        if (!ContactForm.verifyField("description-input")) allTestPassed = false;
 
 
 
@@ -25,7 +76,6 @@ var app = {
         var response = grecaptcha.getResponse();
         //recaptcha failed validation
         if (response.length == 0) {
-          $('.g-recaptcha div div iframe').css('border', '1px solid red');
           showAlertRecaptcha();
           allTestPassed = false;
         } else {
@@ -39,33 +89,49 @@ var app = {
       static hideVerifyAlert(element_selector) {
         if ($(element_selector).hasClass("is-invalid")) {
           $(element_selector).removeClass("is-invalid");
-          $(element_selector).next().toggleClass("d-inline d-none");
+          if (element_selector === "g-recaptcha-container") {
+            $(element_selector).next().toggleClass("d-inline-block d-none");
+          } else {
+            $(element_selector).next().toggleClass("d-inline d-none");
+          }
+
+
         }
       }
 
-      static showVerifyAlert(element_selector) {
+      static showVerifyAlert(element_selector, error_description) {
         if (!$(element_selector).hasClass("is-invalid")) {
           $(element_selector).addClass("is-invalid");
-          $(element_selector).next().toggleClass("d-none d-inline");
+          if (element_selector === "g-recaptcha-container") {
+            $(element_selector).next().toggleClass("d-none d-inline-block");
+          } else {
+            $(element_selector).next().toggleClass("d-none d-inline");
+          }
+          $(element_selector).next().html(error_description);
         }
+
       }
 
       static verifyField(field_id) {
         switch (field_id) {
           case "name-input":
-            var namere = /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,72}$/;
-            if (!namere.test($("#name-input").val())) {
-              ContactForm.showVerifyAlert("#name-input");
-              return false;
+            if ($("#name-input").val().trim() != "") {
+              var namere = /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,72}$/;
+              if (!namere.test($("#name-input").val())) {
+                ContactForm.showVerifyAlert("#name-input", lang.contactForm.nameInput.badFormat);
+                return false;
+              } else {
+                ContactForm.hideVerifyAlert("#name-input");
+              }
             } else {
-              ContactForm.hideVerifyAlert("#name-input");
+              ContactForm.showVerifyAlert("#name-input", lang.contactForm.nameInput.completeThisField);
             }
             break;
           case "phone-input":
-            if ($("#phone-input").val() != "") {
+            if ($("#phone-input").val().trim() != "") {
               var mobilere = /^(?=.{2,22}$)(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[\-\.\ \\\/]?)?((?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(\d+))?$/;
               if (!mobilere.test($("#phone-input").val())) {
-                ContactForm.showVerifyAlert("#phone-input");
+                ContactForm.showVerifyAlert("#phone-input", lang.contactForm.phoneInput.badFormat);
                 return false;
               } else {
                 ContactForm.hideVerifyAlert("#phone-input");
@@ -75,29 +141,37 @@ var app = {
             }
             break;
           case "subject-input":
-            if ($("#subject-input").val() == "") {
-              ContactForm.showVerifyAlert("#subject-input");
+            if ($("#subject-input").val().trim() == "") {
+              ContactForm.showVerifyAlert("#subject-input", lang.contactForm.subjectInput.completeThisField);
               return false;
             } else {
               ContactForm.hideVerifyAlert("#subject-input");
             }
             break;
           case "email-input":
-            var reeamil = /^(?!.{254})([a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)$/;
-            if (!reeamil.test($("#email-input").val())) {
-              ContactForm.showVerifyAlert("#email-input");
-              return false;
+            if ($("#email-input").val().trim() != "") {
+              var reeamil = /^(?!.{254})([a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)$/;
+              if (!reeamil.test($("#email-input").val())) {
+                ContactForm.showVerifyAlert("#email-input", lang.contactForm.emailInput.badFormat);
+                return false;
+              } else {
+                ContactForm.hideVerifyAlert("#email-input");
+              }
             } else {
-              ContactForm.hideVerifyAlert("#email-input");
+              ContactForm.showVerifyAlert("#email-input", lang.contactForm.emailInput.completeThisField);
             }
             break;
-            case "description-input":
-            var descriptionInputRegex = /^.{20,5000}$/;
-            if (!descriptionInputRegex.test($("#description-input").val())) {
-              ContactForm.showVerifyAlert("#description-input");
-              return false;
+          case "description-input":
+            if ($("#description-input").val().trim() != "") {
+              var descriptionInputRegex = /^.{0,5000}$/;
+              if (!descriptionInputRegex.test($("#description-input").val())) {
+                ContactForm.showVerifyAlert("#description-input", lang.contactForm.descriptionInput.badFormat);
+                return false;
+              } else {
+                ContactForm.hideVerifyAlert("#description-input");
+              }
             } else {
-              ContactForm.hideVerifyAlert("#description-input");
+              ContactForm.showVerifyAlert("#description-input", lang.contactForm.descriptionInput.completeThisField);
             }
             break;
         }
@@ -109,10 +183,13 @@ var app = {
     $("#phone-input").blur(() => { ContactForm.verifyField("phone-input"); });
     $("#subject-input").blur(() => { ContactForm.verifyField("subject-input"); });
     $("#email-input").blur(() => { ContactForm.verifyField("email-input"); });
-    $("#description-input").blur(() => { ContactForm.verifyField("description-input"); });
+    $("#description-input").blur((e) => {
+      e.preventDefault();
+      ContactForm.verifyField("description-input");
+    });
     //$("#description-input").change(() => { ContactForm.verifyField("description-input"); });
 
-
+    window.ContactForm = ContactForm;
 
 
 

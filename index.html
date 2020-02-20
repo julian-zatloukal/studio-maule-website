@@ -623,6 +623,7 @@
                       class="form-control"
                       maxlength="40"
                       data-error="Por favor, especifique el asunto."
+                      style="background-position : right calc(0.75em + 0.275rem) center !important;"
                     >
                       <option value=""></option>
                       <option value="Traducción publica de actas"
@@ -673,6 +674,9 @@
                     id="g-recaptcha-container"
                     class="g-recaptcha-container"
                   ></div>
+                  <div class="invalid-feedback d-inline-block mb-4">
+                    Por favor, complete este campo.
+                  </div>
                   <br />
                   <input
                     type="submit"
@@ -746,65 +750,29 @@
       </footer>
     </main>
 
+
+    <!-- string database spanish -->
+    <script src="./assets/js/lang.es.js"></script>
+
     <!-- jQuery, Bootstrap, and holder.js -->
     <script src="./assets/js/vendor/jquery.min.js"></script>
     <script src="./assets/js/vendor/bootstrap.bundle.min.js"></script>
     <script src="./assets/js/vendor/holder.min.js"></script>
-
-    <!-- Recaptcha -->
-    <script type="text/javascript">
-      function showAlertRecaptcha() {
-        $(".g-recaptcha-container div div iframe").css({
-          "border-style": "solid",
-          "border-width": "0.075em",
-          "border-color": getComputedStyle(document.body).getPropertyValue(
-            "--danger"
-          ),
-          "border-radius": "0.25em"
-        });
-        $(".g-recaptcha-container div div").addClass("alert-validate");
-      }
-
-      function hideAlertRecaptcha() {
-        $(".g-recaptcha-container div div iframe").css({
-          "border-style": "hidden"
-        });
-        $(".g-recaptcha-container div div").removeClass("alert-validate");
-      }
-
-      var grecaptchaSuccessfulEvent = function() {
-        hideAlertRecaptcha();
-      };
-
-      var grecaptchaExpiredEvent = function() {
-        showAlertRecaptcha();
-      };
-
-      var grecaptchaErrorEvent = function() {
-        showAlertRecaptcha();
-      };
-
-      var successfulGRecaptchaLoading = false;
-      var onloadCallback = function() {
-        successfulGRecaptchaLoading = true;
-        grecaptcha.render($("#g-recaptcha-container")[0], {
-          sitekey: "6LfBRdMUAAAAAFEYhfH9JLBVbQhgO8LU7fIML1ne",
-          callback: grecaptchaSuccessfulEvent,
-          "error-callback": grecaptchaErrorEvent,
-          "expired-callback": grecaptchaExpiredEvent
-        });
-      };
-    </script>
-    <script
-      src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
-      async
-      defer
-    ></script>
 
     <!-- moment.js -->
     <script src="./assets/js/vendor/moment.min.js"></script>
     <!-- build:js -->
     <script src="./assets/js/app.js"></script>
     <!-- endbuild -->
+
+    <!-- Recaptcha -->
+    <script type="text/javascript">
+      
+    </script>
+    <script
+      src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+      async
+      defer
+    ></script>
   </body>
 </html>
