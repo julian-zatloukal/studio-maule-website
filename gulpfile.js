@@ -63,7 +63,10 @@ gulp.task('vendor:build', function () {
     './assets/js/vendor/popper.min.js',
     './assets/js/vendor/holder.min.js',
     './assets/js/vendor/bootstrap.bundle.min.js',
-  './assets/js/vendor/moment.min.js'
+    './assets/js/vendor/moment.min.js',
+    './assets/js/lang.es.js',
+    './assets/js/lang.en.js',
+    './assets/js/lang.it.js'
   ])
     .pipe(gulp.dest('./dist/assets/js/vendor'));
   var fontStream = gulp.src(['./assets/fonts/font-awesome/**/*.*']).pipe(gulp.dest('./dist/assets/fonts/font-awesome'));
