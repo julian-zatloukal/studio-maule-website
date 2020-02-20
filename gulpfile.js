@@ -143,8 +143,10 @@ gulp.task('js:minify', function () {
 gulp.task('replaceHtmlBlock', function () {
   return gulp.src(['*.html'])
     .pipe(htmlreplace({
-      'js': 'assets/js/app.min.js',
-      'css': 'assets/css/app.min.css'
+      'js-app': './assets/js/app.min.js',
+      'js-lang': './assets/js/lang.es.min.js',
+      'css': './assets/css/app.min.css'
+
     }))
     .pipe(gulp.dest('dist/'));
 });
