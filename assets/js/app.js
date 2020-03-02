@@ -25,8 +25,8 @@ var app = {
     var onloadCallback = function () {
       successfulGRecaptchaLoading = true;
       grecaptcha.render($("#g-recaptcha-container")[0], {
-        sitekey: "6LfBRdMUAAAAAFEYhfH9JLBVbQhgO8LU7fIML1ne",
-        callback: grecaptchaSuccessfulEvent,
+        "sitekey": "6LfBRdMUAAAAAFEYhfH9JLBVbQhgO8LU7fIML1ne",
+        "callback": grecaptchaSuccessfulEvent,
         "error-callback": grecaptchaErrorEvent,
         "expired-callback": grecaptchaExpiredEvent
       });
