@@ -105,7 +105,11 @@ var app = {
       static hideVerifyAlert(element_selector) {
         switch (element_selector) {
           case "#g-recaptcha-container":
-            $(element_selector).next().toggleClass("d-inline-block d-none");
+            if ($(element_selector).hasClass("is-invalid")) {
+              $(element_selector).removeClass("is-invalid");
+              $(element_selector).next().toggleClass("d-inline-block d-none");   
+            }
+            
             break;
           default:
             if ($(element_selector).hasClass("is-invalid")) {
