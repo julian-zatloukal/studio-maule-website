@@ -10,7 +10,7 @@ var app = {
 
 
     var grecaptchaSuccessfulEvent = function () {
-      hideAlertRecaptcha();
+      ContactForm.verifyField("g-recaptcha");
     };
 
     var grecaptchaExpiredEvent = function () {
