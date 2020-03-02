@@ -14,11 +14,11 @@ var app = {
     };
 
     var grecaptchaExpiredEvent = function () {
-      showAlertRecaptcha();
+      ContactForm.verifyField("g-recaptcha");
     };
 
     var grecaptchaErrorEvent = function () {
-      showAlertRecaptcha();
+      ContactForm.verifyField("g-recaptcha");
     };
 
     var successfulGRecaptchaLoading = false;
@@ -35,81 +35,104 @@ var app = {
 
 
 
-    function showAlertRecaptcha() {
-      $(".g-recaptcha-container div div iframe").css({
-        "border-style": "solid",
-        "border-width": "0.075em",
-        "border-color": getComputedStyle(document.body).getPropertyValue(
-          "--danger"
-        ),
-        "border-radius": "0.25em"
-      });
-      $(".g-recaptcha-container:first-child").css({
-        "position": "relative",
-      });
-      $(".g-recaptcha-container:first-child").addClass("alert-validate");
-      ContactForm.showVerifyAlert("#g-recaptcha-container", lang.contactForm.nameInput.completeThisField);
-    }
 
-    function hideAlertRecaptcha() {
-      $(".g-recaptcha-container div div iframe").css({
-        "border-style": "hidden"
-      });
-      $(".g-recaptcha-container:first-child").removeClass("alert-validate");
-      ContactForm.hideVerifyAlert("#g-recaptcha-container");
-    }
+
 
 
     class ContactForm {
+
+      static async submitToAPI(e) {
+        e.preventDefault();
+  
+        if (ContactForm.sanitizeAndVerify()) {
+          let URL = "https://s19rftjwb7.execute-api.us-east-1.amazonaws.com/test/contact-us";
+  
+          let name = $("#name-input").val();
+          let phone = $("#phone-input").val();
+          let email = $("#email-input").val();
+          let subject = $("#subject-input").val();
+          let desc = $("#description-input").val();
+          let ipv4 = await getIPAddrPromise();
+          let timestamp = moment().format();
+          let grecaptcha_response = grecaptcha.getResponse();
+  
+          var data_form = {
+            ipv4: ipv4,
+            timestamp: timestamp,
+            grecaptcha_response: grecaptcha_response,
+            name: name,
+            phone: phone,
+            email: email,
+            subject: subject,
+            desc: desc,
+          };
+  
+          $.ajax({
+            type: "POST",
+            url: "https://s19rftjwb7.execute-api.us-east-1.amazonaws.com/test/contact-us",
+            dataType: "json",
+            crossDomain: "true",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(data_form),
+  
+            success: function () {
+              // clear form and show a success message
+              document.getElementById("contact-form").reset();
+              // location.reload();
+              $("#submit_result_area").html("<section style='border-style:solid !important; border-width: 2px !important;' class='jumbotron border border-success bg-transparent text-success text-center pt-1 pb-1 my-3'>  <div class='container'>	<h5 style='margin-bottom: 0.25rem !important;' class='jumbotron-heading'>¡Mensaje enviado exitosamente, gracias por su tiempo!</h3>  </div></section>");
+            },
+            error: function () {
+              // show an error message
+              $("#submit_result_area").html("<section style='border-style:solid !important; border-width: 2px !important;' class='jumbotron border border-danger bg-transparent text-danger text-center pt-1 pb-1 my-3'>  <div class='container'>	<h5 style='margin-bottom: 0.25rem !important;' class='jumbotron-heading'>Se ha producido un error al enviar el mensaje.</h3>  </div></section>");
+            }
+          });
+        }
+      }
+
+
       static sanitizeAndVerify() {
         let allTestPassed = true;
-
         if (!ContactForm.verifyField("name-input")) allTestPassed = false;
         if (!ContactForm.verifyField("phone-input")) allTestPassed = false;
         if (!ContactForm.verifyField("subject-input")) allTestPassed = false;
         if (!ContactForm.verifyField("email-input")) allTestPassed = false;
         if (!ContactForm.verifyField("description-input")) allTestPassed = false;
-
-
-
-
-        var response = grecaptcha.getResponse();
-        //recaptcha failed validation
-        if (response.length == 0) {
-          showAlertRecaptcha();
-          allTestPassed = false;
-        } else {
-          hideAlertRecaptcha();
-        }
-
-
+        if (!ContactForm.verifyField("g-recaptcha")) allTestPassed = false;
+        console.log("All elements have been validated!");
         return allTestPassed;
       }
 
       static hideVerifyAlert(element_selector) {
-        if ($(element_selector).hasClass("is-invalid")&&element_selector==="g-recaptcha-container") {
-          $(element_selector).removeClass("is-invalid");
-          if (element_selector === "g-recaptcha-container") {
+        switch (element_selector) {
+          case "#g-recaptcha-container":
             $(element_selector).next().toggleClass("d-inline-block d-none");
-          } else {
-            $(element_selector).next().toggleClass("d-inline d-none");
-          }
-
-
+            break;
+          default:
+            if ($(element_selector).hasClass("is-invalid")) {
+              $(element_selector).removeClass("is-invalid");
+              $(element_selector).next().toggleClass("d-inline d-none");
+            }
+            break;
         }
       }
 
       static showVerifyAlert(element_selector, error_description) {
-        if (!$(element_selector).hasClass("is-invalid")) {
-          $(element_selector).addClass("is-invalid");
-          if (element_selector === "g-recaptcha-container") {
-            $(element_selector).next().toggleClass("d-none d-inline-block");
-          } else {
-            $(element_selector).next().toggleClass("d-none d-inline");
-          }
-          $(element_selector).next().html(error_description);
+        switch (element_selector) {
+          case "#g-recaptcha-container":
+            if (!$(element_selector).hasClass("is-invalid")) {
+              $(element_selector).addClass("is-invalid");
+              $(element_selector).next().toggleClass("d-none d-inline-block");
+              $(element_selector).next().html(error_description);
+            }
+            break;
+          default:
+            if (!$(element_selector).hasClass("is-invalid")) {
+              $(element_selector).addClass("is-invalid");
+              $(element_selector).next().toggleClass("d-none d-inline");
+              $(element_selector).next().html(error_description);
+            }
+            break;
         }
-
       }
 
       static verifyField(field_id) {
@@ -122,9 +145,11 @@ var app = {
                 return false;
               } else {
                 ContactForm.hideVerifyAlert("#name-input");
+                return true;
               }
             } else {
               ContactForm.showVerifyAlert("#name-input", lang.contactForm.nameInput.completeThisField);
+              return false;
             }
             break;
           case "phone-input":
@@ -135,9 +160,11 @@ var app = {
                 return false;
               } else {
                 ContactForm.hideVerifyAlert("#phone-input");
+                return true;
               }
             } else {
               ContactForm.hideVerifyAlert("#phone-input");
+              return true;
             }
             break;
           case "subject-input":
@@ -146,6 +173,7 @@ var app = {
               return false;
             } else {
               ContactForm.hideVerifyAlert("#subject-input");
+              return true;
             }
             break;
           case "email-input":
@@ -156,9 +184,11 @@ var app = {
                 return false;
               } else {
                 ContactForm.hideVerifyAlert("#email-input");
+                return true;
               }
             } else {
               ContactForm.showVerifyAlert("#email-input", lang.contactForm.emailInput.completeThisField);
+              return false;
             }
             break;
           case "description-input":
@@ -169,9 +199,36 @@ var app = {
                 return false;
               } else {
                 ContactForm.hideVerifyAlert("#description-input");
+                return true;
               }
             } else {
               ContactForm.showVerifyAlert("#description-input", lang.contactForm.descriptionInput.completeThisField);
+              return false;
+            }
+            break;
+          case "g-recaptcha":
+            if (grecaptcha.getResponse().length == 0) {
+              ContactForm.showVerifyAlert("#g-recaptcha-container", lang.contactForm.nameInput.completeThisField);
+              $(".g-recaptcha-container div div iframe").css({
+                "border-style": "solid",
+                "border-width": "0.075em",
+                "border-color": getComputedStyle(document.body).getPropertyValue(
+                  "--danger"
+                ),
+                "border-radius": "0.25em"
+              });
+              $(".g-recaptcha-container:first-child").css({
+                "position": "relative",
+              });
+              $(".g-recaptcha-container:first-child").addClass("alert-validate");
+              return false;
+            } else {
+              ContactForm.hideVerifyAlert("#g-recaptcha-container");
+              $(".g-recaptcha-container div div iframe").css({
+                "border-style": "hidden"
+              });
+              $(".g-recaptcha-container:first-child").removeClass("alert-validate");
+              return true;
             }
             break;
         }
@@ -179,103 +236,16 @@ var app = {
     }
 
 
-    $("#name-input").blur(() => { ContactForm.verifyField("name-input"); });
-    $("#phone-input").blur(() => { ContactForm.verifyField("phone-input"); });
-    $("#subject-input").blur(() => { ContactForm.verifyField("subject-input"); });
-    $("#email-input").blur(() => { ContactForm.verifyField("email-input"); });
-    $("#description-input").blur((e) => {
-      e.preventDefault();
-      ContactForm.verifyField("description-input");
-    });
+
     //$("#description-input").change(() => { ContactForm.verifyField("description-input"); });
 
     window.ContactForm = ContactForm;
-
-
-
-
-
-
-
-    async function submitToAPI(e) {
-      e.preventDefault();
-
-      if (ContactForm.sanitizeAndVerify()) {
-        let URL = "https://s19rftjwb7.execute-api.us-east-1.amazonaws.com/test/contact-us";
-
-        let name = $("#name-input").val();
-        let phone = $("#phone-input").val();
-        let email = $("#email-input").val();
-        let subject = $("#subject-input").val();
-        let desc = $("#description-input").val();
-        let ipv4 = await getIPv4Promise();
-        let timestamp = moment().format();
-        let grecaptcha_response = grecaptcha.getResponse();
-
-        var data_form = {
-          ipv4: ipv4,
-          timestamp: timestamp,
-          grecaptcha_response: grecaptcha_response,
-          name: name,
-          phone: phone,
-          email: email,
-          subject: subject,
-          desc: desc,
-        };
-
-        $.ajax({
-          type: "POST",
-          url: "https://s19rftjwb7.execute-api.us-east-1.amazonaws.com/test/contact-us",
-          dataType: "json",
-          crossDomain: "true",
-          contentType: "application/json; charset=utf-8",
-          data: JSON.stringify(data_form),
-
-          success: function () {
-            // clear form and show a success message
-            document.getElementById("contact-form").reset();
-            // location.reload();
-            $("#submit_result_area").html("<section style='border-style:solid !important; border-width: 2px !important;' class='jumbotron border border-success bg-transparent text-success text-center pt-1 pb-1 my-3'>  <div class='container'>	<h5 style='margin-bottom: 0.25rem !important;' class='jumbotron-heading'>¡Mensaje enviado exitosamente, gracias por su tiempo!</h3>  </div></section>");
-          },
-          error: function () {
-            // show an error message
-            $("#submit_result_area").html("<section style='border-style:solid !important; border-width: 2px !important;' class='jumbotron border border-danger bg-transparent text-danger text-center pt-1 pb-1 my-3'>  <div class='container'>	<h5 style='margin-bottom: 0.25rem !important;' class='jumbotron-heading'>Se ha producido un error al enviar el mensaje.</h3>  </div></section>");
-          }
-        });
-      }
-    }
-
-
 
     $("#description-input").on('input', function () {
       $('#character-count').text($("#description-input").val().length);
     });
 
-    async function getIPv4(callback) {
-      let promise = new Promise(function (resolve, reject) {
-        $.ajax({
-          type: 'GET',
-          timeout: 1200,
-          url: 'https://www.cloudflare.com/cdn-cgi/trace',
-          success: function (data) {
-            const regex = /(?<=ip=)(.*)(?=[\r\n])/gm;
-            var ipv4_string;
-            if ((ipv4_string = data.match(regex)) !== null) {
-              resolve(ipv4_string[0]);
-            } else {
-              reject("Could not fetch IPv4");
-            }
-          }
-        });
-      });
-
-      promise.then(
-        result => callback(result)
-      );
-    }
-
-
-    function getIPv4Promise() {
+    function getIPAddrPromise() {
       return new Promise(function (resolve, reject) {
         $.ajax({
           type: 'GET',
@@ -296,22 +266,16 @@ var app = {
 
 
     //#region development
-    Object.defineProperty(window, 'show', {
+    Object.defineProperty(window, 'veirfy', {
       get: function () {
-        showAlertRecaptcha();
+        ContactForm.verifyField("g-recaptcha");
         return null;
       }
     });
-    Object.defineProperty(window, 'hide', {
+    Object.defineProperty(window, 'ip', {
       get: function () {
-        hideAlertRecaptcha();
-        return null;
-      }
-    });
-    Object.defineProperty(window, 'ipv4', {
-      get: function () {
-        getIPv4Promise().then(
-          result => console.log("IPv4: " + result),
+        getIPAddrPromise().then(
+          result => console.log("IP: " + result),
           error => alert(error)
         );
         return;
@@ -415,7 +379,7 @@ var app = {
 
     $("#contact-form").submit(function (e) {
       e.preventDefault();
-      submitToAPI(e);
+      ContactForm.submitToAPI(e);
     });
 
     $.fn.strech_text = function () {

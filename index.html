@@ -589,6 +589,7 @@
                       class="form-control"
                       placeholder="Ej. +54 9 11 3741-7423"
                       data-error="Numero invalido"
+                      onblur="ContactForm.verifyField('phone-input')"
                     />
                     <div class="invalid-feedback d-none">
                       Formato incorrecto.
@@ -608,6 +609,7 @@
                       maxlength="254"
                       placeholder="Ingrese su correo electrónico"
                       data-error="Un email válido es requerido"
+                      onblur="ContactForm.verifyField('email-input')"
                     />
                     <div class="invalid-feedback d-none">
                       Formato incorrecto.
@@ -624,6 +626,7 @@
                       maxlength="40"
                       data-error="Por favor, especifique el asunto."
                       style="background-position : right calc(0.75em + 0.275rem) center !important;"
+                      onblur="ContactForm.verifyField('subject-input')"
                     >
                       <option value=""></option>
                       <option value="Traducción publica de actas"
@@ -661,6 +664,7 @@
                       placeholder="¿En que podemos ayudarle?"
                       rows="4"
                       data-error="Por favor, dejenos un mensaje."
+                      onblur="ContactForm.verifyField('description-input')"
                     ></textarea>
                     <div class="invalid-feedback d-none">
                       Formato incorrecto.
