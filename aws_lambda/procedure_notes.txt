@@ -1,0 +1,9 @@
+
+#   To upload the code just type:
+#       aws-lambda-upload
+
+#   https://stackoverflow.com/a/34439125/6398104
+#   zip -r mailfwd.zip *
+#   Alias setup
+#       Function aws-lambda-upload-function {aws lambda update-function-code --function-name mailfwd --zip-file fileb://mailfwd.zip}
+#       Set-Alias -Name aws-lambda-upload -Value aws-lambda-upload-function

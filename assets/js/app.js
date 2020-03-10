@@ -43,10 +43,10 @@ var app = {
 
       static async submitToAPI(e) {
         e.preventDefault();
-  
+
         if (ContactForm.sanitizeAndVerify()) {
           let URL = "https://s19rftjwb7.execute-api.us-east-1.amazonaws.com/test/contact-us";
-  
+
           let name = $("#name-input").val();
           let phone = $("#phone-input").val();
           let email = $("#email-input").val();
@@ -55,7 +55,7 @@ var app = {
           let ip = await getIPAddrPromise();
           let timestamp = moment().format();
           let grecaptcha_response = grecaptcha.getResponse();
-  
+
           var data_form = {
             ip: ip,
             timestamp: timestamp,
@@ -66,7 +66,7 @@ var app = {
             subject: subject,
             desc: desc,
           };
-  
+
           $.ajax({
             type: "POST",
             url: "https://s19rftjwb7.execute-api.us-east-1.amazonaws.com/test/contact-us",
@@ -74,7 +74,15 @@ var app = {
             crossDomain: "true",
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify(data_form),
-  
+
+            statusCode: {
+              400: function () {
+                console.log(response);
+                // show an error message
+                $("#submit_result_area").html("<section style='border-style:solid !important; border-width: 2px !important;' class='jumbotron border border-danger bg-transparent text-danger text-center pt-1 pb-1 my-4'>  <div class='container'>	<h5 style='margin-bottom: 0.25rem !important;' class='jumbotron-heading'>Se ha producido un error al enviar el mensaje.</h3>  </div></section>");
+              }
+            },
+
             success: function (response) {
               console.log(response);
               // clear form and show a success message
@@ -109,9 +117,9 @@ var app = {
           case "#g-recaptcha-container":
             if ($(element_selector).hasClass("is-invalid")) {
               $(element_selector).removeClass("is-invalid");
-              $(element_selector).next().toggleClass("d-inline-block d-none");   
+              $(element_selector).next().toggleClass("d-inline-block d-none");
             }
-            
+
             break;
           default:
             if ($(element_selector).hasClass("is-invalid")) {
