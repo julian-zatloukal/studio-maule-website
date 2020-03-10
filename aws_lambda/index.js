@@ -24,24 +24,24 @@ var rateLimitPerIPExceededBody = "{\"result\": \"Rate limit exceeded\"}";
 
 
 exports.handler = async function (event, context) {
-    let verifyResult = axios.post(
-        `https://www.google.com/recaptcha/api/siteverify?secret=${reCaptchaSecret}&response=${event.grecaptcha_response}`,
-        { timeout: 200 },
-        {
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded; charset=utf-8"
-            },
-        },
-    );
 
-    if (verifyResult.status === 200) { 
+
+    let verifyResult = await axios.post(reCapUrl, {
+        secret: reCaptchaSecret,
+        response: event.grecaptcha_response
+    });
+
+
+    if (verifyResult.status === 200) {
         sendEmail(event, function (err, data) {
             context.done(err, null);
         });
-    } else{
+    } else {
         response.body = badGoogleRecaptchaBody;
         response.statusCode = 400;
     }
+
+    return response;
 
 }
 
