@@ -76,24 +76,18 @@ var app = {
             data: JSON.stringify(data_form),
 
             statusCode: {
-              400: function () {
+              400: function (response) {
                 console.log(response);
                 // show an error message
                 $("#submit_result_area").html("<section style='border-style:solid !important; border-width: 2px !important;' class='jumbotron border border-danger bg-transparent text-danger text-center pt-1 pb-1 my-4'>  <div class='container'>	<h5 style='margin-bottom: 0.25rem !important;' class='jumbotron-heading'>Se ha producido un error al enviar el mensaje.</h3>  </div></section>");
+              },
+              200: function (response) {
+                console.log(response);
+                // clear form and show a success message
+                document.getElementById("contact-form").reset();
+                // location.reload();
+                $("#submit_result_area").html("<section style='border-style:solid !important; border-width: 2px !important;' class='jumbotron border border-success bg-transparent text-success text-center pt-1 pb-1 my-4'>  <div class='container'>	<h5 style='margin-bottom: 0.25rem !important;' class='jumbotron-heading'>¡Mensaje enviado exitosamente, gracias por su tiempo!</h3>  </div></section>");
               }
-            },
-
-            success: function (response) {
-              console.log(response);
-              // clear form and show a success message
-              document.getElementById("contact-form").reset();
-              // location.reload();
-              $("#submit_result_area").html("<section style='border-style:solid !important; border-width: 2px !important;' class='jumbotron border border-success bg-transparent text-success text-center pt-1 pb-1 my-4'>  <div class='container'>	<h5 style='margin-bottom: 0.25rem !important;' class='jumbotron-heading'>¡Mensaje enviado exitosamente, gracias por su tiempo!</h3>  </div></section>");
-            },
-            error: function (response) {
-              console.log(response);
-              // show an error message
-              $("#submit_result_area").html("<section style='border-style:solid !important; border-width: 2px !important;' class='jumbotron border border-danger bg-transparent text-danger text-center pt-1 pb-1 my-4'>  <div class='container'>	<h5 style='margin-bottom: 0.25rem !important;' class='jumbotron-heading'>Se ha producido un error al enviar el mensaje.</h3>  </div></section>");
             }
           });
         }

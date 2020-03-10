@@ -5,5 +5,7 @@
 #   https://stackoverflow.com/a/34439125/6398104
 #   zip -r mailfwd.zip *
 #   Alias setup
-#       Function aws-lambda-upload-function {aws lambda update-function-code --function-name mailfwd --zip-file fileb://mailfwd.zip}
+#       Function aws-lambda-upload-function {zip -r mailfwd.zip *; aws lambda update-function-code --function-name mailfwd --region us-east-1 --publish --zip-file fileb://mailfwd.zip; Remove-Item .\mailfwd.zip}
 #       Set-Alias -Name aws-lambda-upload -Value aws-lambda-upload-function
+#
+#   Add permanently
