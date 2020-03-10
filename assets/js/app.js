@@ -52,12 +52,12 @@ var app = {
           let email = $("#email-input").val();
           let subject = $("#subject-input").val();
           let desc = $("#description-input").val();
-          let ipv4 = await getIPAddrPromise();
+          let ip = await getIPAddrPromise();
           let timestamp = moment().format();
           let grecaptcha_response = grecaptcha.getResponse();
   
           var data_form = {
-            ipv4: ipv4,
+            ip: ip,
             timestamp: timestamp,
             grecaptcha_response: grecaptcha_response,
             name: name,
@@ -257,11 +257,11 @@ var app = {
           url: 'https://www.cloudflare.com/cdn-cgi/trace',
           success: function (data) {
             const regex = /(?<=ip=)(.*)(?=[\r\n])/gm;
-            var ipv4_string;
-            if ((ipv4_string = data.match(regex)) !== null) {
-              resolve(ipv4_string[0]);
+            var ip_string;
+            if ((ip_string = data.match(regex)) !== null) {
+              resolve(ip_string[0]);
             } else {
-              reject("Could not fetch IPv4");
+              reject("Could not fetch ip");
             }
           }
         });
