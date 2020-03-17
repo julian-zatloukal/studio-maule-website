@@ -10759,7 +10759,13 @@ body {
   padding-bottom: 3rem;
   color: #5a5a5a;
   overflow: auto;
-  height: 100%;
+  height: auto;
+  overflow: auto;
+  position: relative;
+}
+
+html {
+  overflow: auto;
 }
 
 .logo-studio-maule {
