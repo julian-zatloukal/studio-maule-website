@@ -438,11 +438,11 @@
         <div id="quien-somos-container" class="row featurette">
           <div class="col-md-7 order-md-2">
             <h2 class="featurette-heading">¿Quiénes somos?</h2>
-            <p class="lead">
-              Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id
-              ligula porta felis euismod semper. Praesent commodo cursus magna,
-              vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus
-              commodo.
+            <p class="lead stretch indent-enable justify">
+              Somos un grupo de traductores y abogados encargados de brindar
+              servicios relacionados a la traducción publica y al Consulado
+              Italiano. Encabezado por la Traductora pública Gabriella Maule con
+              más de 25 años de experiencia y cientos de clientes satisfechos.
             </p>
           </div>
           <div class="col-md-5 order-md-1">
@@ -540,11 +540,6 @@
             </div>
           </div>
         </div>
-        <ol class="carousel-indicators">
-          <li data-target="#myCarousel" data-slide-to="0" class=""></li>
-          <li data-target="#myCarousel" data-slide-to="1" class="active"></li>
-          <li data-target="#myCarousel" data-slide-to="2" class=""></li>
-        </ol>
 
         <hr class="featurette-divider" />
 
@@ -587,6 +582,7 @@
                       class="form-control"
                       placeholder="Ej. +54 9 11 3741-7423"
                       data-error="Numero invalido"
+                      onblur="ContactForm.verifyField('phone-input')"
                     />
                     <div class="invalid-feedback d-none">
                       Formato incorrecto.
@@ -606,6 +602,7 @@
                       maxlength="254"
                       placeholder="Ingrese su correo electrónico"
                       data-error="Un email válido es requerido"
+                      onblur="ContactForm.verifyField('email-input')"
                     />
                     <div class="invalid-feedback d-none">
                       Formato incorrecto.
@@ -622,6 +619,7 @@
                       maxlength="40"
                       data-error="Por favor, especifique el asunto."
                       style="background-position : right calc(0.75em + 0.275rem) center !important;"
+                      onblur="ContactForm.verifyField('subject-input')"
                     >
                       <option value=""></option>
                       <option value="Traducción publica de actas"
@@ -659,6 +657,7 @@
                       placeholder="¿En que podemos ayudarle?"
                       rows="4"
                       data-error="Por favor, dejenos un mensaje."
+                      onblur="ContactForm.verifyField('description-input')"
                     ></textarea>
                     <div class="invalid-feedback d-none">
                       Formato incorrecto.
@@ -672,7 +671,7 @@
                     id="g-recaptcha-container"
                     class="g-recaptcha-container"
                   ></div>
-                  <div class="invalid-feedback d-inline-block mb-4">
+                  <div class="invalid-feedback d-none mb-4">
                     Por favor, complete este campo.
                   </div>
                   <br />
@@ -695,7 +694,7 @@
       <!-- FOOTER -->
       <footer class="container">
         <p class="float-right">
-          <a id="back-to-top" href="#">Ir arri&shy;ba</a>
+          <a style="position: relative; z-index: 1;" id="back-to-top" href="#">Ir arri&shy;ba</a>
         </p>
         <p>
           © 2020 Stu&shy;dio Maule ·
@@ -748,9 +747,7 @@
       </footer>
     </main>
 
-
     <script src="./assets/js/lang.es.min.js"></script>
-    
 
     <!-- jQuery, Bootstrap, and holder.js -->
     <script src="./assets/js/vendor/jquery.min.js"></script>
@@ -759,13 +756,12 @@
 
     <!-- moment.js -->
     <script src="./assets/js/vendor/moment.min.js"></script>
-    
+
     <script src="./assets/js/app.min.js"></script>
 
     <!-- Recaptcha -->
-    <script type="text/javascript">
-      
-    </script>
+    <script src="./assets/js/recaptcha-functions.js"></script>
+    <script type="text/javascript"></script>
     <script
       src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
       async

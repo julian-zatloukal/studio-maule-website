@@ -6,39 +6,6 @@ var app = {
     app.mainFunction();
   },
   mainFunction: function () {
-    // jQuery code
-
-
-    var grecaptchaSuccessfulEvent = function () {
-      ContactForm.verifyField("g-recaptcha");
-    };
-
-    var grecaptchaExpiredEvent = function () {
-      ContactForm.verifyField("g-recaptcha");
-    };
-
-    var grecaptchaErrorEvent = function () {
-      ContactForm.verifyField("g-recaptcha");
-    };
-
-    var successfulGRecaptchaLoading = false;
-    var onloadCallback = function () {
-      successfulGRecaptchaLoading = true;
-      grecaptcha.render($("#g-recaptcha-container")[0], {
-        "sitekey": "6LfBRdMUAAAAAFEYhfH9JLBVbQhgO8LU7fIML1ne",
-        "callback": grecaptchaSuccessfulEvent,
-        "error-callback": grecaptchaErrorEvent,
-        "expired-callback": grecaptchaExpiredEvent
-      });
-    };
-    window.onloadCallback = onloadCallback;
-
-
-
-
-
-
-
     class ContactForm {
 
       static async submitToAPI(e) {
@@ -52,7 +19,7 @@ var app = {
           let email = $("#email-input").val();
           let subject = $("#subject-input").val();
           let desc = $("#description-input").val();
-          let ip = await getIPAddrPromise();
+          let ip = await ContactForm.getIPAddrPromise();
           let timestamp = moment().format();
           let grecaptcha_response = grecaptcha.getResponse();
 
@@ -69,7 +36,7 @@ var app = {
 
           $.ajax({
             type: "POST",
-            url: "https://s19rftjwb7.execute-api.us-east-1.amazonaws.com/test/contact-us",
+            url: URL,
             dataType: "json",
             crossDomain: "true",
             contentType: "application/json; charset=utf-8",
@@ -143,6 +110,25 @@ var app = {
         }
       }
 
+      static getIPAddrPromise() {
+        return new Promise(function (resolve, reject) {
+          $.ajax({
+            type: 'GET',
+            timeout: 1200,
+            url: 'https://www.cloudflare.com/cdn-cgi/trace',
+            success: function (data) {
+              const regexp = RegExp(`[\n\r].*ip=\s*([^\n\r]*)`, 'g');
+              var ip_string = regexp.exec(data)[1];
+              if (ip_string !== null) {
+                resolve(ip_string);
+              } else {
+                reject("Could not fetch ip");
+              }
+            }
+          });
+        });
+      }
+
       static verifyField(field_id) {
         switch (field_id) {
           case "name-input":
@@ -159,10 +145,9 @@ var app = {
               ContactForm.showVerifyAlert("#name-input", lang.contactForm.nameInput.completeThisField);
               return false;
             }
-            break;
           case "phone-input":
             if ($("#phone-input").val().trim() != "") {
-              var mobilere = /^(?=.{2,22}$)(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[\-\.\ \\\/]?)?((?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(\d+))?$/;
+              var mobilere = /^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[\-\.\ \\\/]?)?((?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(\d+))?$/;
               if (!mobilere.test($("#phone-input").val())) {
                 ContactForm.showVerifyAlert("#phone-input", lang.contactForm.phoneInput.badFormat);
                 return false;
@@ -174,7 +159,6 @@ var app = {
               ContactForm.hideVerifyAlert("#phone-input");
               return true;
             }
-            break;
           case "subject-input":
             if ($("#subject-input").val().trim() == "") {
               ContactForm.showVerifyAlert("#subject-input", lang.contactForm.subjectInput.completeThisField);
@@ -183,10 +167,9 @@ var app = {
               ContactForm.hideVerifyAlert("#subject-input");
               return true;
             }
-            break;
           case "email-input":
             if ($("#email-input").val().trim() != "") {
-              var reeamil = /^(?!.{254})([a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)$/;
+              var reeamil = /^([a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)$/;
               if (!reeamil.test($("#email-input").val())) {
                 ContactForm.showVerifyAlert("#email-input", lang.contactForm.emailInput.badFormat);
                 return false;
@@ -198,7 +181,6 @@ var app = {
               ContactForm.showVerifyAlert("#email-input", lang.contactForm.emailInput.completeThisField);
               return false;
             }
-            break;
           case "description-input":
             if ($("#description-input").val().trim() != "") {
               var descriptionInputRegex = /^.{0,5000}$/;
@@ -213,7 +195,6 @@ var app = {
               ContactForm.showVerifyAlert("#description-input", lang.contactForm.descriptionInput.completeThisField);
               return false;
             }
-            break;
           case "g-recaptcha":
             if (grecaptcha.getResponse().length == 0) {
               ContactForm.showVerifyAlert("#g-recaptcha-container", lang.contactForm.nameInput.completeThisField);
@@ -238,40 +219,90 @@ var app = {
               $(".g-recaptcha-container:first-child").removeClass("alert-validate");
               return true;
             }
-            break;
         }
       }
     }
 
-
-
-    //$("#description-input").change(() => { ContactForm.verifyField("description-input"); });
-
-    window.ContactForm = ContactForm;
-
-    $("#description-input").on('input', function () {
-      $('#character-count').text($("#description-input").val().length);
-    });
-
-    function getIPAddrPromise() {
-      return new Promise(function (resolve, reject) {
-        $.ajax({
-          type: 'GET',
-          timeout: 1200,
-          url: 'https://www.cloudflare.com/cdn-cgi/trace',
-          success: function (data) {
-            const regex = /(?<=ip=)(.*)(?=[\r\n])/gm;
-            var ip_string;
-            if ((ip_string = data.match(regex)) !== null) {
-              resolve(ip_string[0]);
-            } else {
-              reject("Could not fetch ip");
-            }
+    // eslint-disable-next-line no-redeclare
+    function scrollHandler(section, parameter) {
+      const scrollDelay = 2000;
+      switch (section) {
+        case 'head':
+          if (window.matchMedia("only screen and (max-width: 768px)").matches && $('.navbar-collapse').hasClass("show")) {
+            $('.navbar-toggler').trigger('click');
           }
-        });
-      });
+          $('body, html').animate({ scrollTop: 0 }, scrollDelay);
+          break;
+        case 'services':
+          if (window.matchMedia("only screen and (max-width: 768px)").matches) {
+            // Mobile
+            if ($('.navbar-collapse').hasClass("show")) { $('.navbar-toggler').trigger('click'); }
+            $("html, body").stop().animate({
+              scrollTop: ($("#servicios-container").offset().top) - ($(window).height() * 0.15)
+            }, scrollDelay);
+          } else {
+            // Desktop
+            $("html, body").stop().animate({
+              scrollTop: ($("#servicios-container").offset().top) - $("#main-navbar").outerHeight(true) - $("#servicios-container").outerHeight(true) * 0.04
+            }, scrollDelay);
+          }
+          break;
+        case 'about-us':
+          if (window.matchMedia("only screen and (max-width: 768px)").matches) {
+            // Mobile
+            if ($('.navbar-collapse').hasClass("show")) { $('.navbar-toggler').trigger('click'); }
+            $("html, body").stop().animate({
+              scrollTop: ($("#quienes-somos-container").offset().top) - ($(window).height() * 0.16)
+            }, scrollDelay);
+          } else {
+            // Desktop
+            $("html, body").stop().animate({
+              scrollTop: ($("#quienes-somos-container").offset().top) - $("#main-navbar").outerHeight(true) - $("#quienes-somos-container").outerHeight(true) * 0.32
+            }, scrollDelay);
+          }
+          break;
+        case 'our-customers':
+          if (window.matchMedia("only screen and (max-width: 768px)").matches) {
+            // Mobile
+            if ($('.navbar-collapse').hasClass("show")) { $('.navbar-toggler').trigger('click'); }
+            $("html, body").stop().animate({
+              scrollTop: ($("#nuestros-clientes-container").offset().top) - ($(window).height() * 0.16)
+            }, scrollDelay);
+          } else {
+            // Desktop
+            $("html, body").stop().animate({
+              scrollTop: ($("#nuestros-clientes-container").offset().top) - $("#main-navbar").outerHeight(true) - $("#nuestros-clientes-container").outerHeight(true) * 0.23
+            }, scrollDelay);
+          }
+          break;
+        case 'contact-form':
+          if (window.matchMedia("only screen and (max-width: 768px)").matches) {
+            // Mobile
+            if ($('.navbar-collapse').hasClass("show")) { $('.navbar-toggler').trigger('click'); }
+            $("html, body").stop().animate({
+              scrollTop: ($("#contact-form-container").offset().top) - ($(window).height() * 0.15)
+            }, scrollDelay).promise().then(() => {
+              if (arguments.length == 2) {
+                $('#subject-input option')[parameter].selected = true;
+                $('#subject-input').trigger('change');
+              }
+            });
+          } else {
+            // Desktop
+            $("html, body").stop().animate({
+              scrollTop: ($("#contact-form-container").offset().top) - $("#main-navbar").outerHeight(true) - $("#contact-form-container").outerHeight(true) * 0.23
+            }, scrollDelay).promise().then(() => {
+              if (arguments.length == 2) {
+                $('#subject-input option')[parameter].selected = true;
+                $('#subject-input').trigger('change');
+              }
+            });
+          }
+          break;
+      }
     }
 
+    window.ContactForm = ContactForm;
 
     //#region development
     Object.defineProperty(window, 'veirfy', {
@@ -282,17 +313,17 @@ var app = {
     });
     Object.defineProperty(window, 'ip', {
       get: function () {
-        getIPAddrPromise().then(
+        ContactForm.getIPAddrPromise().then(
           result => console.log("IP: " + result),
           error => alert(error)
         );
-        return;
+        return null;
       }
     });
     Object.defineProperty(window, 'time', {
       get: function () {
         console.log(moment().format());
-        return;
+        return null;
       }
     });
     Object.defineProperty(window, 'gresponse', {
@@ -303,102 +334,91 @@ var app = {
         return null;
       }
     });
+    Object.defineProperty(window, 'scroll', {
+      get: function () {
+        scrollHandler('contact-form');
+        return null;
+      }
+    });
     //#endregion
 
+    //#region listeners-setup
+    $("#description-input").on('input', function () {
+      $('#character-count').text($("#description-input").val().length);
+    });
 
-
-
-
+    $("#description-input").on('input', function () {
+      $('#character-count').text($("#description-input").val().length);
+    });
 
     $("#1.carousel-button").click(function (event) {
       event.preventDefault();
-      scrollToContactForm("");
-
+      scrollHandler('contact-form');
     });
 
     $("#2.carousel-button").click(function (event) {
       event.preventDefault();
-      $('html, body').animate({
-        scrollTop: $("#nuestros-clientes-divider").offset().top - ($("#nuestros-clientes-divider").outerHeight(true) / 2) - $("#main-navbar").outerHeight()
-      }, 2000);
+      scrollHandler('our-customers');
     });
 
     $("#3.carousel-button").click(function (event) {
       event.preventDefault();
-      scrollToContactForm("");
+      scrollHandler('contact-form');
     });
-
-
-
-    function scrollToContactForm(subject) {
-      //var subject = $("select#subject-input").map(function() {return $(this).val();}).get();
-      $('html, body').animate({
-        scrollTop: $("#contact-form-whole").offset().top - $("#main-navbar").outerHeight()
-      }, 2000, function () {
-        $("select#subject-input").val(subject).change();
-      });
-    }
 
     $("[role='button'].service-card").click(function (event) {
       event.preventDefault();
-      scrollToContactForm($(this).parent().siblings(".service-card").text());
+      var serviceIndex = parseInt($(this).parent().siblings(".service-card").attr('service-index'));
+      scrollHandler('contact-form', serviceIndex);
     });
 
     $("#nav-item-contacto").click(function (event) {
       event.preventDefault();
-
-      $('html, body').animate({
-        scrollTop: $("#contact-form-whole").offset().top - $("#main-navbar").outerHeight()
-      }, 2000);
+      scrollHandler('contact-form');
     });
 
     $("#nav-item-servicios").click(function (event) {
       event.preventDefault();
-      $('html, body').animate({
-        scrollTop: $("#servicios-container").offset().top - $("#main-navbar").outerHeight() - 10
-      }, 2000);
+      scrollHandler('services');
     });
 
     $("#nav-item-quienes-somos").click(function (event) {
       event.preventDefault();
-      $('html, body').animate({
-        scrollTop: $("#quien-somos-divider").offset().top - ($("#quien-somos-divider").outerHeight(true) / 2) - $("#main-navbar").outerHeight()
-      }, 2000);
+      scrollHandler('about-us');
     });
 
     $("#nav-item-nuestros-clientes").click(function (event) {
       event.preventDefault();
-      $('html, body').animate({
-        scrollTop: $("#nuestros-clientes-divider").offset().top - ($("#nuestros-clientes-divider").outerHeight(true) / 2) - $("#main-navbar").outerHeight()
-      }, 2000);
+      scrollHandler('our-customers');
     });
 
     $("#back-to-top").click(function (event) {
       event.preventDefault();
-      var body = $("html, body");
-      body.stop().animate({ scrollTop: 0 }, 2000, 'swing');
+      scrollHandler('head');
     });
 
     $("#nav-item-inico").click(function (event) {
       event.preventDefault();
-      var body = $("html, body");
-      body.stop().animate({ scrollTop: 0 }, 2000, 'swing');
+      scrollHandler('head');
     });
 
     $("#contact-form").submit(function (e) {
       e.preventDefault();
       ContactForm.submitToAPI(e);
     });
+    //#endregion
 
+    //#region custom-stretch
     $.fn.strech_text = function () {
       var elmt = jQuery(this),
         cont_width = elmt.width();
+      var txt;
 
       if (jQuery(this).find('.stretch_it').length > 0) {
-        var txt = jQuery(this).find('.stretch_it').html();
+        txt = jQuery(this).find('.stretch_it').html();
         jQuery(this).html(txt);
       } else {
-        var txt = elmt.html();
+        txt = elmt.html();
       }
 
       var one_line = jQuery('<span class="stretch_it">' + txt + '</span>'),
@@ -420,8 +440,6 @@ var app = {
       }
     };
 
-
-
     jQuery(window).resize(function () {
       jQuery('.stretch').each(function () {
         jQuery(this).strech_text();
@@ -431,6 +449,7 @@ var app = {
     $('.stretch').each(function () {
       $(this).strech_text();
     });
+    //#endregion
 
   }
 };

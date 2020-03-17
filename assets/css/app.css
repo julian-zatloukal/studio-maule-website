@@ -10758,6 +10758,8 @@ body {
   padding-top: 3rem;
   padding-bottom: 3rem;
   color: #5a5a5a;
+  overflow: auto;
+  height: 100%;
 }
 
 .logo-studio-maule {

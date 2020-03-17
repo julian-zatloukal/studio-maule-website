@@ -7,11 +7,20 @@
 $bd-download: #5a5a5a;
 $bd-dark: #5a5a5a;
 
+
+
 body {
   padding-top: 3rem;
   padding-bottom: 3rem;
   color: #5a5a5a;
+  overflow: auto; 
+  height: 100%;
 }
+
+//html { overflow: hidden; height: 100%; }
+//body { overflow: auto; height: 100%; }
+
+
 
 .logo-studio-maule {
   width: 150px;

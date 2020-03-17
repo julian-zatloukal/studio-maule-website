@@ -33,19 +33,19 @@ exports.handler = async function (event, context) {
 
 
     if (verifyResult.status === 200) {
-        sendEmail(event, function (err, data) {
-            context.done(err, null);
-        });
+        sendEmail(event);
+        return response;
     } else {
         response.body = badGoogleRecaptchaBody;
         response.statusCode = 400;
+        return response;
     }
 
-    return response;
+    
 
 }
 
-function sendEmail(event, done) {
+function sendEmail(event) {
     var params = {
         Destination: {
             ToAddresses: [
@@ -56,7 +56,7 @@ function sendEmail(event, done) {
         Message: {
             Body: {
                 Text: {
-                    Data: 'IP: ' + event.ip + '\nMarca de tiempo' + event.timestamp + '\n\nNombre: ' + event.name + '\nTelefono: ' + event.phone + '\nEmail: ' + event.email + '\nAsunto: ' + event.subject + '\n\nMensaje: ' + event.desc,
+                    Data: 'IP: ' + event.ip + '\nMarca de tiempo: ' + event.timestamp + '\nNombre: ' + event.name + '\nTelefono: ' + event.phone + '\nEmail: ' + event.email + '\nAsunto: ' + event.subject + '\n\nMensaje: ' + event.desc,
                     Charset: 'UTF-8'
                 }
             },
@@ -67,5 +67,13 @@ function sendEmail(event, done) {
         },
         Source: SENDER
     };
-    ses.sendEmail(params, done);
+    ses.sendEmail(params, function (err, data) {
+        if (err) {
+            console.log(err);
+            response.body+=" " + err;
+        } else {
+            console.log(data);
+            response.body+=" " + data;
+        }
+    });
 }
