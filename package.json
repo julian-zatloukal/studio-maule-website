@@ -40,6 +40,14 @@
   "devDependencies": {
     "browser-sync": "^2.26.7",
     "del": "^3.0.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^2.5.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^4.1.0",
     "gulp-clean-css": "3.9.4",
@@ -50,6 +58,7 @@
     "gulp-sourcemaps": "^2.6.5",
     "gulp-terser-js": "^5.1.2",
     "gulp-uglify": "^3.0.2",
-    "merge-stream": "^1.0.1"
+    "merge-stream": "^1.0.1",
+    "prettier": "^1.19.1"
   }
 }
