@@ -64,9 +64,7 @@ gulp.task('vendor:build', function () {
     './assets/js/vendor/holder.min.js',
     './assets/js/vendor/bootstrap.bundle.min.js',
     './assets/js/vendor/moment.min.js',
-    './assets/js/lang.es.js',
-    './assets/js/lang.en.js',
-    './assets/js/lang.it.js'
+    './assets/js/*.js'
   ])
     .pipe(gulp.dest('./dist/assets/js/vendor'));
   var fontStream = gulp.src(['./assets/fonts/font-awesome/**/*.*']).pipe(gulp.dest('./dist/assets/fonts/font-awesome'));
@@ -120,9 +118,7 @@ gulp.task('css:minify', gulp.series('scss', function cssMinify() {
 gulp.task('js:minify', function () {
   return gulp.src([
     './assets/js/app.js',
-    './assets/js/lang.es.js',
-    './assets/js/lang.en.js',
-    './assets/js/lang.it.js'
+    './assets/js/*.js'
   ])
     .pipe(terser({
       mangle: {
