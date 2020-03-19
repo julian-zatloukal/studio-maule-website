@@ -20,6 +20,8 @@ var response = {
 var badGoogleRecaptchaBody = "Bad Recaptcha response";
 var rateLimitPerIPExceededBody = "Rate limit exceeded";
 
+const {parse, stringify} = require('flatted/cjs');
+
 
 
 
@@ -27,7 +29,7 @@ exports.handler = async function (event, context) {
 
 
     let verifyResult = await axios.post(
-        `https://www.google.com/recaptcha/api/siteverify?secret=${reCaptchaSecret}&response=${grecaptcha_response}`,
+        `https://www.google.com/recaptcha/api/siteverify?secret=${reCaptchaSecret}&response=${event.grecaptcha_response}`,
         {},
         {
             headers: {
@@ -42,7 +44,7 @@ exports.handler = async function (event, context) {
         sendEmail(event);
         return response;
     } else {
-        response.body = badGoogleRecaptchaBody + '\n' + verifyResult.data['error-codes'];
+        response.body = badGoogleRecaptchaBody + '\n ' + verifyResult.data['error-codes'] + stringify(verifyResult);
         response.statusCode = 400;
         return response;
     }
