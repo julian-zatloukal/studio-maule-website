@@ -31,7 +31,7 @@ var app = {
             phone: phone,
             email: email,
             subject: subject,
-            desc: desc,
+            desc: desc
           };
 
           console.log(data_form);
@@ -50,7 +50,9 @@ var app = {
                 // show an error message
                 $("#submit_result_area").html("<section style='border-style:solid !important; border-width: 2px !important;' class='jumbotron border border-danger bg-transparent text-danger text-center pt-1 pb-1 my-4'>  <div class='container'>	<h5 style='margin-bottom: 0.25rem !important;' class='jumbotron-heading'>Se ha producido un error al enviar el mensaje.</h3>  </div></section>");
               },
-              200: function (response) {
+              success: function (response) {
+                console.log(response);
+
                 console.log(response);
                 // clear form and show a success message
                 document.getElementById("contact-form").reset();
