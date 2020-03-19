@@ -34,6 +34,8 @@ var app = {
             desc: desc,
           };
 
+          console.log(data_form);
+
           $.ajax({
             type: "POST",
             url: URL,

@@ -14,11 +14,11 @@ var response = {
     "isBase64Encoded": false,
     "headers": { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'https://studiomaule.com.ar' },
     "statusCode": 200,
-    "body": "{\"result\": \"Success.\"}"
+    "body": "success"
 };
 
-var badGoogleRecaptchaBody = "{\"result\": \"Bad Recaptcha response\"}";
-var rateLimitPerIPExceededBody = "{\"result\": \"Rate limit exceeded\"}";
+var badGoogleRecaptchaBody = "Bad Recaptcha response";
+var rateLimitPerIPExceededBody = "Rate limit exceeded";
 
 
 
@@ -26,22 +26,28 @@ var rateLimitPerIPExceededBody = "{\"result\": \"Rate limit exceeded\"}";
 exports.handler = async function (event, context) {
 
 
-    let verifyResult = await axios.post(reCapUrl, {
-        secret: reCaptchaSecret,
-        response: event.grecaptcha_response
-    });
+    let verifyResult = await axios.post(
+        `https://www.google.com/recaptcha/api/siteverify?secret=${reCaptchaSecret}&response=${grecaptcha_response}`,
+        {},
+        {
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded; charset=utf-8"
+            },
+        },
+    );
 
 
-    if (verifyResult.status === 200) {
+
+    if (verifyResult.data.success === 'true') {
         sendEmail(event);
         return response;
     } else {
-        response.body = badGoogleRecaptchaBody;
+        response.body = badGoogleRecaptchaBody + '\n' + verifyResult.data['error-codes'];
         response.statusCode = 400;
         return response;
     }
 
-    
+
 
 }
 
@@ -70,10 +76,10 @@ function sendEmail(event) {
     ses.sendEmail(params, function (err, data) {
         if (err) {
             console.log(err);
-            response.body+=" " + err;
+            response.body += " " + err;
         } else {
             console.log(data);
-            response.body+=" " + data;
+            response.body += " " + data;
         }
     });
 }
