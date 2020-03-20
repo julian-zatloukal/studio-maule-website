@@ -40,7 +40,7 @@ exports.handler = async function (event, context) {
 
 
 
-    if (verifyResult.data.success === 'true') {
+    if (verifyResult.data.success == 'true') {
         sendEmail(event);
         return response;
     } else {
