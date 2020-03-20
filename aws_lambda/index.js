@@ -1,5 +1,6 @@
+/* eslint-disable no-undef */
 var AWS = require('aws-sdk');
-var ses = new AWS.SES();
+var ses = new AWS.SES({region: 'us-east-1'});
 
 const completeUrl = "https://www.google.com";
 const axios = require('axios');
@@ -40,7 +41,7 @@ exports.handler = async function (event, context) {
 
 
 
-    if (verifyResult.data.success == 'true') {
+    if (verifyResult.data.success == true) {
         sendEmail(event);
         return response;
     } else {
@@ -53,7 +54,7 @@ exports.handler = async function (event, context) {
 
 }
 
-function sendEmail(event) {
+async function sendEmail(event) {
     var params = {
         Destination: {
             ToAddresses: [
@@ -75,13 +76,13 @@ function sendEmail(event) {
         },
         Source: SENDER
     };
-    ses.sendEmail(params, function (err, data) {
+    var sesResponse = await ses.sendEmail(params, function (err, data) {
         if (err) {
             console.log(err);
-            response.body += " " + err;
         } else {
             console.log(data);
-            response.body += " " + data;
         }
-    });
+    }).promise();
+
+    response.body += " " + stringify(sesResponse);
 }
