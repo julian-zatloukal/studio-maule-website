@@ -78,6 +78,10 @@ var app = {
             if ($(element_selector).hasClass("is-invalid")) {
               $(element_selector).removeClass("is-invalid");
               $(element_selector).next().toggleClass("d-inline-block d-none");
+              $(".g-recaptcha-container div div iframe").css({
+                "border-style": "hidden"
+              });
+              $(".g-recaptcha-container:first-child").removeClass("alert-validate");
             }
 
             break;
@@ -94,6 +98,18 @@ var app = {
         switch (element_selector) {
           case "#g-recaptcha-container":
             if (!$(element_selector).hasClass("is-invalid")) {
+              $(".g-recaptcha-container div div iframe").css({
+                "border-style": "solid",
+                "border-width": "0.075em",
+                "border-color": getComputedStyle(document.body).getPropertyValue(
+                  "--danger"
+                ),
+                "border-radius": "0.25em"
+              });
+              $(".g-recaptcha-container:first-child").css({
+                "position": "relative",
+              });
+              $(".g-recaptcha-container:first-child").addClass("alert-validate");
               $(element_selector).addClass("is-invalid");
               $(element_selector).next().toggleClass("d-none d-inline-block");
               $(element_selector).next().html(error_description);
@@ -197,25 +213,9 @@ var app = {
           case "g-recaptcha":
             if (grecaptcha.getResponse().length == 0) {
               ContactForm.showVerifyAlert("#g-recaptcha-container", lang.contactForm.nameInput.completeThisField);
-              $(".g-recaptcha-container div div iframe").css({
-                "border-style": "solid",
-                "border-width": "0.075em",
-                "border-color": getComputedStyle(document.body).getPropertyValue(
-                  "--danger"
-                ),
-                "border-radius": "0.25em"
-              });
-              $(".g-recaptcha-container:first-child").css({
-                "position": "relative",
-              });
-              $(".g-recaptcha-container:first-child").addClass("alert-validate");
               return false;
             } else {
               ContactForm.hideVerifyAlert("#g-recaptcha-container");
-              $(".g-recaptcha-container div div iframe").css({
-                "border-style": "hidden"
-              });
-              $(".g-recaptcha-container:first-child").removeClass("alert-validate");
               return true;
             }
         }
