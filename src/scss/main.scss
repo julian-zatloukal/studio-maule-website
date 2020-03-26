@@ -1,0 +1,19 @@
+
+// Custom bootstrap variable overrides
+@import "bootstrap_variable_overrides";
+
+@import "~bootstrap/scss/bootstrap";
+
+// Your style
+@import "./variables";
+@import "mixins";
+@import "layout";
+@import "module";
+@import "general";
+@import "custom_toggle";
+@import "custom_images";
+
+
+@import "./slick-carousel";
+@import "./app";
+@import "./base";
