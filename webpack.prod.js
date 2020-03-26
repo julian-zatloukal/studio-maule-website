@@ -89,14 +89,20 @@ module.exports = merge(common, {
           {
             loader: 'css-loader' // translates CSS into CommonJS
           },
+          // Adds prefix for cross-browser support
           {
-            loader: 'sass-loader', // compiles Sass to CSS
+            loader: 'resolve-url-loader',
+            options: { sourceMap: true }
+          }, // Webpack loader that resolves relative paths in url() statements based on the original source file.
+          {
+            loader: 'sass-loader',
             options: {
+              sourceMap: true,
               sassOptions: {
                 includePaths: [path.resolve(__dirname, 'node_modules')]
               }
             }
-          }
+          } // Loads a Sass/SCSS file and compiles it to CSS.
         ],
         include: [/fonts/, path.resolve(__dirname, 'src', 'scss')]
       },
