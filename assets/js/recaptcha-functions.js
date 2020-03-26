@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 var grecaptchaSuccessfulEvent = function () {
     ContactForm.verifyField("g-recaptcha");
   };
@@ -19,5 +20,5 @@ var grecaptchaSuccessfulEvent = function () {
       "error-callback": grecaptchaErrorEvent,
       "expired-callback": grecaptchaExpiredEvent
     });
-  };
+  }
   window.onloadCallback = onloadCallback;

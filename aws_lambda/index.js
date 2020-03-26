@@ -12,10 +12,10 @@ var RECEIVER_PRIMARY = 'maulegabriella@gmail.com';
 var SENDER = 'contacto@studiomaule.com.ar';
 
 var response = {
-    "isBase64Encoded": false,
-    "headers": { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'https://studiomaule.com.ar' },
-    "statusCode": 200,
-    "body": "success"
+    isBase64Encoded: false,
+    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'https://studiomaule.com.ar' },
+    statusCode: 200,
+    body: "success"
 };
 
 var badGoogleRecaptchaBody = "Bad Recaptcha response";
@@ -42,16 +42,13 @@ exports.handler = async function (event, context) {
 
 
     if (verifyResult.data.success == true) {
-        sendEmail(event);
+        await sendEmail(event);
         return response;
     } else {
         response.body = badGoogleRecaptchaBody + '\n ' + verifyResult.data['error-codes'] + stringify(verifyResult);
         response.statusCode = 400;
         return response;
     }
-
-
-
 }
 
 async function sendEmail(event) {
@@ -76,13 +73,6 @@ async function sendEmail(event) {
         },
         Source: SENDER
     };
-    var sesResponse = await ses.sendEmail(params, function (err, data) {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log(data);
-        }
-    }).promise();
-
-    response.body += " " + stringify(sesResponse);
+    var sesResponse = await ses.sendEmail(params).promise();
+    //response.body = "SES REPLY: " + stringify(sesResponse);
 }
