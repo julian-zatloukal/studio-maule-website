@@ -7,6 +7,8 @@ import html_file from './carousel.html';
 
 const carouselData = require('./js/data/customer-carousel-data.json');
 
+
+
 function importAll(r) {
   return r.keys().map(r);
 }
