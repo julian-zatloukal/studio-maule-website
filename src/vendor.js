@@ -21,8 +21,8 @@ function initializeHyphenopoly(){
       it: 'FORCEHYPHENOPOLY'
     },
     paths: {
-      maindir: '../node_modules/hyphenopoly/',
-      patterndir: '../node_modules/hyphenopoly/patterns/'
+      patterndir: './js/hyphenopoly/patterns/', //path to the directory of pattern files
+      maindir: './js/hyphenopoly/' //path to the directory where the other ressources are stored
     }
   };
   window.Hyphenopoly = Hyphenopoly;
