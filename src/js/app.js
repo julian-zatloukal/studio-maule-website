@@ -4,6 +4,9 @@ var app = {
       app.mainFunction();
     },
     mainFunction: function () {
+
+     
+
       class ContactForm {
   
         static async submitToAPI(e) {

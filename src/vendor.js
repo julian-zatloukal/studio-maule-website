@@ -11,7 +11,9 @@ import 'slick-carousel';
 
 
 import 'bootstrap';
-import 'moment';
+
+var moment = require('moment');
+window.moment = moment;
 
 function importAll(r) {
   return r.keys().map(r);
