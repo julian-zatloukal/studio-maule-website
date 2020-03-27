@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -17,7 +18,8 @@ module.exports = {
             $: 'jquery',
             jQuery: 'jquery',
             "window.jQuery": 'jquery'
-        })
+        }),
+        new MomentLocalesPlugin()
     ],
     module: {
         rules: [
