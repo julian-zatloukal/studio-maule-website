@@ -4,10 +4,10 @@ import 'jquery';
 import $ from 'jquery';
 window.$ = window.jQuery = $;
 import 'slick-carousel';
-const slickFonts = importAll(
-    require.context('slick-carousel/slick/fonts', false, /.*/s)
-);
-import gif from 'slick-carousel/slick/ajax-loader.gif';
+// const slickFonts = importAll(
+//     require.context('slick-carousel/slick/fonts', false, /.*/s)
+// );
+// import gif from 'slick-carousel/slick/ajax-loader.gif';
 
 
 import 'bootstrap';
@@ -20,6 +20,6 @@ function importAll(r) {
 
 
 console.log('Hello, from vendor!');
-console.log(slickFonts);
-console.log(gif);
+// console.log(slickFonts);
+// console.log(gif);
 
