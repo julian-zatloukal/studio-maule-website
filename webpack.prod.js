@@ -14,8 +14,7 @@ module.exports = merge(common, {
   mode: 'production',
   output: {
     filename: 'js/[name].[contentHash].bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: './'
+    path: path.resolve(__dirname, 'dist')
   },
   node: {
     fs: 'empty'
@@ -79,7 +78,9 @@ module.exports = merge(common, {
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              publicPath: path.resolve(__dirname, 'dist')
+              publicPath: (resourcePath, context) => {
+                return path.relative(path.dirname(resourcePath), context) + '/dist/';
+              }
             }
           },
           {
