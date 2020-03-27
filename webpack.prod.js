@@ -79,7 +79,7 @@ module.exports = merge(common, {
             loader: MiniCssExtractPlugin.loader,
             options: {
               publicPath: (resourcePath, context) => {
-                return path.dirname(resourcePath);
+                return path.dirname(context) + '/';
               }
             }
           },
