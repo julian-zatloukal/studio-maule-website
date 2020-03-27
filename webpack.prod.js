@@ -80,6 +80,8 @@ module.exports = merge(common, {
             loader: MiniCssExtractPlugin.loader,
             options: {
               publicPath: (resourcePath, context) => {
+
+                console.log('DEBUG SASS: '+ path.relative(path.dirname(resourcePath), context));
                 return (
                   path.relative(path.dirname(resourcePath), context) + '/dist/'
                 );
