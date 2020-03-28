@@ -55,12 +55,12 @@ var app = {
               console.log(response);
               // clear form and show a success message
               $('#contact-form').trigger('reset');
-              displaySubmitOutcome('success');
+              ContactForm.displaySubmitOutcome('success');
             },
             error: function(response) {
               console.log(response);
               // show an error message
-              displaySubmitOutcome('failure');
+              ContactForm.displaySubmitOutcome('failure');
             }
           });
         }
