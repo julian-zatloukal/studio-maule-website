@@ -1,13 +1,18 @@
+/* eslint-disable no-undef */
 import './scss/main.scss';
 import * as slickCarousel from './js/app-slick-carousel';
 import './js/lang.es';
 import './js/recaptcha-functions';
 import './js/app';
-import html_file from './carousel.html';
-
+import './js/development-functions';
+import html_file from './html/carousel.html';
 const carouselData = require('./js/data/customer-carousel-data.json');
+import submit_success_template_html from './html/submit-success-alert.html';
+import submit_failure_template_html from './html/submit-failure-alert.html';
 
-
+const carouselDataImagesUrl = importAll(
+  require.context('./js/data/img', false, /\.(png|jpe?g|svg)$/)
+);
 
 function importAll(r) {
   return r.keys().map(r);
@@ -19,15 +24,29 @@ jQuery.fn.textNodes = function() {
   });
 };
 
-const carouselDataImagesUrl = importAll(
-  require.context('./js/data/img', false, /\.(png|jpe?g|svg)$/)
-);
-
 $(function() {
-  loadHTML();
+  loadCarouselHTML();
+  loadContactFormHTML();
 });
 
-function loadHTML() {
+function loadContactFormHTML(){
+  var submit_success_template_jquery_html = $(submit_success_template_html);
+  submit_success_template_jquery_html.find('#submit-success-heading').each(function(index, val) {
+    $(this).html(lang.contactForm.submitSuccess.heading);
+  });
+  submit_success_template_jquery_html.find('#submit-success-body').each(function(index, val) {
+    $(this).html(lang.contactForm.submitSuccess.body);
+  });
+  window.submit_success_template_html = submit_success_template_jquery_html[0];
+
+  var submit_failure_template_jquery_html = $(submit_failure_template_html);
+  submit_failure_template_jquery_html.find('#submit-failure-body').each(function(index, val) {
+    $(this).html(lang.contactForm.submitFailure.body);
+  });
+  window.submit_failure_template_html = submit_failure_template_jquery_html[0];
+}
+
+function loadCarouselHTML() {
   var jquery_html = $(html_file);
   jquery_html.find('.read-more-badge').each(function(index, val) {
     $(this).attr('data-index', index);

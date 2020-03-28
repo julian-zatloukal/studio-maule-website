@@ -3,7 +3,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const common = require('./webpack.common');
 const merge = require('webpack-merge');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = merge(common, {
   mode: 'development',
@@ -13,36 +12,10 @@ module.exports = merge(common, {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new CopyPlugin([
-      {
-        context: './',
-        from: 'node_modules/hyphenopoly/Hyphenopoly.js',
-        to: './js/hyphenopoly/',
-        force: true,
-        flatten: true
-      },
-      {
-        context: './',
-        from: 'node_modules/hyphenopoly/Hyphenopoly_Loader.js',
-        to: './js/hyphenopoly/',
-        force: true,
-        flatten: true
-      },
-      {
-        context: './',
-        from: 'node_modules/hyphenopoly/patterns/*',
-        to: './js/hyphenopoly/patterns/',
-        force: true,
-        flatten: true
-      }
-    ]),
     new HtmlWebpackPlugin({
       template: './src/template.html'
     })
   ],
-  node: {
-    fs: 'empty'
-  },
   optimization: {
     runtimeChunk: 'single'
   },

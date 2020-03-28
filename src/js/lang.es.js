@@ -1,4 +1,4 @@
-lang = {
+var lang = {
     contactForm: {
         nameInput: {
             completeThisField: "Por favor, complete este campo.",
@@ -29,8 +29,17 @@ lang = {
             completeThisField: "Por favor, complete esta casilla.",
             badFormat: "Se ha producido un error.",
             tooLong: "Se ha producido un error."
+        },
+        submitSuccess: {
+            heading: "¡Enviado!",
+            body: "Su mensaje a sido enviado y será respondido a la brevedad."
+        },
+        submitFailure: {
+            body: "<strong>Ooops!</strong> Ha ocurrido un error, intente comunicarse mediante nuestro correo electrónico."
         }
+
     }
+
 };
 
 
