@@ -8,7 +8,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ReplaceCSSUrl = require('webpack-plugin-replace-css-url');
 const AppManifestWebpackPlugin = require('app-manifest-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
+
 
 module.exports = merge(common, {
   mode: 'production',
@@ -16,38 +16,12 @@ module.exports = merge(common, {
     filename: 'js/[name].[contentHash].bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
-  node: {
-    fs: 'empty'
-  },
   optimization: {
     minimizer: [new OptimizeCssAssetsPlugin(), new TerserPlugin()],
     runtimeChunk: 'single'
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new CopyPlugin([
-      {
-        context: './',
-        from: 'node_modules/hyphenopoly/Hyphenopoly.js',
-        to: './js/hyphenopoly/',
-        force: true,
-        flatten: true
-      },
-      {
-        context: './',
-        from: 'node_modules/hyphenopoly/Hyphenopoly_Loader.js',
-        to: './js/hyphenopoly/',
-        force: true,
-        flatten: true
-      },
-      {
-        context: './',
-        from: 'node_modules/hyphenopoly/patterns/*',
-        to: './js/hyphenopoly/patterns/',
-        force: true,
-        flatten: true
-      }
-    ]),
     new MiniCssExtractPlugin({ filename: 'css/[name].[contentHash].css' }),
     new HtmlWebpackPlugin({
       template: './src/template.html',

@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -19,7 +20,26 @@ module.exports = {
             jQuery: 'jquery',
             "window.jQuery": 'jquery'
         }),
-        new MomentLocalesPlugin()
+        new MomentLocalesPlugin(),
+        new CopyPlugin([
+            {
+                context: './',
+                from: 'node_modules/hyphenopoly/Hyphenopoly.js',
+                to: './js/hyphenopoly/',
+                force: true,
+                flatten: true,
+            },
+            {
+                context: './',
+                from: 'node_modules/hyphenopoly/patterns/{es,it}.wasm',
+                to: './js/hyphenopoly/patterns/',
+                globOptions:{
+                    extglob: true
+                },
+                force: true,
+                flatten: true,
+            },
+        ])
     ],
     module: {
         rules: [
