@@ -9,6 +9,7 @@ import html_file from './html/carousel.html';
 const carouselData = require('./js/data/customer-carousel-data.json');
 import submit_success_template_html from './html/submit-success-alert.html';
 import submit_failure_template_html from './html/submit-failure-alert.html';
+import services_html from './html/services.html';
 
 const carouselDataImagesUrl = importAll(
   require.context('./js/data/img', false, /\.(png|jpe?g|svg)$/)
@@ -25,9 +26,36 @@ jQuery.fn.textNodes = function() {
 };
 
 $(function() {
+  loadServiceCardsHTML();
   loadCarouselHTML();
   loadContactFormHTML();
 });
+
+function loadServiceCardsHTML(){
+  // Title:       service-card-title
+  // Body:        service-card-body
+  // View more:   service-view-more
+  // Button:      service-card-button
+
+  var services_jquery_html = $(services_html);
+  services_jquery_html.find('.service-view-more').each(function(index, val) {
+    $(this).html(lang.serviceCards.viewMore);
+  });
+  services_jquery_html.find('.service-card-button').each(function(index, val) {
+    $(this).html(lang.serviceCards.buttonContent);
+  });
+  services_jquery_html.find('.service-card-title').each(function(index, val) {
+    $(this).html(lang.serviceCards.cards[index].title);
+  });
+  services_jquery_html.find('.service-card-body').each(function(index, val) {
+    $(this).prepend(lang.serviceCards.cards[index].body);
+  });
+  services_jquery_html.find('.card').each(function(index, val) {
+    $(this).attr('data-service-index', index);
+  });
+
+  $("#main-container").prepend(services_jquery_html[0]);
+}
 
 function loadContactFormHTML(){
   var submit_success_template_jquery_html = $(submit_success_template_html);

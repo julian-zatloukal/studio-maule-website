@@ -5,10 +5,7 @@
 @import "~bootstrap/scss/bootstrap";
 
 // Your style
-@import "./variables";
-@import "mixins";
-@import "layout";
-@import "module";
+@import "services.scss";
 @import "general";
 @import "custom_toggle";
 @import "custom_images";
