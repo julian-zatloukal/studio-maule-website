@@ -5,6 +5,7 @@ import './js/lang.es';
 import './js/recaptcha-functions';
 import './js/app';
 import './js/development-functions';
+import './js/pageEvents';
 import html_file from './html/carousel.html';
 const carouselData = require('./js/data/customer-carousel-data.json');
 import submit_success_template_html from './html/submit-success-alert.html';
@@ -54,7 +55,18 @@ function loadServiceCardsHTML(){
     $(this).attr('data-service-index', index);
   });
 
-  $("#main-container").prepend(services_jquery_html[0]);
+  // Hide view more buttom util further content creation
+  services_jquery_html.find('.service-view-more').each(function(index, val) {
+    $(this).addClass('d-none');
+  });
+
+  $("#main-container").prepend(services_jquery_html[0]).promise().then( () => {
+    $(".service-card-button").click(function(event) {
+      event.preventDefault();
+      var serviceIndex = parseInt($(this).closest('.card').attr('data-service-index'));
+      scrollHandler('contact-form', serviceIndex+1);
+    });
+  });
 }
 
 function loadContactFormHTML(){

@@ -21,7 +21,7 @@ var lang = {
       {
         title: 'Declaración de valor de títulos.',
         body:
-          'La declaración de valor es un documento expedido por las autoridades consulares italianas a quienes, habiendo conseguido un título de estudio en instrucción extranjeras, desean proseguir los estudios en Italia o bien iniciar los procedimientos de equiparación de Títulos de Estudio o bien de Reconocimiento profesional.'
+          'La declaración de valor es un documento expedido por las autoridades consulares italianas a quienes, habiendo conseguido un título de estudio ante instrucciones extranjeras, desean proseguir los estudios en Italia o bien iniciar los procedimientos de equiparación de Títulos de Estudio o bien de Reconocimiento profesional.'
       },
       {
         title: 'Traducción no pública.',
