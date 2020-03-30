@@ -1,5 +1,4 @@
 /* eslint-disable no-undef */
-import './scss/main.scss';
 import * as slickCarousel from './js/app-slick-carousel';
 import './js/lang.es';
 import './js/recaptcha-functions';
@@ -11,6 +10,7 @@ const carouselData = require('./js/data/customer-carousel-data.json');
 import submit_success_template_html from './html/submit-success-alert.html';
 import submit_failure_template_html from './html/submit-failure-alert.html';
 import services_html from './html/services.html';
+import footer_html from './html/footer.html';
 
 const carouselDataImagesUrl = importAll(
   require.context('./js/data/img', false, /\.(png|jpe?g|svg)$/)
@@ -30,7 +30,13 @@ $(function() {
   loadServiceCardsHTML();
   loadCarouselHTML();
   loadContactFormHTML();
+  loadFooter();
 });
+
+function loadFooter(){
+  var footer_jquery_html = $(footer_html);
+  $("main").append(footer_jquery_html[0])
+}
 
 function loadServiceCardsHTML(){
   // Title:       service-card-title
