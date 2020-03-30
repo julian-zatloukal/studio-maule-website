@@ -6,8 +6,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ReplaceCSSUrl = require('webpack-plugin-replace-css-url');
 const AppManifestWebpackPlugin = require('app-manifest-webpack-plugin');
+const HtmlWebpackInjector = require('html-webpack-injector')
 
 
 module.exports = merge(common, {
@@ -35,6 +35,7 @@ module.exports = merge(common, {
         useShortDoctype: true
       }
     }),
+    new HtmlWebpackInjector(),
     new AppManifestWebpackPlugin({
       logo: './src/assets/ico/logomark.svg',
       statsFilename: 'iconstats.json',

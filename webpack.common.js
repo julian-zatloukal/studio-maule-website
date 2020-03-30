@@ -6,8 +6,9 @@ const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: {
+        vendor_head: './src/vendor_head.js',
+        vendor_body: './src/vendor_body.js',
         main: './src/index.js',
-        vendor: './src/vendor.js'
     },
     resolve: {
         alias: {

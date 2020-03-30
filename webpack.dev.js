@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const common = require('./webpack.common');
 const merge = require('webpack-merge');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackInjector = require('html-webpack-injector')
 
 module.exports = merge(common, {
   mode: 'development',
@@ -14,7 +15,8 @@ module.exports = merge(common, {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: './src/template.html'
-    })
+    }),
+    new HtmlWebpackInjector()
   ],
   optimization: {
     runtimeChunk: 'single'
