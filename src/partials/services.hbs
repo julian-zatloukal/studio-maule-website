@@ -1,0 +1,22 @@
+<div id="servicios-container">
+  <section class="jumbotron bg-transparent text-dark text-center pt-1 pb-1">
+    <div class="container">
+      <h1 class="jumbotron-heading">{{ concat serviceCards.title serviceCards.viewMore }}</h1>
+    </div>
+  </section>
+  <div class="row row-cols-1 row-cols-md-2 ">
+    {{#each serviceCards.cards}}
+    <div class="col mb-4">
+      <div data-service-index="{{@index}}" class="card">
+        <div class="card-body">
+          <h5 class="card-title mb-3 service-card-title">{{ title }}</h5>
+          <p lang="es" class="card-text service-card-body hyphenate">
+            {{ body }}<a href="#" class="service-view-more d-none">{{ @root.serviceCards.viewMore }}</a>
+          </p>
+          <a href="#" class="btn btn-primary service-card-button" onclick="{{ @root.serviceCards.buttonOnClick }}">{{ @root.serviceCards.buttonContent }}</a>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div>

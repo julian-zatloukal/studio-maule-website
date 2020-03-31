@@ -7,8 +7,9 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AppManifestWebpackPlugin = require('app-manifest-webpack-plugin');
-const HtmlWebpackInjector = require('html-webpack-injector')
-
+const HtmlWebpackInjector = require('html-webpack-injector');
+const HandlebarsPlugin = require('handlebars-webpack-plugin');
+const RemovePlugin = require('remove-files-webpack-plugin');
 
 module.exports = merge(common, {
   mode: 'production',
@@ -24,7 +25,8 @@ module.exports = merge(common, {
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({ filename: 'css/[name].[contentHash].css' }),
     new HtmlWebpackPlugin({
-      template: './src/template.html',
+      template: path.join(__dirname, 'src', 'index.html'),
+      //filename: path.join(__dirname, 'dist', 'partials', 'index.hbs'),
       minify: {
         removeAttributeQuotes: true,
         collapseWhitespace: true,
@@ -54,6 +56,32 @@ module.exports = merge(common, {
           windows: true, // Create Windows 8 tile icons. `boolean` or `{ background }`
           yandex: true // Create Yandex browser icon. `boolean` or `{ background }`
         }
+      }
+    }),
+    new HandlebarsPlugin({
+      entry: path.join(process.cwd(), 'src', '*.hbs'),
+      output: path.join(process.cwd(), 'src', '[name].html'),
+      data: path.join(process.cwd(), 'src/data/lang.es.json'),
+      partials: [path.join(process.cwd(), 'src', 'partials', '*.hbs')],
+      helpers: {
+        projectHelpers: path.join(
+          process.cwd(),
+          'src',
+          'helpers',
+          '*.helper.js'
+        )
+      }
+    }),
+    new RemovePlugin({
+      after: {
+        test: [
+          {
+            folder: path.join(process.cwd(), 'src'),
+            method: absoluteItemPath => {
+              return new RegExp(/\.html$/, 'm').test(absoluteItemPath);
+            }
+          }
+        ]
       }
     })
   ],
