@@ -1,0 +1,63 @@
+<div id="nuestros-clientes-container">
+  <section class="jumbotron bg-transparent text-dark text-center pt-1 pb-1">
+    <div class="container">
+      <h1 class="jumbotron-heading">Nuestros clientes</h1>
+    </div>
+  </section>
+</div>
+
+<div class="container-carousel">
+  <div class="slick-carousel-items">
+    {{#each customersCarousel.customers}}
+    <div class="slick-carousel-card" data-large-body="{{large_body}}">
+      <div class="card-body">
+        <h4 class="card-title">
+          <img src="https://img.icons8.com/ultraviolet/40/000000/quote-left.png" />
+        </h4>
+        <div class="template-demo">
+          <p class="customer-review-short hyphenate">
+            {{short_body}}
+            <a href="#" class="badge badge-secondary read-more-badge" data-toggle="modal"
+              data-target=".bd-example-modal-lg">{{@root.customersCarousel.viewMore}}</a>
+          </p>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="profile-pic-container">
+            <div style="background-image: url('${require(`{{ concat @root.customersCarousel.image_directory image.checksum @root.customersCarousel.image_extension }}`)}'); background-position: {{image.position}};" class="profile-pic"></div>
+          </div>
+          <div class="card-tag-container">
+            <div class="profile">
+              <h4 class="cust-name">{{name}}</h4>
+              <p class="cust-profession">{{tag}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  <div class="modal fade bd-example-modal-lg customer-review-modal" tabindex="-1" role="dialog"
+    aria-labelledby="myLargeModalLabel" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="myLargeModalLabel">Logo</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-body-container">
+            <p></p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Cerrar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

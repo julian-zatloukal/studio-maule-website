@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta
+      name="description"
+      content="Studio Maule ofrece servicios de traducción publica, armado de carpeta para ciudadanía italiana, declaración de valor de títulos, entre otros."
+    />
+    <meta name="author" content="Julian Zatloukal Maule" />
+
+    <title>Studio Maule</title>
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.1.0/css/flag-icon.min.css"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/7d4d2a9de0.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-MQMDBXC"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <header>
+      {{> partials/navbar }}
+
+    </header>
+
+    <main role="main">
+      {{> partials/header-carousel }}
+
+      <div id="main-container" class="container marketing">
+        {{> partials/services }}
+        <hr id="quien-somos-divider" class="featurette-divider" />
+
+        {{> partials/quienes-somos }}
+
+        <hr id="nuestros-clientes-divider" class="featurette-divider" />
+
+        {{> partials/customers-carousel }}
+
+        <hr class="featurette-divider" />
+
+        {{> partials/contact-form }}
+
+      </div>
+
+      
+    </main>
+
+    {{> partials/footer}}
+
+    <script type="text/javascript"></script>
+    <script
+      src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+      async
+      defer
+    ></script>
+  </body>
+</html>

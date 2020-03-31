@@ -151,6 +151,13 @@ function scrollHandler(section, parameter) {
   }
 }
 
+class EventHandler {
+  static serviceCardClick(button){
+    var serviceIndex = parseInt($(button).closest('.card').attr('data-service-index'));
+    window.scrollHandler('contact-form', serviceIndex+1);
+  }
+}
+window.EventHandler = EventHandler;
 
 $(function() {
     //#region listeners-setup

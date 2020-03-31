@@ -3,7 +3,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const common = require('./webpack.common');
 const merge = require('webpack-merge');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const HtmlWebpackInjector = require('html-webpack-injector')
+const HtmlWebpackInjector = require('html-webpack-injector');
+const HandlebarsPlugin = require('handlebars-webpack-plugin');
+const RemovePlugin = require('remove-files-webpack-plugin');
 
 module.exports = merge(common, {
   mode: 'development',
@@ -14,9 +16,45 @@ module.exports = merge(common, {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: './src/template.html'
+      template: path.join(__dirname, 'src', 'index.html'),
+      minify: {
+        removeAttributeQuotes: true,
+        collapseWhitespace: true,
+        removeComments: true,
+        removeRedundantAttributes: true,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        useShortDoctype: true
+      }
     }),
-    new HtmlWebpackInjector()
+    new HtmlWebpackInjector(),
+    new HandlebarsPlugin({
+      entry: path.join(process.cwd(), 'src', '*.hbs'),
+      output: path.join(process.cwd(), 'src', '[name].html'),
+      data: path.join(process.cwd(), 'src/data/lang.es.json'),
+
+      partials: [path.join(process.cwd(), 'src', 'partials', '*.hbs')],
+      helpers: {
+        projectHelpers: path.join(
+          process.cwd(),
+          'src',
+          'helpers',
+          '*.helper.js'
+        )
+      }
+    }),
+    new RemovePlugin({
+      after: {
+        test: [
+          {
+            folder: path.join(process.cwd(), 'src'),
+            method: absoluteItemPath => {
+              return new RegExp(/\.html$/, 'm').test(absoluteItemPath);
+            }
+          }
+        ]
+      }
+    })
   ],
   optimization: {
     runtimeChunk: 'single'
