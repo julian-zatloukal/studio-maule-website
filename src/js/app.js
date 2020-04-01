@@ -184,7 +184,7 @@ var app = {
               if (!namere.test($('#name-input').val())) {
                 ContactForm.showVerifyAlert(
                   '#name-input',
-                  lang.contactForm.nameInput.badFormat
+                  $('#name-input').parent().find('.error-caption-container').attr('data-error-bad-format')
                 );
                 return false;
               } else {
@@ -194,7 +194,7 @@ var app = {
             } else {
               ContactForm.showVerifyAlert(
                 '#name-input',
-                lang.contactForm.nameInput.completeThisField
+                $('#name-input').parent().find('.error-caption-container').attr('data-error-incomplete')
               );
               return false;
             }
@@ -208,7 +208,7 @@ var app = {
               if (!mobilere.test($('#phone-input').val())) {
                 ContactForm.showVerifyAlert(
                   '#phone-input',
-                  lang.contactForm.phoneInput.badFormat
+                  $('#phone-input').parent().find('.error-caption-container').attr('data-error-bad-format')
                 );
                 return false;
               } else {
@@ -227,7 +227,7 @@ var app = {
             ) {
               ContactForm.showVerifyAlert(
                 '#subject-input',
-                lang.contactForm.subjectInput.completeThisField
+                $('#subject-input').parent().find('.error-caption-container').attr('data-error-incomplete')
               );
               return false;
             } else {
@@ -244,7 +244,7 @@ var app = {
               if (!reeamil.test($('#email-input').val())) {
                 ContactForm.showVerifyAlert(
                   '#email-input',
-                  lang.contactForm.emailInput.badFormat
+                  $('#email-input').parent().find('.error-caption-container').attr('data-error-bad-format')
                 );
                 return false;
               } else {
@@ -254,7 +254,7 @@ var app = {
             } else {
               ContactForm.showVerifyAlert(
                 '#email-input',
-                lang.contactForm.emailInput.completeThisField
+                $('#email-input').parent().find('.error-caption-container').attr('data-error-incomplete')
               );
               return false;
             }
@@ -268,7 +268,7 @@ var app = {
               if (!descriptionInputRegex.test($('#description-input').val())) {
                 ContactForm.showVerifyAlert(
                   '#description-input',
-                  lang.contactForm.descriptionInput.badFormat
+                  $('#description-input').parent().find('.error-caption-container').attr('data-error-bad-format')
                 );
                 return false;
               } else {
@@ -278,7 +278,7 @@ var app = {
             } else {
               ContactForm.showVerifyAlert(
                 '#description-input',
-                lang.contactForm.descriptionInput.completeThisField
+                $('#description-input').parent().find('.error-caption-container').attr('data-error-incomplete')
               );
               return false;
             }
@@ -286,7 +286,7 @@ var app = {
             if (grecaptcha.getResponse().length == 0) {
               ContactForm.showVerifyAlert(
                 '#g-recaptcha-container',
-                lang.contactForm.nameInput.completeThisField
+                $('#g-recaptcha-container').parent().find('.error-caption-container').attr('data-error-incomplete')
               );
               return false;
             } else {

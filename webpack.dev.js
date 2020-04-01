@@ -43,18 +43,18 @@ module.exports = merge(common, {
         )
       }
     }),
-    new RemovePlugin({
-      after: {
-        test: [
-          {
-            folder: path.join(process.cwd(), 'src'),
-            method: absoluteItemPath => {
-              return new RegExp(/\.html$/, 'm').test(absoluteItemPath);
-            }
-          }
-        ]
-      }
-    })
+    // new RemovePlugin({
+    //   after: {
+    //     test: [
+    //       {
+    //         folder: path.join(process.cwd(), 'src'),
+    //         method: absoluteItemPath => {
+    //           return new RegExp(/\.html$/, 'm').test(absoluteItemPath);
+    //         }
+    //       }
+    //     ]
+    //   }
+    // })
   ],
   optimization: {
     runtimeChunk: 'single'
