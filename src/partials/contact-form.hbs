@@ -1,145 +1,100 @@
 <div id="contact-form-container">
-          <h1>Contacto</h1>
+  <h1>{{contactForm.title}}</h1>
 
-          <form id="contact-form" action="#" role="form">
-            <div class="messages"></div>
+  {{#with contactForm.fields}}
+  <form id="contact-form" action="#" role="form">
+    <div class="messages"></div>
 
-            <div class="controls">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="name-input">Nombre</label>
-                    <input
-                      id="name-input"
-                      maxlength="72"
-                      type="text"
-                      name="name"
-                      class="form-control"
-                      placeholder="Ingrese su nombre"
-                      data-error="Su nombre es requerido"
-                      onblur="ContactForm.verifyField('name-input')"
-                    />
-                    <div class="invalid-feedback d-none">
-                      Formato incorrecto.
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group has-error has-danger">
-                    <label for="phone-input"
-                      >Numero de teléfono (Opcional)</label
-                    >
-                    <input
-                      id="phone-input"
-                      maxlength="22"
-                      type="tel"
-                      name="telephone"
-                      class="form-control"
-                      placeholder="Ej. +54 9 11 3741-7423"
-                      data-error="Numero invalido"
-                      onblur="ContactForm.verifyField('phone-input')"
-                    />
-                    <div class="invalid-feedback d-none">
-                      Formato incorrecto.
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="email-input">Correo electrónico</label>
-                    <input
-                      id="email-input"
-                      type="email"
-                      name="email"
-                      class="form-control"
-                      maxlength="254"
-                      placeholder="Ingrese su correo electrónico"
-                      data-error="Un email válido es requerido"
-                      onblur="ContactForm.verifyField('email-input')"
-                    />
-                    <div class="invalid-feedback d-none">
-                      Formato incorrecto.
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="subject-input">Asunto</label>
-                    <select
-                      id="subject-input"
-                      name="subject"
-                      class="form-control"
-                      maxlength="40"
-                      data-error="Por favor, especifique el asunto."
-                      style="background-position : right calc(0.75em + 0.275rem) center !important;"
-                      onblur="ContactForm.verifyField('subject-input')"
-                      onchange="ContactForm.verifyField('subject-input')"
-                    >
-                      <option value=""></option>
-                      <option value="Traducción publica de actas"
-                        >Traducción pública</option
-                      >
-                      <option value="Traducción publica de actas"
-                        >Traducción pública de actas</option
-                      >
-                      <option value="Armado de carpeta para ciudadania"
-                        >Armado de carpeta para ciudadanía</option
-                      >
-                      <option value="Declaración de valor de titulos"
-                        >Declaración de valor de titulos</option
-                      >
-                      <option value="Traducción no pública"
-                        >Traducción no pública</option
-                      >
-                      <option value="Otro">Otro</option>
-                    </select>
-                    <div class="invalid-feedback d-none">
-                      Formato incorrecto.
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="description-input">Mensaje</label>
-                    <textarea
-                      maxlength="5000"
-                      id="description-input"
-                      name="message"
-                      class="form-control"
-                      placeholder="¿En que podemos ayudarle?"
-                      rows="4"
-                      data-error="Por favor, dejenos un mensaje."
-                      onblur="ContactForm.verifyField('description-input')"
-                    ></textarea>
-                    <div class="invalid-feedback d-none">
-                      Formato incorrecto.
-                    </div>
-                    <p id="character-count" class="float-right pr-0">0</p>
-                  </div>
-                </div>
-
-                <div class="col-md-12">
-                  <div
-                    id="g-recaptcha-container"
-                    class="g-recaptcha-container"
-                  ></div>
-                  <div class="invalid-feedback d-none mb-4">
-                    Por favor, complete este campo.
-                  </div>
-                  <br />
-                  <input
-                    type="submit"
-                    class="btn btn-success btn-send"
-                    value="Enviar mensaje"
-                  />
-                  <br />
-                  <div id="submit_result_area"></div>
-                </div>
-              </div>
+    <div class="controls">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="name-input">{{nameInput.title}}</label>
+            <input id="name-input" maxlength="72" type="text" name="name" class="form-control"
+              placeholder="{{nameInput.placeHolder}}" data-error="Su nombre es requerido"
+              onblur="ContactForm.verifyField('name-input')" />
+            <div class="error-caption-container invalid-feedback d-none" data-error-incomplete="{{nameInput.errorsCaption.completeThisField}}"
+              data-error-bad-format="{{nameInput.errorsCaption.badFormat}}"
+              data-error-too-long="{{nameInput.errorsCaption.tooLong}}">
             </div>
-          </form>
+          </div>
         </div>
+        <div class="col-md-6">
+          <div class="form-group has-error has-danger">
+            <label for="phone-input">{{phoneInput.title}}</label>
+            <input id="phone-input" maxlength="22" type="tel" name="telephone" class="form-control"
+              placeholder="{{phoneInput.placeHolder}}" data-error="Numero invalido"
+              onblur="ContactForm.verifyField('phone-input')" />
+            <div class="error-caption-container invalid-feedback d-none" data-error-incomplete="{{phoneInput.errorsCaption.completeThisField}}"
+              data-error-bad-format="{{phoneInput.errorsCaption.badFormat}}"
+              data-error-too-long="{{phoneInput.errorsCaption.tooLong}}">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="email-input">{{emailInput.title}}</label>
+            <input id="email-input" type="email" name="email" class="form-control" maxlength="254"
+              placeholder="{{emailInput.placeHolder}}" data-error="Un email válido es requerido"
+              onblur="ContactForm.verifyField('email-input')" />
+            <div class="error-caption-container invalid-feedback d-none" data-error-incomplete="{{emailInput.errorsCaption.completeThisField}}"
+              data-error-bad-format="{{emailInput.errorsCaption.badFormat}}"
+              data-error-too-long="{{emailInput.errorsCaption.tooLong}}">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="subject-input">{{subjectInput.title}}</label>
+            <select id="subject-input" name="subject" class="form-control" maxlength="40"
+              data-error="Por favor, especifique el asunto."
+              style="background-position : right calc(0.75em + 0.275rem) center !important;"
+              onblur="ContactForm.verifyField('subject-input')" onchange="ContactForm.verifyField('subject-input')">
+              <option value="" selected>{{subjectInput.placeHolder}}</option>
+              {{#each subjectInput.options}}
+              <option value="{{this}}">{{this}}</option>
+              {{/each}}
+            </select>
+            <div class="error-caption-container invalid-feedback d-none"
+              data-error-incomplete="{{subjectInput.errorsCaption.completeThisField}}"
+              data-error-bad-format="{{subjectInput.errorsCaption.badFormat}}"
+              data-error-too-long="{{subjectInput.errorsCaption.tooLong}}">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="description-input">{{descriptionInput.title}}</label>
+            <textarea maxlength="5000" id="description-input" name="message" class="form-control"
+              placeholder="{{descriptionInput.placeHolder}}" rows="4" data-error="Por favor, dejenos un mensaje."
+              onblur="ContactForm.verifyField('description-input')"></textarea>
+            <div class="error-caption-container invalid-feedback d-none"
+              data-error-incomplete="{{descriptionInput.errorsCaption.completeThisField}}"
+              data-error-bad-format="{{descriptionInput.errorsCaption.badFormat}}"
+              data-error-too-long="{{descriptionInput.errorsCaption.tooLong}}">
+            </div>
+            <p id="character-count" class="float-right pr-0">0</p>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div id="g-recaptcha-container" class="g-recaptcha-container"></div>
+          <div class="error-caption-container invalid-feedback d-none mb-4"
+            data-error-incomplete="{{recaptchaInput.errorsCaption.completeThisField}}"
+            data-error-bad-format="{{recaptchaInput.errorsCaption.badFormat}}"
+            data-error-too-long="{{recaptchaInput.errorsCaption.tooLong}}">
+          </div>
+          <br />
+          <input type="submit" class="btn btn-success btn-send" value="Enviar mensaje" />
+          <br />
+          <div id="submit_result_area"></div>
+        </div>
+      </div>
+    </div>
+  </form>
+  {{/with}}
+</div>

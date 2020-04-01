@@ -25,12 +25,7 @@ jQuery.fn.textNodes = function() {
   });
 };
 
-$(function() {
-  // loadServiceCardsHTML();
-  // loadCarouselHTML();
-  // loadContactFormHTML();
-  // loadFooter();
-});
+
 
 // function loadFooter(){
 //   var footer_jquery_html = $(footer_html);
