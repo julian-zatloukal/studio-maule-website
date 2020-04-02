@@ -156,6 +156,10 @@ class EventHandler {
     var serviceIndex = parseInt($(button).closest('.card').attr('data-service-index'));
     window.scrollHandler('contact-form', serviceIndex+1);
   }
+  static scrollHandlerOnClick(event, section){
+    event.preventDefault();
+    window.scrollHandler(section);
+  }
 }
 window.EventHandler = EventHandler;
 
@@ -169,47 +173,7 @@ $('#description-input').on('input', function() {
     $('#character-count').text($('#description-input').val().length);
   });
   
-  $('#1.carousel-button').click(function(event) {
-    event.preventDefault();
-    scrollHandler('contact-form');
-  });
-  
-  $('#2.carousel-button').click(function(event) {
-    event.preventDefault();
-    scrollHandler('our-customers');
-  });
-  
-  $('#3.carousel-button').click(function(event) {
-    event.preventDefault();
-    scrollHandler('contact-form');
-  });
-  
-  $('#nav-item-contacto').click(function(event) {
-    event.preventDefault();
-    scrollHandler('contact-form');
-  });
-  
-  $('#nav-item-servicios').click(function(event) {
-    event.preventDefault();
-    scrollHandler('services');
-  });
-  
-  $('#nav-item-quienes-somos').click(function(event) {
-    event.preventDefault();
-    scrollHandler('about-us');
-  });
-  
-  $('#nav-item-nuestros-clientes').click(function(event) {
-    event.preventDefault();
-    scrollHandler('our-customers');
-  });
-  
   $('#back-to-top').click(function(event) {
-    event.preventDefault();
-    scrollHandler('head');
-  });
-  
-  $('#nav-item-inico').click(function(event) {
     event.preventDefault();
     scrollHandler('head');
   });
@@ -266,7 +230,6 @@ $('#description-input').on('input', function() {
   });
   //#endregion
 });
-
 
 //Global declares
 window.scrollHandler = scrollHandler;

@@ -1,6 +1,9 @@
 /* eslint-disable no-useless-escape */
 /* eslint-disable no-undef */
 
+import submit_success_template_html from '../html/submit-success-alert.html';
+import submit_failure_template_html from '../html/submit-failure-alert.html';
+
 var app = {
   init: function() {
     app.mainFunction();

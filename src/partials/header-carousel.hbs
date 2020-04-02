@@ -1,3 +1,4 @@
+{{#with header-carousel}}
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -5,53 +6,47 @@
         <li data-target="#myCarousel" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img class="first-slide" src="./assets/img/carousel_1_jpg.jpg" id="carousel_first" alt="First slide" />
+        <div class="carousel-item active" data-index="0"
+            style="background-image: url('${require(`{{{concat image_directory slides.[0].image.name image_extension}}}`)}'); background-position: {{{slides.[0].image.position}}}; background-size: cover;">
             <div class="container">
                 <div class="carousel-caption text-right ">
-                    <h1>Traducciónes publicas.</h1>
+                    <h1>{{slides.[0].title}}</h1>
                     <p id="carousel-caption-first" class="stretch ml-auto hyphenate">
-                        ¿Necesita realizar traducciones? Del español al italiano y del
-                        Italiano al español, traductora con más de 25 años de
-                        experiencia.
+                        {{slides.[0].body}}
                     </p>
                     <p>
-                        <a id="1" class="btn btn-lg btn-primary carousel-button" href="#" role="button">Contactar</a>
+                        <a onclick="{{{slides.[0].onclick}}}" class="btn btn-lg btn-primary carousel-button" href="#"
+                            role="button">{{slides.[0].buttonContent}}</a>
                     </p>
                 </div>
             </div>
         </div>
-        <div class="carousel-item">
-            <img class="second-slide" src="./assets/img/carousel_2_jpg.jpg" id="carousel_second" alt="Second slide" />
+        <div style="background-image: url('${require(`{{{concat image_directory slides.[1].image.name image_extension}}}`)}'); background-position: {{{slides.[1].image.position}}}; background-size: cover;"
+            class="carousel-item" data-index="1">
             <div class="container">
                 <div class="carousel-caption text-left">
-                    <h1>Referencias de todo el mundo.</h1>
+                    <h1>{{slides.[1].title}}</h1>
                     <p id="carousel-caption-second" class="stretch mr-auto hyphenate">
-                        Traducciones realizadas y enviadas a Brasil, Italia, Alemania,
-                        Israel, EEUU, y Perú. Enviadas a los respectivos países con
-                        todos los sellados previos para la validez internacional.
+                        {{slides.[1].body}}
                     </p>
                     <p>
-                        <a id="2" class="btn btn-lg btn-primary carousel-button" href="#" role="button">Ver Nuestros
-                            clientes</a>
+                        <a onclick="{{{slides.[1].onclick}}}" class="btn btn-lg btn-primary carousel-button" href="#"
+                            role="button">{{slides.[1].buttonContent}}</a>
                     </p>
                 </div>
             </div>
         </div>
-        <div class="carousel-item">
-            <img class="third-slide" src="./assets/img/carousel_3_jpg.jpg" id="carousel_third" alt="Third slide" />
+        <div class="carousel-item"
+            style="background-image: url('${require(`{{{concat image_directory slides.[2].image.name image_extension}}}`)}'); background-position: {{{slides.[2].image.position}}}; background-size: cover;">
             <div class="container">
                 <div class="carousel-caption">
-                    <h1>Ciudadanía italiana</h1>
+                    <h1>{{slides.[2].title}}</h1>
                     <p id="carousel-caption-second" class="stretch mx-auto hyphenate">
-                        La Ciudadanía italiana es otorgada, sin límite de
-                        generaciones, a los descendientes de los italianos emigrados a
-                        través del Ius sanguinis, Derecho de Sangre. Permite el acceso
-                        ilimitado todos los países dentro de la Unión Europea,
-                        incluyendo Reino Unido.
+                        {{slides.[2].body}}
                     </p>
                     <p>
-                        <a id="3" class="btn btn-lg btn-primary carousel-button" href="#" role="button">Contactar</a>
+                        <a onclick="{{{slides.[2].onclick}}}" class="btn btn-lg btn-primary carousel-button" href="#"
+                            role="button">{{slides.[2].buttonContent}}</a>
                     </p>
                 </div>
             </div>
@@ -66,3 +61,4 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
+{{/with}}

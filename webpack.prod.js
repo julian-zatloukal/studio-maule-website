@@ -72,6 +72,11 @@ module.exports = merge(common, {
         )
       }
     }),
+    new HandlebarsPlugin({
+      entry: path.join(process.cwd(), 'src', 'html','*.hbs'),
+      output: path.join(process.cwd(), 'src','html','[name].html'),
+      data: path.join(process.cwd(), 'src/data/lang.es.json')
+    }),
     new RemovePlugin({
       after: {
         test: [

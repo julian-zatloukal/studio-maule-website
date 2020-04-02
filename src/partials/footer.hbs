@@ -1,14 +1,15 @@
-<footer class="text-light bg-dark pt-4">
+{{#with footer}}
+<footer id="footerid" class="text-light bg-dark pt-4">
   <!-- Footer Links -->
   <div class="container text-center text-md-left ">
     <!-- Grid row -->
     <div class="row">
       <!-- Grid column -->
-      <div class="col-md-6  mb-3 mt-md-0 mt-3">
+      <div class="col-md-4 col-xl-6 mb-3 mt-md-0 mt-3">
         <!-- Content -->
-        <h5 class="text-uppercase">Studio Maule</h5>
+        <h5 class="text-uppercase">{{title}}</h5>
         <p>
-          Traducciones públicas italianas.
+          {{tagline}}
         </p>
       </div>
       <!-- Grid column -->
@@ -16,21 +17,18 @@
       <!-- <hr class="clearfix w-100 d-md-none pb-3" /> -->
 
       <!-- Grid column -->
-      <div class="col-md-3 mb-md-0 mb-3">
-        <h5 class="text-uppercase">{{contacto}}</h5>
+      <div class="col-md-5  col-xl-3 mb-md-0 mb-3">
+        <h5 class="text-uppercase">{{contactInformation.title}}</h5>
 
-        <ul class="list-unstyled social-media-list">
+        <ul id="social-media-id-test" class="list-unstyled social-media-list">
           <li class="position-relative">
-            <i class="fas fa-envelope mr-1"></i
-            ><a class="stretched-link" href="#!">info@studiomaule.com.ar</a>
+            {{{contactInformation.links.email.icon}}}<a class="stretched-link" href="#!"> <div class="d-inline-block" style="position: relative; top: 0.25rem;" id="email-data-container"></div> </a>
           </li>
           <li class="position-relative">
-            <i class="fas fa-phone mr-1"></i
-            ><a class="stretched-link" href="#!">+54 911 4534-2335</a>
+            {{{contactInformation.links.phone.icon}}}<a class="stretched-link" href="#!"> <div class="d-inline-block" style="position: relative; top: 0.25rem;" id="phone-data-container"></div> </a>
           </li>
           <li class="position-relative">
-            <i class="fas fa-map-marker-alt mr-1"></i
-            ><a class="stretched-link" href="#!">Buenos Aires, Argentina</a>
+            {{{contactInformation.links.location.icon}}}<a id='testRenderText' class="stretched-link" href="#!">{{contactInformation.links.location.title}}</a>
           </li>
         </ul>
       </div>
@@ -39,20 +37,17 @@
       <!-- Grid column -->
       <div class="col-md-3 mb-md-0 mb-3">
         <!-- Links -->
-        <h5 class="text-uppercase">Nuestras redes</h5>
+        <h5 class="text-uppercase">{{socialMedia.title}}</h5>
 
         <ul class="list-unstyled social-media-list">
           <li class="position-relative">
-            <i class="fab fa-twitter mr-1"></i
-            ><a class="stretched-link" href="#!">Twitter</a>
+            {{{socialMedia.links.twitter.icon}}}<a class="stretched-link" target="_blank" rel="noopener noreferrer" href="{{{socialMedia.links.twitter.url}}}">{{socialMedia.links.twitter.title}}</a>
           </li>
           <li class="position-relative">
-            <i class="fab fa-instagram mr-1"></i
-            ><a class="stretched-link" href="#!">Instagram</a>
+            {{{socialMedia.links.instagram.icon}}}<a class="stretched-link" target="_blank" rel="noopener noreferrer" href="{{{socialMedia.links.instagram.url}}}">{{socialMedia.links.instagram.title}}</a>
           </li>
           <li class="position-relative">
-            <i class="fab fa-facebook mr-1"></i
-            ><a class="stretched-link" href="#!">Facebook</a>
+            {{{socialMedia.links.facebook.icon}}}<a class="stretched-link" target="_blank" rel="noopener noreferrer" href="{{{socialMedia.links.facebook.url}}}">{{socialMedia.links.facebook.title}}</a>
           </li>
         </ul>
       </div>
@@ -66,16 +61,16 @@
   <div class="footer-copyright py-2 d-flex justify-content-center">
     <ul class="d-inline-block px-1">
       <li>
-        © 2020 Studio Maule
+        {{lowerFooter.links.copyright.title}}
       </li>
       <li>
-        <a class="" href="#">Términos y privacidad</a>
+        <a class="" {{{lowerFooter.links.termsAndPrivacy.extraAttr}}} href="{{{lowerFooter.links.termsAndPrivacy.url}}}">{{lowerFooter.links.termsAndPrivacy.title}}</a>
       </li>
       <li>
-        <a class="" href="#">Dev. Julián Zatloukal</a>
+        <a class="" {{{lowerFooter.links.devInfo.extraAttr}}} href="{{{lowerFooter.links.devInfo.url}}}">{{lowerFooter.links.devInfo.title}}</a>
       </li>
     </ul>
   </div>
   <!-- Copyright -->
 </footer>
-<!-- Footer -->
+{{/with}}
