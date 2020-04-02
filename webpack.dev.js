@@ -43,18 +43,11 @@ module.exports = merge(common, {
         )
       }
     }),
-    // new RemovePlugin({
-    //   after: {
-    //     test: [
-    //       {
-    //         folder: path.join(process.cwd(), 'src'),
-    //         method: absoluteItemPath => {
-    //           return new RegExp(/\.html$/, 'm').test(absoluteItemPath);
-    //         }
-    //       }
-    //     ]
-    //   }
-    // })
+    new HandlebarsPlugin({
+      entry: path.join(process.cwd(), 'src', 'html','*.hbs'),
+      output: path.join(process.cwd(), 'src','html','[name].html'),
+      data: path.join(process.cwd(), 'src/data/lang.es.json')
+    }),
   ],
   optimization: {
     runtimeChunk: 'single'

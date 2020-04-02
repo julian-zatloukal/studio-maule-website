@@ -1,4 +1,38 @@
 {
+  "navbar":{
+    "items":[
+      {
+        "title":"Inicio",
+        "onClick":"EventHandler.scrollHandlerOnClick(event,'head')"
+      },
+      {
+        "title":"Servicios",
+        "onClick":"EventHandler.scrollHandlerOnClick(event,'services')"
+      },
+      {
+        "title":"¿Quiénes somos?",
+        "onClick":"EventHandler.scrollHandlerOnClick(event,'about-us')"
+      },
+      {
+        "title":"Nuestros clientes",
+        "onClick":"EventHandler.scrollHandlerOnClick(event,'our-customers')"
+      },
+      {
+        "title":"Contacto",
+        "onClick":"EventHandler.scrollHandlerOnClick(event,'contact-form')"
+      }
+    ],
+    "languages":[
+      {
+        "title":"Español",
+        "onClick":"javascript:void(0);"
+      },
+      {
+        "title":"Italiano",
+        "onClick":"javascript:void(0);"
+      }
+    ]
+  },
   "serviceCards": {
     "title": "Servicios",
     "viewMore": "Ver más.",
@@ -31,79 +65,45 @@
       }
     ]
   },
-  "contactForm": {
-    "title": "Contacto",
-    "fields": {
-      "nameInput": {
-        "title": "Nombre",
-        "placeHolder": "Ingrese su nombre",
-        "errorsCaption": {
-          "completeThisField": "Por favor, complete este campo.",
-          "badFormat": "Por favor, introduzca un nombre válido.",
-          "tooLong": "Por favor, introduzca un nombre más corto."
+  "header-carousel": {
+    "image_extension": ".jpg",
+    "image_directory": "./assets/img/",
+    "slides":[
+      {
+        "title": "Traducciónes publicas.",
+        "body": "¿Necesita realizar traducciones? Del español al italiano y del Italiano al español, traductora con más de 25 años de experiencia.",
+        "buttonContent": "Contactar",
+        "onclick": "EventHandler.scrollHandlerOnClick(event,'contact-form')",
+        "image": {
+          "name": "carousel_1",
+          "position": "62% 50%"
         }
       },
-      "phoneInput": {
-        "title": "Numero de teléfono (Opcional)",
-        "placeHolder": "Ej. +54 9 11 3741-7423",
-        "errorsCaption": {
-          "completeThisField": "Por favor, complete este campo.",
-          "badFormat": "Por favor, introduzca un número válido.",
-          "tooLong": "Por favor, introduzca un número más corto."
+      {
+        "title": "Referencias de todo el mundo.",
+        "body": "Traducciones realizadas y enviadas a Brasil, Italia, Alemania, Israel, EEUU, y Perú. Enviadas a los respectivos países con todos los sellados previos para la validez internacional.",
+        "buttonContent": "Ver Nuestros clientes",
+        "onclick": "EventHandler.scrollHandlerOnClick(event,'our-customers')",
+        "image": {
+          "name": "carousel_2",
+          "position": "52% 50%"
         }
       },
-      "emailInput": {
-        "title": "Correo electrónico",
-        "placeHolder": "Ingrese su correo electrónico",
-        "errorsCaption": {
-          "completeThisField": "Por favor, complete este campo.",
-          "badFormat": "Por favor, introduzca un email válido.",
-          "tooLong": "Por favor, introduzca un número más corto."
-        }
-      },
-      "subjectInput": {
-        "title": "Asunto",
-        "placeHolder": "Seleccione un asunto",
-        "options": [
-          "Traducción pública",
-          "Traducción pública de actas",
-          "Armado de carpeta para ciudadanía",
-          "Declaración de valor de titulos",
-          "Traducción no pública",
-          "Otro"
-        ],
-        "errorsCaption": {
-          "completeThisField": "Por favor, seleccione una opción.",
-          "badFormat": "Por favor, introduzca una opción valida.",
-          "tooLong": "Por favor, introduzca una opción más corta."
-        }
-      },
-      "descriptionInput": {
-        "title": "Mensaje",
-        "placeHolder": "Por favor, dejenos un mensaje.",
-        "errorsCaption": {
-          "completeThisField": "Por favor, complete este campo.",
-          "badFormat": "Por favor, introduzca una descripción válida.",
-          "tooLong": "Por favor, introduzca una descripción más corta."
-        }
-      },
-      "recaptchaInput": {
-        "errorsCaption": {
-          "completeThisField": "Por favor, complete esta casilla.",
-          "badFormat": "Se ha producido un error.",
-          "tooLong": "Se ha producido un error."
+      {
+        "title": "Ciudadanía italiana",
+        "body": "La Ciudadanía italiana es otorgada, sin límite de generaciones, a los descendientes de los italianos emigrados a través del Ius sanguinis, Derecho de Sangre. Permite el acceso ilimitado todos los países dentro de la Unión Europea, incluyendo Reino Unido.",
+        "buttonContent": "Contactar",
+        "onclick": "EventHandler.scrollHandlerOnClick(event,'contact-form')",
+        "image": {
+          "name": "carousel_3",
+          "position": "50% 65%"
         }
       }
-    },
-    "submitOutcomes": {
-      "success": {
-        "heading": "¡Enviado!",
-        "body": "Su mensaje a sido enviado y será respondido a la brevedad."
-      },
-      "failure": {
-        "body": "<strong>Ooops!</strong> Ha ocurrido un error, intente comunicarse mediante nuestro correo electrónico."
-      }
-    }
+    ]
+  },
+  "about-us":{
+    "title":"",
+    "body":""
   },
   "customersCarousel": {
     "title": "Nuestros clientes",
@@ -173,5 +173,142 @@
       }
     ]
   },
-  "footer": {}
+  "contactForm": {
+    "title": "Contacto",
+    "buttonContent": "Enviar mensaje",
+    "fields": {
+      "nameInput": {
+        "title": "Nombre",
+        "placeHolder": "Ingrese su nombre",
+        "errorsCaption": {
+          "completeThisField": "Por favor, complete este campo.",
+          "badFormat": "Por favor, introduzca un nombre válido.",
+          "tooLong": "Por favor, introduzca un nombre más corto."
+        }
+      },
+      "phoneInput": {
+        "title": "Numero de teléfono (Opcional)",
+        "placeHolder": "Ej. +54 9 11 3741-7423",
+        "errorsCaption": {
+          "completeThisField": "Por favor, complete este campo.",
+          "badFormat": "Por favor, introduzca un número válido.",
+          "tooLong": "Por favor, introduzca un número más corto."
+        }
+      },
+      "emailInput": {
+        "title": "Correo electrónico",
+        "placeHolder": "Ingrese su correo electrónico",
+        "errorsCaption": {
+          "completeThisField": "Por favor, complete este campo.",
+          "badFormat": "Por favor, introduzca un email válido.",
+          "tooLong": "Por favor, introduzca un número más corto."
+        }
+      },
+      "subjectInput": {
+        "title": "Asunto",
+        "placeHolder": "Seleccione un asunto",
+        "options": [
+          "Traducción pública",
+          "Traducción pública de actas",
+          "Armado de carpeta para ciudadanía",
+          "Declaración de valor de titulos",
+          "Traducción no pública",
+          "Otro"
+        ],
+        "errorsCaption": {
+          "completeThisField": "Por favor, seleccione una opción.",
+          "badFormat": "Por favor, introduzca una opción valida.",
+          "tooLong": "Por favor, introduzca una opción más corta."
+        }
+      },
+      "descriptionInput": {
+        "title": "Mensaje",
+        "placeHolder": "Por favor, dejenos un mensaje.",
+        "errorsCaption": {
+          "completeThisField": "Por favor, complete este campo.",
+          "badFormat": "Por favor, introduzca una descripción válida.",
+          "tooLong": "Por favor, introduzca una descripción más corta."
+        }
+      },
+      "recaptchaInput": {
+        "errorsCaption": {
+          "completeThisField": "Por favor, complete esta casilla.",
+          "badFormat": "Se ha producido un error.",
+          "tooLong": "Se ha producido un error."
+        }
+      }
+    },
+    "submitOutcomes": {
+      "success": {
+        "heading": "¡Enviado!",
+        "body": "Su mensaje ha sido enviado y será respondido a la brevedad."
+      },
+      "failure": {
+        "body": "<strong>Ooops!</strong> Ha ocurrido un error, intente comunicarse mediante nuestro correo electrónico."
+      }
+    }
+  },
+  "footer": {
+    "title": "Studio Maule",
+    "tagline": "Traducciones públicas italianas.",
+    "socialMedia": {
+      "title": "NUESTRAS REDES",
+      "links": {
+        "twitter": {
+          "icon": "<i class=\"fab fa-twitter mr-1\"></i>",
+          "title": "Twitter",
+          "url": "https://twitter.com/StudioMaule"
+        },
+        "instagram": {
+          "icon": "<i class=\"fab fa-instagram mr-1\"></i>",
+          "title": "Instagram",
+          "url": "https://www.instagram.com/studiomaule/"
+        },
+        "facebook": {
+          "icon": "<i class=\"fab fa-facebook mr-1\"></i>",
+          "title": "Facebook",
+          "url": "#!"
+        }
+      }
+    },
+    "contactInformation": {
+      "title": "CONTACTO",
+      "links": {
+        "email": {
+          "icon": "<i class=\"fas fa-envelope mr-1\"></i>",
+          "title": "info@studiomaule.com.ar",
+          "url": ""
+        },
+        "phone": {
+          "icon": "<i class=\"fas fa-phone mr-1\"></i>",
+          "title": "+54 911 4534-2335",
+          "url": ""
+        },
+        "location": {
+          "icon": "<i class=\"fas fa-map-marker-alt mr-1\"></i>",
+          "title": "Buenos Aires, Argentina",
+          "url": ""
+        }
+      }
+    },
+    "lowerFooter": {
+      "links": {
+        "copyright": {
+          "title": "© 2020 Studio Maule"
+        },
+        "termsAndPrivacy": {
+          "extraAttr": " ",
+          "title": "Términos y privacidad",
+          "url": "javascript:void(0);"
+        },
+        "devInfo": {
+          "extraAttr": " ",
+          "title": "Dev. Julián Zatloukal",
+          "url": "javascript:void(0);"
+        }
+      }
+    }
+
+
+  }
 }

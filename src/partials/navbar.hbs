@@ -8,28 +8,18 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" id="nav-item-inico" href="#">Inicio <span class="sr-only">(current)</span></a>
+            {{#each navbar.items}}
+            <li class="nav-item{{#if @first}} active{{/if}}">
+                <a onclick="{{{onClick}}}" class="nav-link" href="#">{{title}}{{#if @first}}<span class="sr-only">(current)</span>{{/if}}</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" id="nav-item-servicios" href="#">Servicios</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="nav-item-quienes-somos" href="#">¿Quiénes somos?</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="nav-item-nuestros-clientes" href="#">Nuestros clientes</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="nav-item-contacto" href="#">Contacto</a>
-            </li>
+            {{/each}}
         </ul>
         <ul class="nav navbar-nav ml-auto mr-5">
             <li class="nav-item dropdown d-none">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false"><span class="flag-icon flag-icon-es"> </span> Español</a>
+                    aria-expanded="false"><span class="flag-icon flag-icon-es"> </span> {{navbar.language.[0].title}}</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown09">
-                    <a class="dropdown-item" href="#it"><span class="flag-icon flag-icon-it"> </span> Italiano</a>
+                    <a class="dropdown-item" href="#it"><span class="flag-icon flag-icon-it"> </span> {{navbar.language.[1].title}}</a>
                 </div>
             </li>
         </ul>

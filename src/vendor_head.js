@@ -18,6 +18,8 @@ import './scss/main.scss';
   })(window, document, 'script', 'dataLayer', 'GTM-MQMDBXC');
 //#endregion
 
+import html2canvas from 'html2canvas/dist/html2canvas';
+window.html2canvas = html2canvas;
 
 
 //#region Load Hyphenopoly
