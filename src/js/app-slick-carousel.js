@@ -1,6 +1,5 @@
 class customersCarousel {
   static initialize() {
-    console.log('LOADING CAROUSEL');
     $('.slick-carousel-items').slick({
       dots: true,
       arrows: true,
