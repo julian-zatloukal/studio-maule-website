@@ -17,14 +17,17 @@
         <div class="template-demo">
           <p lang="{{{@root.language-code}}}" class="customer-review-short hyphenate">
             {{short_body}}
-            <a href="#" class="badge badge-secondary read-more-badge" data-toggle="modal"
-              data-target=".bd-example-modal-lg">{{@root.customersCarousel.viewMore}}</a>
+            {{#ifCond viewMoreStatus '==' 'enabled'}} <a href="#" class="badge badge-secondary read-more-badge"
+              data-toggle="modal" data-target=".bd-example-modal-lg">{{@root.customersCarousel.viewMore}}</a>
+            {{/ifCond}}
           </p>
         </div>
         <hr />
         <div class="row">
           <div class="profile-pic-container">
-            <div style="background-image: url('${require(`{{ concat @root.customersCarousel.image_directory image.checksum @root.customersCarousel.image_extension }}`)}'); background-position: {{image.position}};" class="profile-pic"></div>
+            <div
+              style="background-image: url('${require(`{{ concat @root.customersCarousel.image_directory image.checksum @root.customersCarousel.image_extension }}`)}'); background-position: {{image.position}};"
+              class="profile-pic"></div>
           </div>
           <div class="card-tag-container">
             <div class="profile">
