@@ -5,6 +5,7 @@ import './js/app';
 import './js/development-functions';
 import './js/pageEvents';
 import './js/footer';
+import './js/services'
 
 const carouselDataImagesUrl = importAll(
   require.context('./data/img', false, /\.(png|jpe?g|svg)$/)

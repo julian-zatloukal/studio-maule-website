@@ -152,10 +152,10 @@ function scrollHandler(section, parameter) {
 }
 
 class EventHandler {
-  static serviceCardClick(button){
-    var serviceIndex = parseInt($(button).closest('.card').attr('data-service-index'));
-    window.scrollHandler('contact-form', serviceIndex+1);
-  }
+  // static serviceCardClick(index){
+  //   var serviceIndex = parseInt($(button).closest('.card').attr('data-service-index'));
+  //   window.scrollHandler('contact-form', serviceIndex+1);
+  // }
   static scrollHandlerOnClick(event, section){
     event.preventDefault();
     window.scrollHandler(section);

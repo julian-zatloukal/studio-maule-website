@@ -1,35 +1,35 @@
 {
-  "navbar":{
-    "items":[
+  "navbar": {
+    "items": [
       {
-        "title":"Inicio",
-        "onClick":"EventHandler.scrollHandlerOnClick(event,'head')"
+        "title": "Inicio",
+        "onClick": "EventHandler.scrollHandlerOnClick(event,'head')"
       },
       {
-        "title":"Servicios",
-        "onClick":"EventHandler.scrollHandlerOnClick(event,'services')"
+        "title": "Servicios",
+        "onClick": "EventHandler.scrollHandlerOnClick(event,'services')"
       },
       {
-        "title":"¿Quiénes somos?",
-        "onClick":"EventHandler.scrollHandlerOnClick(event,'about-us')"
+        "title": "¿Quiénes somos?",
+        "onClick": "EventHandler.scrollHandlerOnClick(event,'about-us')"
       },
       {
-        "title":"Nuestros clientes",
-        "onClick":"EventHandler.scrollHandlerOnClick(event,'our-customers')"
+        "title": "Nuestros clientes",
+        "onClick": "EventHandler.scrollHandlerOnClick(event,'our-customers')"
       },
       {
-        "title":"Contacto",
-        "onClick":"EventHandler.scrollHandlerOnClick(event,'contact-form')"
+        "title": "Contacto",
+        "onClick": "EventHandler.scrollHandlerOnClick(event,'contact-form')"
       }
     ],
-    "languages":[
+    "languages": [
       {
-        "title":"Español",
-        "onClick":"javascript:void(0);"
+        "title": "Español",
+        "onClick": "javascript:void(0);"
       },
       {
-        "title":"Italiano",
-        "onClick":"javascript:void(0);"
+        "title": "Italiano",
+        "onClick": "javascript:void(0);"
       }
     ]
   },
@@ -37,38 +37,62 @@
     "title": "Servicios",
     "viewMore": "Ver más.",
     "buttonContent": "Consultar »",
-    "buttonOnClick": "EventHandler.serviceCardClick(this)",
     "cards": [
       {
         "title": "Traducción pública.",
-        "body": "La traducción de un documento de un idioma extranjero al nacional, del idioma nacional al extranjero, tiene carácter público cuando lleva la firma y el sello de un traductor matriculado en los idiomas en los que interviene, en cumplimiento con el CTPCBA."
+        "body": "La traducción de un documento de un idioma extranjero al nacional, del idioma nacional al extranjero, tiene carácter público cuando lleva la firma y el sello de un traductor matriculado en los idiomas en los que interviene, en cumplimiento con el CTPCBA.",
+        "large_body": "",
+        "buttonOnClick": "window.scrollHandler('contact-form', 1);",
+        "viewMoreStatus": "disabled"
       },
       {
         "title": "Traducción pública de actas.",
-        "body": "La traducción publica de Actas de nacimiento, matrimonio y defunción; Divorcios, certificado de cosa juzgada; Adopciones con cosa juzgada; Informaciones sumarias de identidad de persona; Balances; Estatutos; Poderes; Rectificaciones."
+        "body": "La traducción publica de Actas de nacimiento, matrimonio y defunción; Divorcios, certificado de cosa juzgada; Adopciones con cosa juzgada; Informaciones sumarias de identidad de persona; Balances; Estatutos; Poderes; Rectificaciones.",
+        "large_body": "",
+        "buttonOnClick": "window.scrollHandler('contact-form', 2);",
+        "viewMoreStatus": "disabled"
       },
       {
         "title": "Armado de carpeta para ciudadanía.",
-        "body": "El pasaporte italiano concede el derecho de entrada a 187 países y territorios; siendo uno de los pasaportes más valorados. La ciudadanía italiana se basa en el principio del ius sanguinis, derecho de sangre, que sostiene que es italiano el hijo nacido de padre italiano o madre italiana."
+        "body": "El pasaporte italiano concede el derecho de entrada a 187 países y territorios; siendo uno de los pasaportes más valorados. La ciudadanía italiana se basa en el principio del ius sanguinis, derecho de sangre, que sostiene que es italiano el hijo nacido de padre italiano o madre italiana.",
+        "large_body": "",
+        "buttonOnClick": "window.scrollHandler('contact-form', 3);",
+        "viewMoreStatus": "disabled"
       },
       {
         "title": "Declaración de valor de títulos.",
-        "body": "La declaración de valor es un documento expedido por las autoridades consulares italianas a quienes, habiendo conseguido un título de estudio ante instrucciones extranjeras, desean proseguir los estudios en Italia o bien iniciar los procedimientos de equiparación de Títulos de Estudio o bien de Reconocimiento profesional."
+        "body": "La declaración de valor es un documento expedido por las autoridades consulares italianas a quienes, habiendo conseguido un título de estudio ante instrucciones extranjeras, desean proseguir los estudios en Italia o bien iniciar los procedimientos de equiparación de Títulos de Estudio o bien de Reconocimiento profesional.",
+        "large_body": "",
+        "buttonOnClick": "window.scrollHandler('contact-form', 4);",
+        "viewMoreStatus": "disabled"
       },
       {
         "title": "Traducción no pública.",
-        "body": "La traducción es la actividad que consiste en comprender el significado de un texto en un idioma, llamado texto origen, para producir un texto con significado equivalente, en otro idioma, llamado texto traducido."
+        "body": "La traducción es la actividad que consiste en comprender el significado de un texto en un idioma, llamado texto origen, para producir un texto con significado equivalente, en otro idioma, llamado texto traducido.",
+        "large_body": "",
+        "buttonOnClick": "window.scrollHandler('contact-form', 5);",
+        "viewMoreStatus": "disabled"
+      },
+      {
+        "title": "Ciudadanía en Italia.",
+        "body": "Desde ya hace varios años comparto el ejercicio mi profesión haciendo traducciones públicas para Matías Toirán, que de los gestores que he conocido en mi camino, sin dudas es el mejor, él vive en Italia y gestiona la obtención de la ciudadanía analizando previamente la documentación que tienen.",
+        "large_body": "Desde ya hace varios años comparto el ejercicio mi profesión haciendo traducciones públicas para <strong>Matías Toirán</strong>, que de los gestores que he conocido en mi camino, sin dudas es el mejor, él vive en Italia y gestiona la obtención de la ciudadanía analizando previamente la documentación que tienen, ofeciendo hospedaje, ayuda para la presentación de la carpeta y en el resto del trámite hasta la obtención de la Carta d’identitá y el Passaporto.<a href=\"#\" onclick=\"event.preventDefault(); window.open('https://www.facebook.com/ciudadaniaenitaliaoficial','_blank','noopener')\"> Les dejo un link.</a> <br><br><strong>Asesoramiento integral en Italia:</strong><br>&emsp;• Revisión previa de Documentos<br>&emsp;• Entrevistas informativas por skype<br>&emsp;• Gestión de Alojamiento para Residencia<br>&emsp;• Solicitud de Presencia y Permesso di Soggiorno<br>&emsp;• Asignación del Codice Fiscale<br>&emsp;• Inscripción de Residencia en Comune<br>&emsp;• Solicitud formal de Ciudadania por Descendencia en el Comune<br>&emsp;• Emisión Carta de Identidad y Pasaporte Italiano",
+        "buttonOnClick": "event.preventDefault(); window.open('https://www.facebook.com/ciudadaniaenitaliaoficial','_blank','noopener')",
+        "viewMoreStatus": "enabled"
       },
       {
         "title": "Otros.",
-        "body": "En caso de precisar un servicio personalizado, especifico o de consultoría."
+        "body": "En caso de precisar un servicio personalizado, especifico o de consultoría.",
+        "large_body": "",
+        "buttonOnClick": "window.scrollHandler('contact-form', 6);",
+        "viewMoreStatus": "disabled"
       }
     ]
   },
   "header-carousel": {
     "image_extension": ".jpg",
     "image_directory": "./assets/img/",
-    "slides":[
+    "slides": [
       {
         "title": "Traducciónes publicas.",
         "body": "¿Necesita realizar traducciones? Del español al italiano y del Italiano al español, traductora con más de 25 años de experiencia.",
@@ -101,9 +125,9 @@
       }
     ]
   },
-  "about-us":{
-    "title":"",
-    "body":""
+  "about-us": {
+    "title": "",
+    "body": ""
   },
   "customersCarousel": {
     "title": "Nuestros clientes",
@@ -308,7 +332,5 @@
         }
       }
     }
-
-
   }
 }
