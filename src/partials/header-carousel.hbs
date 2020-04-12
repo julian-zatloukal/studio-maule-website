@@ -1,4 +1,26 @@
 {{#with header-carousel}}
+<style>
+    {{#each slides}}
+        .carousel-item[data-index="{{@index}}"] {
+            background-position: {{image.position-desktop}};
+        }
+        @media (max-width: 768px) {
+            .carousel-item[data-index="{{@index}}"] {
+                background-position: {{image.position-tablet}};
+            }
+        }
+        @media (max-width: 425px) {
+            .carousel-item[data-index="{{@index}}"] {
+                background-position: {{image.position-mobile}};
+            }
+        }
+    {{/each}}
+    
+  }
+
+</style>
+
+
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -7,7 +29,7 @@
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active" data-index="0"
-            style="background-image: url('${require(`{{{concat image_directory slides.[0].image.name image_extension}}}`)}'); background-position: {{{slides.[0].image.position}}}; background-size: cover;">
+            style="background-image: url('${require(`{{{concat image_directory slides.[0].image.name image_extension}}}`)}'); background-size: cover;">
             <div class="container">
                 <div class="carousel-caption text-right ">
                     <h1>{{slides.[0].title}}</h1>
@@ -21,7 +43,7 @@
                 </div>
             </div>
         </div>
-        <div style="background-image: url('${require(`{{{concat image_directory slides.[1].image.name image_extension}}}`)}'); background-position: {{{slides.[1].image.position}}}; background-size: cover;"
+        <div style="background-image: url('${require(`{{{concat image_directory slides.[1].image.name image_extension}}}`)}'); background-size: cover;"
             class="carousel-item" data-index="1">
             <div class="container">
                 <div class="carousel-caption text-left">
@@ -37,7 +59,8 @@
             </div>
         </div>
         <div class="carousel-item"
-            style="background-image: url('${require(`{{{concat image_directory slides.[2].image.name image_extension}}}`)}'); background-position: {{{slides.[2].image.position}}}; background-size: cover;">
+            style="background-image: url('${require(`{{{concat image_directory slides.[2].image.name image_extension}}}`)}'); background-size: cover;"
+            data-index="2">
             <div class="container">
                 <div class="carousel-caption">
                     <h1>{{slides.[2].title}}</h1>

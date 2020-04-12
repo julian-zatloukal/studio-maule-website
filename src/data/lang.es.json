@@ -101,7 +101,9 @@
         "onclick": "EventHandler.scrollHandlerOnClick(event,'contact-form')",
         "image": {
           "name": "carousel_1",
-          "position": "62% 50%"
+          "position-desktop": "62% 50%",
+          "position-tablet": "78% 50%",
+          "position-mobile": "68% 50%"
         }
       },
       {
@@ -111,7 +113,9 @@
         "onclick": "EventHandler.scrollHandlerOnClick(event,'our-customers')",
         "image": {
           "name": "carousel_2",
-          "position": "52% 50%"
+          "position-desktop": "52% 50%",
+          "position-tablet": "52% 50%",
+          "position-mobile": "50% 50%"
         }
       },
       {
@@ -121,7 +125,9 @@
         "onclick": "EventHandler.scrollHandlerOnClick(event,'contact-form')",
         "image": {
           "name": "carousel_3",
-          "position": "50% 65%"
+          "position-desktop": "50% 65%",
+          "position-tablet": "50% 40%",
+          "position-mobile": "50% 30%"
         }
       }
     ]
