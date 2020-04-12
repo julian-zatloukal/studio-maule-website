@@ -32,7 +32,6 @@ module.exports = merge(common, {
       entry: path.join(process.cwd(), 'src', '*.hbs'),
       output: path.join(process.cwd(), 'src', '[name].html'),
       data: path.join(process.cwd(), 'src/data/lang.es.json'),
-
       partials: [path.join(process.cwd(), 'src', 'partials', '*.hbs')],
       helpers: {
         projectHelpers: path.join(
