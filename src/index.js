@@ -7,13 +7,15 @@ import './js/pageEvents';
 import './js/footer';
 import './js/services'
 
-const carouselDataImagesUrl = importAll(
-  require.context('./data/img', false, /\.(png|jpe?g|svg)$/)
-);
-
 function importAll(r) {
   return r.keys().map(r);
 }
+
+const dataImagesUrl = importAll(
+  require.context('./data/img', false, /\.(png|jpe?g|svg)$/)
+);
+
+window.dataImagesUrl = dataImagesUrl;
 
 jQuery.fn.textNodes = function() {
   return this.contents().filter(function() {
