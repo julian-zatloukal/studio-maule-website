@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description"
+    content="Studio Maule ofrece servicios de traducción publica, armado de carpeta para ciudadanía italiana, declaración de valor de títulos, entre otros." />
+  <meta name="author" content="Julian Zatloukal Maule" />
+
+  <title>Studio Maule</title>
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.1.0/css/flag-icon.min.css" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/7d4d2a9de0.js" crossorigin="anonymous"></script>
+  
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MQMDBXC" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <header>
+    <nav id="main-navbar" class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="#">
+            <img src="./assets/img/logo_composite.svg" class="logo-studio-maule" />
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a onclick="EventHandler.scrollHandlerOnClick(event,'head')" class="nav-link" href="#">Inicio<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a onclick="EventHandler.scrollHandlerOnClick(event,'services')" class="nav-link" href="#">Servicios</a>
+                </li>
+                <li class="nav-item">
+                    <a onclick="EventHandler.scrollHandlerOnClick(event,'about-us')" class="nav-link" href="#">¿Quiénes somos?</a>
+                </li>
+                <li class="nav-item">
+                    <a onclick="EventHandler.scrollHandlerOnClick(event,'our-customers')" class="nav-link" href="#">Nuestros clientes</a>
+                </li>
+                <li class="nav-item">
+                    <a onclick="EventHandler.scrollHandlerOnClick(event,'contact-form')" class="nav-link" href="#">Contacto</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav ml-auto mr-5">
+                <li class="nav-item dropdown d-none">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false"><span class="flag-icon flag-icon-es"> </span> </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown09">
+                        <a class="dropdown-item" href="#it"><span class="flag-icon flag-icon-it"> </span> </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>  </header>
+  <main role="main">
+    <style>
+            .carousel-item[data-index="0"] {
+                background-position: 62% 50%;
+            }
+            @media (max-width: 768px) {
+                .carousel-item[data-index="0"] {
+                    background-position: 78% 50%;
+                }
+            }
+            @media (max-width: 425px) {
+                .carousel-item[data-index="0"] {
+                    background-position: 68% 50%;
+                }
+            }
+            .carousel-item[data-index="1"] {
+                background-position: 52% 50%;
+            }
+            @media (max-width: 768px) {
+                .carousel-item[data-index="1"] {
+                    background-position: 52% 50%;
+                }
+            }
+            @media (max-width: 425px) {
+                .carousel-item[data-index="1"] {
+                    background-position: 50% 50%;
+                }
+            }
+            .carousel-item[data-index="2"] {
+                background-position: 50% 65%;
+            }
+            @media (max-width: 768px) {
+                .carousel-item[data-index="2"] {
+                    background-position: 50% 40%;
+                }
+            }
+            @media (max-width: 425px) {
+                .carousel-item[data-index="2"] {
+                    background-position: 50% 30%;
+                }
+            }
+        
+      }
+    
+    </style>
+    
+    
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-index="0"
+                style="background-image: url('${require(`./assets/img/carousel_1.jpg`)}'); background-size: cover;">
+                <div class="container">
+                    <div class="carousel-caption text-right ">
+                        <h1>Traducciones públicas.</h1>
+                        <p lang="es" id="carousel-caption-first" class="stretch ml-auto hyphenate">
+                            ¿Necesita realizar traducciones? Del español al italiano y del Italiano al español, traductora con más de 25 años de experiencia.
+                        </p>
+                        <p>
+                            <a onclick="EventHandler.scrollHandlerOnClick(event,'contact-form')" class="btn btn-lg btn-primary carousel-button" href="#"
+                                role="button">Contactar</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div style="background-image: url('${require(`./assets/img/carousel_2.jpg`)}'); background-size: cover;"
+                class="carousel-item" data-index="1">
+                <div class="container">
+                    <div class="carousel-caption text-left">
+                        <h1>Referencias de todo el mundo.</h1>
+                        <p lang="es" id="carousel-caption-second" class="stretch mr-auto hyphenate">
+                            Traducciones realizadas y enviadas a Brasil, Italia, Alemania, Israel, EEUU, y Perú. Enviadas a los respectivos países con todos los sellados previos para la validez internacional.
+                        </p>
+                        <p>
+                            <a onclick="EventHandler.scrollHandlerOnClick(event,'our-customers')" class="btn btn-lg btn-primary carousel-button" href="#"
+                                role="button">Ver Nuestros clientes</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item"
+                style="background-image: url('${require(`./assets/img/carousel_3.jpg`)}'); background-size: cover;"
+                data-index="2">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>Ciudadanía italiana</h1>
+                        <p lang="es" id="carousel-caption-second" class="stretch mx-auto hyphenate">
+                            La Ciudadanía italiana es otorgada, sin límite de generaciones, a los descendientes de los italianos emigrados a través del Ius sanguinis, Derecho de Sangre. Permite el acceso ilimitado todos los países dentro de la Unión Europea, incluyendo Reino Unido.
+                        </p>
+                        <p>
+                            <a onclick="EventHandler.scrollHandlerOnClick(event,'contact-form')" class="btn btn-lg btn-primary carousel-button" href="#"
+                                role="button">Contactar</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <div id="main-container" class="container marketing">
+      <div id="servicios-container">
+        <section class="jumbotron bg-transparent text-dark text-center pt-1 pb-1">
+          <div class="container">
+            <h1 class="jumbotron-heading">Servicios</h1>
+          </div>
+        </section>
+        <div class="row row-cols-1 row-cols-md-2">
+          <div class="col mb-4">
+            <div data-service-index="0" class="card h-100" data-large-body="">
+              <div class="card-body">
+                <h5 class="card-title mb-3 service-card-title">Traducción pública.</h5>
+                <p lang="es" class="card-text service-card-body hyphenate">
+                  La traducción de un documento de un idioma extranjero al nacional, del idioma nacional al extranjero, tiene carácter público cuando lleva la firma y el sello de un traductor matriculado en los idiomas en los que interviene, en cumplimiento con el CTPCBA. 
+                </p>
+                <a href="#" class="btn btn-primary service-card-button"
+                  onclick="window.scrollHandler('contact-form', 1);">Consultar »</a>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div data-service-index="1" class="card h-100" data-large-body="">
+              <div class="card-body">
+                <h5 class="card-title mb-3 service-card-title">Traducción pública de actas.</h5>
+                <p lang="es" class="card-text service-card-body hyphenate">
+                  La traducción publica de Actas de nacimiento, matrimonio y defunción; Divorcios, certificado de cosa juzgada; Adopciones con cosa juzgada; Informaciones sumarias de identidad de persona; Balances; Estatutos; Poderes; Rectificaciones. 
+                </p>
+                <a href="#" class="btn btn-primary service-card-button"
+                  onclick="window.scrollHandler('contact-form', 2);">Consultar »</a>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div data-service-index="2" class="card h-100" data-large-body="">
+              <div class="card-body">
+                <h5 class="card-title mb-3 service-card-title">Armado de carpeta para ciudadanía.</h5>
+                <p lang="es" class="card-text service-card-body hyphenate">
+                  El pasaporte italiano concede el derecho de entrada a 187 países y territorios; siendo uno de los pasaportes más valorados. La ciudadanía italiana se basa en el principio del ius sanguinis, derecho de sangre, que sostiene que es italiano el hijo nacido de padre italiano o madre italiana. 
+                </p>
+                <a href="#" class="btn btn-primary service-card-button"
+                  onclick="window.scrollHandler('contact-form', 3);">Consultar »</a>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div data-service-index="3" class="card h-100" data-large-body="">
+              <div class="card-body">
+                <h5 class="card-title mb-3 service-card-title">Declaración de valor de títulos.</h5>
+                <p lang="es" class="card-text service-card-body hyphenate">
+                  La declaración de valor es un documento expedido por las autoridades consulares italianas a quienes, habiendo conseguido un título de estudio ante instrucciones extranjeras, desean proseguir los estudios en Italia o bien iniciar los procedimientos de equiparación de Títulos de Estudio o bien de Reconocimiento profesional. 
+                </p>
+                <a href="#" class="btn btn-primary service-card-button"
+                  onclick="window.scrollHandler('contact-form', 4);">Consultar »</a>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div data-service-index="4" class="card h-100" data-large-body="">
+              <div class="card-body">
+                <h5 class="card-title mb-3 service-card-title">Traducción no pública.</h5>
+                <p lang="es" class="card-text service-card-body hyphenate">
+                  La traducción es la actividad que consiste en comprender el significado de un texto en un idioma, llamado texto origen, para producir un texto con significado equivalente, en otro idioma, llamado texto traducido. 
+                </p>
+                <a href="#" class="btn btn-primary service-card-button"
+                  onclick="window.scrollHandler('contact-form', 5);">Consultar »</a>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div data-service-index="5" class="card h-100" data-large-body="Desde ya hace varios años comparto el ejercicio mi profesión haciendo traducciones públicas para &lt;strong&gt;Matías Toirán&lt;/strong&gt;, que de los gestores que he conocido en mi camino, sin dudas es el mejor, él vive en Italia y gestiona la obtención de la ciudadanía analizando previamente la documentación que tienen, ofeciendo hospedaje, ayuda para la presentación de la carpeta y en el resto del trámite hasta la obtención de la Carta d’identitá y el Passaporto.&lt;a href&#x3D;&quot;#&quot; onclick&#x3D;&quot;event.preventDefault(); window.open(&#x27;https://www.facebook.com/ciudadaniaenitaliaoficial&#x27;,&#x27;_blank&#x27;,&#x27;noopener&#x27;)&quot;&gt; Les dejo un link.&lt;/a&gt; &lt;br&gt;&lt;br&gt;&lt;strong&gt;Asesoramiento integral en Italia:&lt;/strong&gt;&lt;br&gt;&amp;emsp;• Revisión previa de Documentos&lt;br&gt;&amp;emsp;• Entrevistas informativas por skype&lt;br&gt;&amp;emsp;• Gestión de Alojamiento para Residencia&lt;br&gt;&amp;emsp;• Solicitud de Presencia y Permesso di Soggiorno&lt;br&gt;&amp;emsp;• Asignación del Codice Fiscale&lt;br&gt;&amp;emsp;• Inscripción de Residencia en Comune&lt;br&gt;&amp;emsp;• Solicitud formal de Ciudadania por Descendencia en el Comune&lt;br&gt;&amp;emsp;• Emisión Carta de Identidad y Pasaporte Italiano &lt;br&gt; &lt;div onclick&#x3D;&quot;event.preventDefault(); window.open(&#x27;https://www.facebook.com/ciudadaniaenitaliaoficial&#x27;,&#x27;_blank&#x27;,&#x27;noopener&#x27;)&quot; class&#x3D;&quot;mx-auto&quot; style&#x3D;&quot;background-image: url(&#x27;img/6ff7648ccc7880636c9b1b492fd9afbe.ba1ad20634c0af101ff9f416dad2e40a.png&#x27;); background-repeat: no-repeat; background-size: contain; width: 25vw; height: 25vw; max-width: 350px; max-height: 350px; min-width: 300px; min-height: 300px;&quot;&gt;&lt;/div&gt;">
+              <div class="card-body">
+                <h5 class="card-title mb-3 service-card-title">Ciudadanía en Italia.</h5>
+                <p lang="es" class="card-text service-card-body hyphenate">
+                  Desde ya hace varios años comparto el ejercicio mi profesión haciendo traducciones públicas para Matías Toirán, que de los gestores que he conocido en mi camino, sin dudas es el mejor, él vive en Italia y gestiona la obtención de la ciudadanía analizando previamente la documentación que tienen.  <a href="#" class="service-view-more"
+                    data-toggle="modal" data-target=".bd-view-more-modal-lg">Ver más.</a> 
+                </p>
+                <a href="#" class="btn btn-primary service-card-button"
+                  onclick="event.preventDefault(); window.open('https://www.facebook.com/ciudadaniaenitaliaoficial','_blank','noopener')">Consultar »</a>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div data-service-index="6" class="card h-100" data-large-body="">
+              <div class="card-body">
+                <h5 class="card-title mb-3 service-card-title">Otros.</h5>
+                <p lang="es" class="card-text service-card-body hyphenate">
+                  En caso de precisar un servicio personalizado, especifico o de consultoría. 
+                </p>
+                <a href="#" class="btn btn-primary service-card-button"
+                  onclick="window.scrollHandler('contact-form', 6);">Consultar »</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade bd-view-more-modal-lg services-modal" tabindex="-1" role="dialog"
+          aria-labelledby="myLargeModalLabel" style="display: none;" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="myLargeModalLabel"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="modal-body-container">
+                  <p lang="es" class="card-text service-card-body hyphenate"></p>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                  Cerrar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>      <hr id="quien-somos-divider" class="featurette-divider" />
+      <div id="quienes-somos-container" class="row featurette">
+          <div class="col-md-7 order-md-2">
+              <h2 class="featurette-heading">¿Quiénes somos?</h2>
+              <p class="lead stretch indent-enable justify">
+                  Gabriella Maule, Traductora Pública Nacional en Idioma Italiano, nacida en Trieste, Italia con más de 25 años de experiencia en traducciones, título con validez nacional – Trabajo con un equipo de colegas (Colegas especializados en áreas, Abogados, Escribanos y Gestores)
+              </p>
+          </div>
+          <div class="col-md-5 order-md-1">
+              <img id="quienes-somos-img" class="featurette-image img-fluid mx-auto" src="./assets/img/quienes_somos.jpg"
+                  alt="Generic placeholder image" />
+          </div>
+      </div>      <hr id="nuestros-clientes-divider" class="featurette-divider" />
+      <div id="nuestros-clientes-container">
+        <section class="jumbotron bg-transparent text-dark text-center pt-1 pb-1">
+          <div class="container">
+            <h1 class="jumbotron-heading">Nuestros clientes</h1>
+          </div>
+        </section>
+      </div>
+      
+      <div class="container-carousel">
+        <div class="slick-carousel-items">
+          <div class="slick-carousel-card" data-large-body="Al comenzar con todo el armado de la carpeta te encontras con miles de preguntas e inquietudes que por ahí no están detalladas en una página, o te nombran ciertas oficinas a las que Tenes que asistir y no Tenes idea de donde quedan. Entre tantos datos e información, comenzas a consultar entre unos y otros es que me llego el dato de Gabriela Maule.&lt;br&gt;&lt;br&gt;Hoy, después de casi 10 meses de aquel primer contacto, puedo decir que no solo me encontré con la mejor traductora, sino con la persona que me fue guiando para que todo salga rápido, ya que el tiempo en mi situación era un factor fundamental, sólo teníamos dos meses para armar todo, y cumplió con este compromiso. Fue de gran ayuda tener un buen profesional a cargo de los documentos, atenta no sólo a las traducciones sino a las apostillas y el visto consular, y siempre con un plan b por si algo no se daba como lo estábamos planeando.&lt;br&gt;&lt;br&gt;Hoy parte de este gran logro fue por su excelente trabajo. Nunca voy a dejar de agradecerte por todo el trabajo y el apoyo en este tiempo, siempre estuviste ahí para las dudas y consultas.">
+            <div class="card-body">
+              <h4 class="card-title">
+                <img src="https://img.icons8.com/ultraviolet/40/000000/quote-left.png" />
+              </h4>
+              <div class="template-demo">
+                <p lang="es" class="customer-review-short hyphenate">
+                  Gabriella me guio atentamente a través del ofuscado proceso para obtener mi ciudadanía. Logró un excelente compromiso profesional aun con las fechas bastante ajustadas. Nunca voy a dejar de agradecerte por todo el trabajo y el apoyo.
+                   <a href="#" class="badge badge-secondary read-more-badge"
+                    data-toggle="modal" data-target=".bd-example-modal-lg">Ver más.</a>
+                </p>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="profile-pic-container">
+                  <div
+                    style="background-image: url('${require(`./data/img/527fa044ca4e2d2e329385f34ccb2e0a.jpg`)}'); background-position: 50% 50%;"
+                    class="profile-pic"></div>
+                </div>
+                <div class="card-tag-container">
+                  <div class="profile">
+                    <h4 class="cust-name">Mali I.</h4>
+                    <p class="cust-profession">Ciudadana Italiana</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slick-carousel-card" data-large-body="Conocí a Gabriella a través de una recomendación, ya que necesitaba traducir algunos documentos para el trámite de la Ciudadanía Italiana. Desde el primer momento que la contacté, fue muy servicial y atenta. Incluso aunque mis fechas eran algo ajustadas, ella siempre estuvo dispuesta a ayudarme. Lo más distintivo es que no se limitó a hacer solo las traducciones, sino que me dio tips y recomendaciones que me fueron muy útiles durante el proceso.&lt;br&gt;&lt;br&gt;Siempre de muy buen humor, mostró conmigo un profesionalismo y una calidez que me impulsaron a seguir adelante.&lt;br&gt;&lt;br&gt;¡¡Recomiendo su trabajo sin dudarlo!!">
+            <div class="card-body">
+              <h4 class="card-title">
+                <img src="https://img.icons8.com/ultraviolet/40/000000/quote-left.png" />
+              </h4>
+              <div class="template-demo">
+                <p lang="es" class="customer-review-short hyphenate">
+                  Conocí a Gabriella a través de una recomendación, ya que necesitaba traducir algunos documentos para el trámite de la Ciudadanía Italiana. Desde el primer momento que la contacté, fue muy servicial y atenta. ¡¡Recomiendo su trabajo sin dudarlo!!
+                   <a href="#" class="badge badge-secondary read-more-badge"
+                    data-toggle="modal" data-target=".bd-example-modal-lg">Ver más.</a>
+                </p>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="profile-pic-container">
+                  <div
+                    style="background-image: url('${require(`./data/img/03d158b242746a6993bf713b141dc9f2.jpg`)}'); background-position: 10% 50%;"
+                    class="profile-pic"></div>
+                </div>
+                <div class="card-tag-container">
+                  <div class="profile">
+                    <h4 class="cust-name">Laura N.</h4>
+                    <p class="cust-profession">Ciudadana Italiana</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slick-carousel-card" data-large-body="Una amiga me recomendó a Gabriela y luego de hablar con ella por telefono no dudé en elegirla por sobre otros traductores con los que habia hablado. Todos, o casi todos, mantienen los mismos costos reglamentado por colegio de traductores, pero hablar con Gaby me dio MUCHA tranquilidad y sumado al saber que estaba tan bien geolocalizada respecto a los establecimientos en los que se deben realizar los trámites, me hizo elegirla sin dudar. Su despacho esta estratégicamente ubicado, muy cómodo para esos días en los que debemos ir y venir con papeles.&lt;br&gt;&lt;br&gt;Este era un proceso muy importante para mí personalmente, me generaba mucho stress y muchas dudas ya que tenía ciertos desconocimientos y Gaby me dió tranquilidad desde la primera comunicación. Por cuestiones burocráticas mis trámites corrían contra reloj y ella dió todo y más para que lleguemos a tiempo. Comunicarse con ella es muy fácil y siempre te atiende con una sonrisa. Lo mejor sin duda era llevarle los papeles y quedarnos siempre un ratito hablando de experiencias. Me dio un montón de consejos para mi viaje a Italia. Por supuesto que las traducciones estaban impecables. Pero destaco más que nada su calidez humana.&lt;br&gt;&lt;br&gt;Hoy con mi ciudadanía y pasaporte en mano vuelvo a agradecerte por acompañarme en este proceso.">
+            <div class="card-body">
+              <h4 class="card-title">
+                <img src="https://img.icons8.com/ultraviolet/40/000000/quote-left.png" />
+              </h4>
+              <div class="template-demo">
+                <p lang="es" class="customer-review-short hyphenate">
+                  Este era un proceso muy importante para mí personalmente, me generaba mucho stress y muchas dudas ya que tenía ciertos desconocimientos y Gaby me dio tranquilidad desde la primera comunicación. Hoy con mi ciudadanía y pasaporte en mano vuelvo a agradecerte por acompañarme en este proceso.
+                   <a href="#" class="badge badge-secondary read-more-badge"
+                    data-toggle="modal" data-target=".bd-example-modal-lg">Ver más.</a>
+                </p>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="profile-pic-container">
+                  <div
+                    style="background-image: url('${require(`./data/img/233f440f7a1ae55f75408fea0939f6cb.jpg`)}'); background-position: 10% 50%;"
+                    class="profile-pic"></div>
+                </div>
+                <div class="card-tag-container">
+                  <div class="profile">
+                    <h4 class="cust-name">Antonella F.</h4>
+                    <p class="cust-profession">Ciudadana Italiana</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slick-carousel-card" data-large-body="">
+            <div class="card-body">
+              <h4 class="card-title">
+                <img src="https://img.icons8.com/ultraviolet/40/000000/quote-left.png" />
+              </h4>
+              <div class="template-demo">
+                <p lang="es" class="customer-review-short hyphenate">
+                  Gabriella es una genia! Amable, siempre con buena predisposición y muy rápida respuesta. Tuve consultas y preguntas, aparte de las traducciones y me aclaro todas las dudas. Súper recomendable.
+                            </p>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="profile-pic-container">
+                  <div
+                    style="background-image: url('${require(`./data/img/bcf384fbedc588f1990f72ac27073796.jpg`)}'); background-position: 50% 50%;"
+                    class="profile-pic"></div>
+                </div>
+                <div class="card-tag-container">
+                  <div class="profile">
+                    <h4 class="cust-name">Agustina  O.</h4>
+                    <p class="cust-profession">Ciudadana Italiana</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slick-carousel-card" data-large-body="">
+            <div class="card-body">
+              <h4 class="card-title">
+                <img src="https://img.icons8.com/ultraviolet/40/000000/quote-left.png" />
+              </h4>
+              <div class="template-demo">
+                <p lang="es" class="customer-review-short hyphenate">
+                  ¡Queríamos agradecerte enormemente todo lo que has hecho por mi y por Zoe, si vos no lo hubieramos podido lograr te portaste 10 puntos, hoy terminamos los trámites, luego de 3 meses de vivir en Italia (en el sur, Trapani, Sicilia) Estamos más que contentos y queríamos decirte que cuentes con nosotros para lo que necesites.
+                            </p>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="profile-pic-container">
+                  <div
+                    style="background-image: url('${require(`./data/img/476d3505bbb45c32221ffe2c819613a4.jpg`)}'); background-position: 10% 50%;"
+                    class="profile-pic"></div>
+                </div>
+                <div class="card-tag-container">
+                  <div class="profile">
+                    <h4 class="cust-name">Julian C. Y Zoe A.</h4>
+                    <p class="cust-profession">Ciudadanos Italianos</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slick-carousel-card" data-large-body="Con la familia decidimos recuperar nuestras raices italianas, partimos de Pedro mi bisabuelo paterno de la Liguria, hasta llegar hasta mi hija,  a esa altura y con una buena cantidad de actas tuve que buscar un Traductor Público Nacional, me dieron la lista y yo elegí a Gabriella Maule, por su doble ele, pensé quie con una traductora italiana no iba a tener ningún problema, no me equivoqué, presenté más de 30 actas en el Consulado para el visto consular y no me  corrigieron ni una coma, además sus honorarios son muy razonables. &lt;br&gt;&lt;br&gt;La ciudadanía la tramité en Italia, llegué un 6 de julio de 2016, en el camino tuve muchos desafíos ya que mi apellido tenía una variante con doble T  y sobre eso me pidieron un certificado nuevo de la Camara electoral, solucionado este inconveniente el  24 de abril de 2017 obtuve mi ciudadanía!!!!!">
+            <div class="card-body">
+              <h4 class="card-title">
+                <img src="https://img.icons8.com/ultraviolet/40/000000/quote-left.png" />
+              </h4>
+              <div class="template-demo">
+                <p lang="es" class="customer-review-short hyphenate">
+                  Presenté más de 30 actas en el Consulado para el visto consular y no me corrigieron ni una coma, además sus honorarios son muy razonables. La ciudadanía la tramité en Italia, llegué en 2016, en el camino tuve muchos desafíos ya debido a mi apellido  y sobre eso me pidieron un certificado nuevo de la Cámara electoral, solucionado este inconveniente el  en  2017 obtuve mi ciudadanía!
+                   <a href="#" class="badge badge-secondary read-more-badge"
+                    data-toggle="modal" data-target=".bd-example-modal-lg">Ver más.</a>
+                </p>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="profile-pic-container">
+                  <div
+                    style="background-image: url('${require(`./data/img/2a5f2cc8386b2c77e93f664e3feff26a.jpg`)}'); background-position: 50% 50%;"
+                    class="profile-pic"></div>
+                </div>
+                <div class="card-tag-container">
+                  <div class="profile">
+                    <h4 class="cust-name">Jorge D.</h4>
+                    <p class="cust-profession">Ciudadano Italiano</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slick-carousel-card" data-large-body="Me he contactado con Gabriela por medio de una recomendación. Desde el primer día que nos pusimos en contacto demostró su entero profesionalismo y seriedad y en todo momento estuvo pendiente de mi trámite, no solo de la parte de las traducciones, sino también de las fechas y procedimientos que debía ir haciendo con las actas.&lt;br&gt;&lt;br&gt;Si requieren de una traductora que sepa responder a sus consultas, esté atenta al procedimiento que van realizando y entregue su trabajo terminado en tiempo y forma no duden en contactarla.&lt;br&gt;&lt;br&gt;Te agradezco mucho la seriedad y preocupación para que todo saliera bien. Grazie mille.">
+            <div class="card-body">
+              <h4 class="card-title">
+                <img src="https://img.icons8.com/ultraviolet/40/000000/quote-left.png" />
+              </h4>
+              <div class="template-demo">
+                <p lang="es" class="customer-review-short hyphenate">
+                  Desde el primer día que nos pusimos en contacto demostró su entero profesionalismo y seriedad. Si requieren de una traductora que sepa responder a sus consultas, esté atenta al procedimiento que van realizando y entregue su trabajo terminado en tiempo y forma no duden en contactarla. Grazie mille.
+                   <a href="#" class="badge badge-secondary read-more-badge"
+                    data-toggle="modal" data-target=".bd-example-modal-lg">Ver más.</a>
+                </p>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="profile-pic-container">
+                  <div
+                    style="background-image: url('${require(`./data/img/ff544582b49885d96aff80f5be30e6c3.jpg`)}'); background-position: 50% 50%;"
+                    class="profile-pic"></div>
+                </div>
+                <div class="card-tag-container">
+                  <div class="profile">
+                    <h4 class="cust-name">Juan Ignacio U.</h4>
+                    <p class="cust-profession">Ciudadano Italiano</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade bd-example-modal-lg customer-review-modal" tabindex="-1" role="dialog"
+          aria-labelledby="myLargeModalLabel" style="display: none;" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="myLargeModalLabel"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="modal-body-container">
+                  <p></p>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                  Cerrar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>      <hr class="featurette-divider" />
+      <div id="contact-form-container">
+        <h1>Contacto</h1>
+      
+        <form id="contact-form" action="#" role="form">
+          <div class="messages"></div>
+      
+          <div class="controls">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="name-input">Nombre</label>
+                  <input id="name-input" maxlength="72" type="text" name="name" class="form-control"
+                    placeholder="Ingrese su nombre" data-error="Su nombre es requerido"
+                    onblur="ContactForm.verifyField('name-input')" />
+                  <div class="error-caption-container invalid-feedback d-none" data-error-incomplete="Por favor, complete este campo."
+                    data-error-bad-format="Por favor, introduzca un nombre válido."
+                    data-error-too-long="Por favor, introduzca un nombre más corto.">
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group has-error has-danger">
+                  <label for="phone-input">Numero de teléfono (Opcional)</label>
+                  <input id="phone-input" maxlength="22" type="tel" name="telephone" class="form-control"
+                    placeholder="Ej. +54 9 11 3741-7423" data-error="Numero invalido"
+                    onblur="ContactForm.verifyField('phone-input')" />
+                  <div class="error-caption-container invalid-feedback d-none" data-error-incomplete="Por favor, complete este campo."
+                    data-error-bad-format="Por favor, introduzca un número válido."
+                    data-error-too-long="Por favor, introduzca un número más corto.">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="email-input">Correo electrónico</label>
+                  <input id="email-input" type="email" name="email" class="form-control" maxlength="254"
+                    placeholder="Ingrese su correo electrónico" data-error="Un email válido es requerido"
+                    onblur="ContactForm.verifyField('email-input')" />
+                  <div class="error-caption-container invalid-feedback d-none" data-error-incomplete="Por favor, complete este campo."
+                    data-error-bad-format="Por favor, introduzca un email válido."
+                    data-error-too-long="Por favor, introduzca un número más corto.">
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="subject-input">Asunto</label>
+                  <select id="subject-input" name="subject" class="form-control" maxlength="40"
+                    data-error="Por favor, especifique el asunto."
+                    style="background-position : right calc(0.75em + 0.275rem) center !important;"
+                    onblur="ContactForm.verifyField('subject-input')" onchange="ContactForm.verifyField('subject-input')">
+                    <option value="" selected>Seleccione un asunto</option>
+                    <option value="Traducción pública">Traducción pública</option>
+                    <option value="Traducción pública de actas">Traducción pública de actas</option>
+                    <option value="Armado de carpeta para ciudadanía">Armado de carpeta para ciudadanía</option>
+                    <option value="Declaración de valor de titulos">Declaración de valor de titulos</option>
+                    <option value="Traducción no pública">Traducción no pública</option>
+                    <option value="Otro">Otro</option>
+                  </select>
+                  <div class="error-caption-container invalid-feedback d-none"
+                    data-error-incomplete="Por favor, seleccione una opción."
+                    data-error-bad-format="Por favor, introduzca una opción valida."
+                    data-error-too-long="Por favor, introduzca una opción más corta.">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="description-input">Mensaje</label>
+                  <textarea maxlength="5000" id="description-input" name="message" class="form-control"
+                    placeholder="Por favor, dejenos un mensaje." rows="4" data-error="Por favor, dejenos un mensaje."
+                    onblur="ContactForm.verifyField('description-input')"></textarea>
+                  <div class="error-caption-container invalid-feedback d-none"
+                    data-error-incomplete="Por favor, complete este campo."
+                    data-error-bad-format="Por favor, introduzca una descripción válida."
+                    data-error-too-long="Por favor, introduzca una descripción más corta.">
+                  </div>
+                  <p id="character-count" class="float-right pr-0">0</p>
+                </div>
+              </div>
+      
+              <div class="col-md-12">
+                <div id="g-recaptcha-container" class="g-recaptcha-container"></div>
+                <div class="error-caption-container invalid-feedback d-none mb-4"
+                  data-error-incomplete="Por favor, complete esta casilla."
+                  data-error-bad-format="Se ha producido un error."
+                  data-error-too-long="Se ha producido un error.">
+                </div>
+                <br />
+                <input type="submit" class="btn btn-primary btn-send" value="Enviar mensaje" />
+                <br />
+                <div id="submit_result_area"></div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>    </div>
+  </main>
+  <footer id="footerid" class="text-light bg-dark pt-4">
+    <!-- Footer Links -->
+    <div class="container text-center text-md-left ">
+      <!-- Grid row -->
+      <div class="row">
+        <!-- Grid column -->
+        <div class="col-md-4 col-xl-6 mb-3 mt-md-0 mt-3">
+          <!-- Content -->
+          <h5 class="text-uppercase">Studio Maule</h5>
+          <p>
+            Traducciones públicas italianas.
+          </p>
+        </div>
+        <!-- Grid column -->
+  
+        <!-- <hr class="clearfix w-100 d-md-none pb-3" /> -->
+  
+        <!-- Grid column -->
+        <div class="col-md-5  col-xl-3 mb-md-0 mb-3">
+          <h5 class="text-uppercase">CONTACTO</h5>
+  
+          <ul id="social-media-id-test" class="list-unstyled social-media-list">
+            <li class="position-relative">
+              <i class="fas fa-envelope mr-1"></i><a class="stretched-link" href="#!"> <div class="d-inline-block" style="position: relative; top: 0.25rem;" id="email-data-container"></div> </a>
+            </li>
+            <li class="position-relative">
+              <i class="fas fa-phone mr-1"></i><a class="stretched-link" href="#!"> <div class="d-inline-block" style="position: relative; top: 0.25rem;" id="phone-data-container"></div> </a>
+            </li>
+            <li class="position-relative">
+              <i class="fas fa-map-marker-alt mr-1"></i><a id='testRenderText' class="stretched-link" href="#!">Buenos Aires, Argentina</a>
+            </li>
+          </ul>
+        </div>
+        <!-- Grid column -->
+  
+        <!-- Grid column -->
+        <div class="col-md-3 mb-md-0 mb-3">
+          <!-- Links -->
+          <h5 class="text-uppercase">NUESTRAS REDES</h5>
+  
+          <ul class="list-unstyled social-media-list">
+            <li class="position-relative">
+              <i class="fab fa-twitter mr-1"></i><a class="stretched-link" target="_blank" rel="noopener noreferrer" href="https://twitter.com/StudioMaule">Twitter</a>
+            </li>
+            <li class="position-relative">
+              <i class="fab fa-instagram mr-1"></i><a class="stretched-link" target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/studiomaule/">Instagram</a>
+            </li>
+            <li class="position-relative">
+              <i class="fab fa-facebook mr-1"></i><a class="stretched-link" target="_blank" rel="noopener noreferrer" href="#!">Facebook</a>
+            </li>
+          </ul>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+    <!-- Footer Links -->
+  
+    <!-- Copyright -->
+    <div class="footer-copyright py-2 d-flex justify-content-center">
+      <ul class="d-inline-block px-1">
+        <li>
+          © 2020 Studio Maule
+        </li>
+        <li>
+          <a class=""   href="javascript:void(0);">Términos y privacidad</a>
+        </li>
+        <li>
+          <a class=""   href="javascript:void(0);">Dev. Julián Zatloukal</a>
+        </li>
+      </ul>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+</body>
+</html>
