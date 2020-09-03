@@ -95,7 +95,7 @@
     "image_directory": "./assets/img/",
     "slides": [
       {
-        "title": "Traducciónes publicas.",
+        "title": "Traducciones públicas.",
         "body": "¿Necesita realizar traducciones? Del español al italiano y del Italiano al español, traductora con más de 25 años de experiencia.",
         "buttonContent": "Contactar",
         "onclick": "EventHandler.scrollHandlerOnClick(event,'contact-form')",
