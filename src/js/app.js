@@ -36,7 +36,7 @@ var app = {
             desc: desc
           };
 
-          sendEmail(data_form);
+          ContactForm.sendEmail(data_form);
         }
       }
 
