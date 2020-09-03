@@ -16,9 +16,6 @@ var app = {
         e.preventDefault();
 
         if (ContactForm.sanitizeAndVerify()) {
-          let URL =
-            'https://s19rftjwb7.execute-api.us-east-1.amazonaws.com/test/contact-us';
-
           let name = $('#name-input').val();
           let phone = $('#phone-input').val();
           let email = $('#email-input').val();
@@ -39,28 +36,30 @@ var app = {
             desc: desc
           };
 
-          console.log(data_form);
-
-          $.ajax({
-            type: 'POST',
-            url: URL,
-            dataType: 'json',
-            crossDomain: 'true',
-            contentType: 'application/json; charset=utf-8',
-            data: JSON.stringify(data_form),
-            success: function(response) {
-              console.log(response);
-              // clear form and show a success message
-              $('#contact-form').trigger('reset');
-              ContactForm.displaySubmitOutcome('success');
-            },
-            error: function(response) {
-              console.log(response);
-              // show an error message
-              ContactForm.displaySubmitOutcome('failure');
-            }
-          });
+          sendEmail(data_form);
         }
+      }
+
+      static sendEmail(data_form) {
+        let awsLambdaGatewayUrl =
+          'https://s19rftjwb7.execute-api.us-east-1.amazonaws.com/test/contact-us';
+        $.ajax({
+          type: 'POST',
+          url: awsLambdaGatewayUrl,
+          dataType: 'json',
+          crossDomain: 'true',
+          contentType: 'application/json; charset=utf-8',
+          data: JSON.stringify(data_form),
+          success: function(response) {
+            // clear form and show a success message
+            $('#contact-form').trigger('reset');
+            ContactForm.displaySubmitOutcome('success');
+          },
+          error: function(response) {
+            // show an error message
+            ContactForm.displaySubmitOutcome('failure');
+          }
+        });
       }
 
       static displaySubmitOutcome(outcome_state) {
@@ -83,7 +82,6 @@ var app = {
         if (!ContactForm.verifyField('description-input'))
           allTestPassed = false;
         if (!ContactForm.verifyField('g-recaptcha')) allTestPassed = false;
-        console.log('All elements have been validated!');
         return allTestPassed;
       }
 
@@ -187,7 +185,10 @@ var app = {
               if (!namere.test($('#name-input').val())) {
                 ContactForm.showVerifyAlert(
                   '#name-input',
-                  $('#name-input').parent().find('.error-caption-container').attr('data-error-bad-format')
+                  $('#name-input')
+                    .parent()
+                    .find('.error-caption-container')
+                    .attr('data-error-bad-format')
                 );
                 return false;
               } else {
@@ -197,7 +198,10 @@ var app = {
             } else {
               ContactForm.showVerifyAlert(
                 '#name-input',
-                $('#name-input').parent().find('.error-caption-container').attr('data-error-incomplete')
+                $('#name-input')
+                  .parent()
+                  .find('.error-caption-container')
+                  .attr('data-error-incomplete')
               );
               return false;
             }
@@ -211,7 +215,10 @@ var app = {
               if (!mobilere.test($('#phone-input').val())) {
                 ContactForm.showVerifyAlert(
                   '#phone-input',
-                  $('#phone-input').parent().find('.error-caption-container').attr('data-error-bad-format')
+                  $('#phone-input')
+                    .parent()
+                    .find('.error-caption-container')
+                    .attr('data-error-bad-format')
                 );
                 return false;
               } else {
@@ -230,7 +237,10 @@ var app = {
             ) {
               ContactForm.showVerifyAlert(
                 '#subject-input',
-                $('#subject-input').parent().find('.error-caption-container').attr('data-error-incomplete')
+                $('#subject-input')
+                  .parent()
+                  .find('.error-caption-container')
+                  .attr('data-error-incomplete')
               );
               return false;
             } else {
@@ -247,7 +257,10 @@ var app = {
               if (!reeamil.test($('#email-input').val())) {
                 ContactForm.showVerifyAlert(
                   '#email-input',
-                  $('#email-input').parent().find('.error-caption-container').attr('data-error-bad-format')
+                  $('#email-input')
+                    .parent()
+                    .find('.error-caption-container')
+                    .attr('data-error-bad-format')
                 );
                 return false;
               } else {
@@ -257,7 +270,10 @@ var app = {
             } else {
               ContactForm.showVerifyAlert(
                 '#email-input',
-                $('#email-input').parent().find('.error-caption-container').attr('data-error-incomplete')
+                $('#email-input')
+                  .parent()
+                  .find('.error-caption-container')
+                  .attr('data-error-incomplete')
               );
               return false;
             }
@@ -271,7 +287,10 @@ var app = {
               if (!descriptionInputRegex.test($('#description-input').val())) {
                 ContactForm.showVerifyAlert(
                   '#description-input',
-                  $('#description-input').parent().find('.error-caption-container').attr('data-error-bad-format')
+                  $('#description-input')
+                    .parent()
+                    .find('.error-caption-container')
+                    .attr('data-error-bad-format')
                 );
                 return false;
               } else {
@@ -281,7 +300,10 @@ var app = {
             } else {
               ContactForm.showVerifyAlert(
                 '#description-input',
-                $('#description-input').parent().find('.error-caption-container').attr('data-error-incomplete')
+                $('#description-input')
+                  .parent()
+                  .find('.error-caption-container')
+                  .attr('data-error-incomplete')
               );
               return false;
             }
@@ -289,7 +311,10 @@ var app = {
             if (grecaptcha.getResponse().length == 0) {
               ContactForm.showVerifyAlert(
                 '#g-recaptcha-container',
-                $('#g-recaptcha-container').parent().find('.error-caption-container').attr('data-error-incomplete')
+                $('#g-recaptcha-container')
+                  .parent()
+                  .find('.error-caption-container')
+                  .attr('data-error-incomplete')
               );
               return false;
             } else {
