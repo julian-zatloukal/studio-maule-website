@@ -83,7 +83,7 @@
       },
       {
         "title": "Otros.",
-        "body": "En caso de precisar un servicio personalizado, especifico o de consultoría.",
+        "body": "En caso de precisar un servicio personalizado, específico o de consultoría.",
         "large_body": "",
         "buttonOnClick": "window.scrollHandler('contact-form', 6);",
         "viewMoreStatus": "disabled"
