@@ -3,7 +3,6 @@
     to test from main function: npm run test
 */
 
-
 const fetch = require('node-fetch');
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(
@@ -21,11 +20,26 @@ const requiredParams = [
   'name',
   'email',
   'body',
-  'phone'
 ];
 
+/* optional parameters: phone */
+
+
 exports.main = async (req, res) => {
-  if (req && Object.prototype.hasOwnProperty.call(req, "query")) {
+  /* send CORS headers (https://studiomaule.com.ar) */
+  res.set('Access-Control-Allow-Origin', 'https://studiomaule.com.ar');
+  // res.set('Access-Control-Allow-Credentials', 'true');
+
+  // if (req.method === 'OPTIONS') {
+  //   res.set('Access-Control-Allow-Methods', '*');
+  //   res.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  //   res.set('Access-Control-Max-Age', '3600');
+  //   res.status(204).send('');
+  //   return;
+  // }
+
+
+  if (req && Object.prototype.hasOwnProperty.call(req, 'query')) {
     var params = req.query;
     requiredParams.forEach(param => {
       if (!Object.prototype.hasOwnProperty.call(params, param)) {
@@ -34,17 +48,22 @@ exports.main = async (req, res) => {
       }
     });
   } else {
-    console.log("Invalid parameters");
+    console.log('Invalid parameters');
     return;
   }
 
   var grecaptchaRes = await verifyGoogleRecaptcha(
     reCaptchaSecretKey,
     req.query.gRecaptchaToken
-  ); 
+  );
 
-  if (!Object.prototype.hasOwnProperty.call(grecaptchaRes, "success") || grecaptchaRes.success !== true) {
-    res.status(400).send(`Invalid Google Recaptcha ${JSON.stringify(grecaptchaRes)}`);
+  if (
+    !Object.prototype.hasOwnProperty.call(grecaptchaRes, 'success') ||
+    grecaptchaRes.success !== true
+  ) {
+    res
+      .status(400)
+      .send(`Invalid Google Recaptcha ${JSON.stringify(grecaptchaRes)}`);
     return;
   }
 
@@ -55,17 +74,13 @@ exports.main = async (req, res) => {
     req.query.name,
     req.query.email,
     req.query.body,
-    req.query.phone
+    Object.prototype.hasOwnProperty.call(req.query, 'phone') ? req.query.phone : ""
   );
 
-  if (emailRes.toString().includes("HTTP 202")) {
-    res
-    .status(200)
-    .send(`Success.`);
+  if (emailRes.toString().includes('HTTP 202')) {
+    res.status(200).send(`Success.`);
   } else {
-    res
-    .status(400)
-    .send(`Error. ${emailRes.toString()}`);
+    res.status(400).send(`Error. ${emailRes.toString()}`);
   }
 };
 
