@@ -43,23 +43,6 @@ var app = {
       static sendEmail(data_form) {
         let gCloudFunctionUrl =
           'https://us-central1-studio-maule.cloudfunctions.net/mail-contact-service';
-        // $.ajax({
-        //   type: 'POST',
-        //   url: gCloudFunctionUrl,
-        //   dataType: 'json',
-        //   crossDomain: 'true',
-        //   contentType: 'application/json; charset=utf-8',
-        //   data: JSON.stringify(data_form),
-        //   success: function(response) {
-        //     // clear form and show a success message
-        //     $('#contact-form').trigger('reset');
-        //     ContactForm.displaySubmitOutcome('success');
-        //   },
-        //   error: function(response) {
-        //     // show an error message
-        //     ContactForm.displaySubmitOutcome('failure');
-        //   }
-        // });
 
         fetch(gCloudFunctionUrl, {
           method: 'POST', 
