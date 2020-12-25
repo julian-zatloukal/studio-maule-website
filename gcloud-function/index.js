@@ -39,8 +39,8 @@ exports.main = async (req, res) => {
   }
 
 
-  if (req && Object.prototype.hasOwnProperty.call(req, 'query')) {
-    var params = req.query;
+  if (req && Object.prototype.hasOwnProperty.call(req, 'body')) {
+    var params = req.body;
     requiredParams.forEach(param => {
       if (!Object.prototype.hasOwnProperty.call(params, param)) {
         res.status(400).send(`Invalid Parameter ${param}`);
@@ -54,7 +54,7 @@ exports.main = async (req, res) => {
 
   var grecaptchaRes = await verifyGoogleRecaptcha(
     reCaptchaSecretKey,
-    req.query.gRecaptchaToken
+    req.body.gRecaptchaToken
   );
 
   if (
@@ -68,13 +68,13 @@ exports.main = async (req, res) => {
   }
 
   var emailRes = await sendMail(
-    req.query.ipAddress,
-    req.query.timestamp,
-    req.query.subject,
-    req.query.name,
-    req.query.email,
-    req.query.body,
-    Object.prototype.hasOwnProperty.call(req.query, 'phone') ? req.query.phone : ""
+    req.body.ipAddress,
+    req.body.timestamp,
+    req.body.subject,
+    req.body.name,
+    req.body.email,
+    req.body.body,
+    Object.prototype.hasOwnProperty.call(req.body, 'phone') ? req.body.phone : ""
   );
 
   if (emailRes.toString().includes('HTTP 202')) {
