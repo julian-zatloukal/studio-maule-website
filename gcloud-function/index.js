@@ -27,16 +27,16 @@ const requiredParams = [
 
 exports.main = async (req, res) => {
   /* send CORS headers (https://studiomaule.com.ar) */
-  res.set('Access-Control-Allow-Origin', 'https://studiomaule.com.ar');
+  res.set('Access-Control-Allow-Origin', '*');
   // res.set('Access-Control-Allow-Credentials', 'true');
 
-  // if (req.method === 'OPTIONS') {
-  //   res.set('Access-Control-Allow-Methods', '*');
-  //   res.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  //   res.set('Access-Control-Max-Age', '3600');
-  //   res.status(204).send('');
-  //   return;
-  // }
+  if (req.method === 'OPTIONS') {
+    res.set('Access-Control-Allow-Methods', '*');
+    res.set('Access-Control-Allow-Headers', 'Content-Type');
+    res.set('Access-Control-Max-Age', '3600');
+    res.status(204).send('');
+    return;
+  }
 
 
   if (req && Object.prototype.hasOwnProperty.call(req, 'query')) {

@@ -64,11 +64,9 @@ var app = {
         fetch(gCloudFunctionUrl, {
           method: 'POST', 
           mode: 'cors',
-          cache: 'no-cache', 
           headers: {
             'Content-Type': 'application/json'
           },
-          referrerPolicy: 'no-referrer-when-downgrade', 
           body: JSON.stringify(data_form)
         }).then((res) => {
           if (res.ok) {
