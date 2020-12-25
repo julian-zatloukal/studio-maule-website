@@ -1,6 +1,6 @@
 /*
-    to deploy function to gcloud: npm run deploy
-    to test from main function: npm run test
+    To deploy function to gcloud: npm run deploy
+    To test from main function: npm run test
 */
 
 const fetch = require('node-fetch');
@@ -19,18 +19,17 @@ const requiredParams = [
   'subject',
   'name',
   'email',
-  'body',
+  'body'
 ];
 
 /* optional parameters: phone */
 
-
 exports.main = async (req, res) => {
   /* send CORS headers (https://studiomaule.com.ar) */
-  res.set('Access-Control-Allow-Origin', '*');
-  // res.set('Access-Control-Allow-Credentials', 'true');
+  res.set('Access-Control-Allow-Origin', 'https://studiomaule.com.ar');
 
   if (req.method === 'OPTIONS') {
+    /* CORS preflight response */
     res.set('Access-Control-Allow-Methods', '*');
     res.set('Access-Control-Allow-Headers', 'Content-Type');
     res.set('Access-Control-Max-Age', '3600');
@@ -38,11 +37,9 @@ exports.main = async (req, res) => {
     return;
   }
 
-
   if (req && Object.prototype.hasOwnProperty.call(req, 'body')) {
-    var params = req.body;
     requiredParams.forEach(param => {
-      if (!Object.prototype.hasOwnProperty.call(params, param)) {
+      if (!Object.prototype.hasOwnProperty.call(req.body, param)) {
         res.status(400).send(`Invalid Parameter ${param}`);
         return;
       }
@@ -74,7 +71,9 @@ exports.main = async (req, res) => {
     req.body.name,
     req.body.email,
     req.body.body,
-    Object.prototype.hasOwnProperty.call(req.body, 'phone') ? req.body.phone : ""
+    Object.prototype.hasOwnProperty.call(req.body, 'phone')
+      ? req.body.phone
+      : ''
   );
 
   if (emailRes.toString().includes('HTTP 202')) {
