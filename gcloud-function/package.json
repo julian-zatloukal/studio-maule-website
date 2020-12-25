@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo test",
+    "test": "npx run-func index.js main",
     "deploy": "gcloud functions deploy 'mail-contact-service' --runtime nodejs12 --trigger-http --entry-point=main"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@sendgrid/mail": "^7.4.0"
+    "@sendgrid/mail": "^7.4.0",
+    "node-fetch": "^2.6.1"
   },
   "devDependencies": {
     "eslint": "^7.16.0"
