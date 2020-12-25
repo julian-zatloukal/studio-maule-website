@@ -26,14 +26,14 @@ var app = {
           let grecaptcha_response = grecaptcha.getResponse();
 
           var data_form = {
-            ip: ip,
+            ipAddress: ip,
             timestamp: timestamp,
-            grecaptcha_response: grecaptcha_response,
+            gRecaptchaToken: grecaptcha_response,
             name: name,
             phone: phone,
             email: email,
             subject: subject,
-            desc: desc
+            body: desc
           };
 
           ContactForm.sendEmail(data_form);
@@ -41,11 +41,11 @@ var app = {
       }
 
       static sendEmail(data_form) {
-        let awsLambdaGatewayUrl =
-          'https://s19rftjwb7.execute-api.us-east-1.amazonaws.com/test/contact-us';
+        let gCloudFunctionUrl =
+          'https://us-central1-studio-maule.cloudfunctions.net/mail-contact-service';
         $.ajax({
           type: 'POST',
-          url: awsLambdaGatewayUrl,
+          url: gCloudFunctionUrl,
           dataType: 'json',
           crossDomain: 'true',
           contentType: 'application/json; charset=utf-8',
