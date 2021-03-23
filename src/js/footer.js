@@ -1,5 +1,3 @@
-/* global SimpleCrypto */
-
 $(function() {
   $.fn.textWidth = function(text, font) {
     if (!$.fn.textWidth.fakeEl)
