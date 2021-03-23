@@ -10,7 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@sendgrid/helpers": "^7.4.2",
     "@sendgrid/mail": "^7.4.2",
+    "deepmerge": "^4.2.2",
     "is-mergeable-object": "^1.1.1",
     "node-fetch": "^2.6.1"
   }
