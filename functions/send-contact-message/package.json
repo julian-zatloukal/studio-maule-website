@@ -1,0 +1,16 @@
+{
+  "name": "send-contact-message",
+  "version": "1.0.0",
+  "description": "",
+  "main": "send-contact-message.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@sendgrid/mail": "^7.4.2",
+    "node-fetch": "^2.6.1"
+  }
+}
