@@ -12,9 +12,8 @@ $(function() {
     return $.fn.textWidth.fakeEl.width();
   };
 
-  var encryptedData = "921f5cb464fc0e54bf7463564cf4521041615d28a297d97c70b3c024cb5b1351DdUcuVPY5mS1ZrZgJPcIYt4K0unt1tDEqdvWtiot0ql7kiMVQ7wL6Q70W/kOh6MU63NCWpKz4+N/jhYcBk1uJ/ZCcdubVv98aFIDQ8hgAOo=";
-  var simpleCrypto = new SimpleCrypto('H81YEZhJ7lPwvpDs40Ch##');
-  var data = JSON.parse(simpleCrypto.decrypt(encryptedData));
+  /* encoded phone and email  https://developer.mozilla.org/en-US/docs/Glossary/Base64 */
+  var data = JSON.parse(atob('eyJwaG9uZSI6Iis1NCA5IDExIDY4OTgtMzA4MyIsImVtYWlsIjoiY29udGFjdG9Ac3R1ZGlvbWF1bGUuY29tLmFyIn0='))
 
   var fontHeight = window
     .getComputedStyle(document.getElementById('testRenderText'))
