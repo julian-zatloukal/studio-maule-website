@@ -42,6 +42,10 @@ const handler = async (event, context) => {
       };
     }
 
+
+    console.log(event.body)
+
+
     var grecaptchaRes = await verifyGoogleRecaptcha(
       reCaptchaSecretKey,
       event.body.gRecaptchaToken
