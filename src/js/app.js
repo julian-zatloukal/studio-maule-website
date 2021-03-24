@@ -41,10 +41,10 @@ var app = {
       }
 
       static sendEmail(data_form) {
-        let gCloudFunctionUrl =
-          'https://us-central1-studio-maule.cloudfunctions.net/mail-contact-service';
+        let apiEndpoint =
+          'https://studiomaule.com.ar/.netlify/functions/send-contact-message';
 
-        fetch(gCloudFunctionUrl, {
+        fetch(apiEndpoint, {
           method: 'POST', 
           mode: 'cors',
           headers: {
