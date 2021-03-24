@@ -95,13 +95,15 @@ const verifyGoogleRecaptcha = async (secretKey, userToken) => {
   const url = 'https://www.google.com/recaptcha/api/siteverify';
   const params = new URLSearchParams();
   params.append('secret', secretKey);
-  params.append('response', userToken);
+  params.append('response', userToken)
+
+  console.log(`google recaptcha payload: ${JSON.stringify(params)}`)
 
   var res = await fetch(url, {
     method: 'POST',
     body: params
   });
-  return res.json();
+  return await res.json();
 };
 
 const sendMail = async (
