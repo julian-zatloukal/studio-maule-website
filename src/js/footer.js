@@ -11,7 +11,7 @@ $(function() {
   };
 
   /* encoded phone and email  https://developer.mozilla.org/en-US/docs/Glossary/Base64 */
-  var data = JSON.parse(atob('<redacted>'))
+  var data = JSON.parse(atob('eyJwaG9uZSI6Iis1NCA5IDExIDY4OTgtMzA4MyIsImVtYWlsIjoiY29udGFjdG9Ac3R1ZGlvbWF1bGUuY29tLmFyIn0='))
 
   var fontHeight = window
     .getComputedStyle(document.getElementById('testRenderText'))
