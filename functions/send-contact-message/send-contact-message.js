@@ -91,13 +91,15 @@ const handler = async (event, context) => {
       };
     }
 
+    
+    console.log(JSON.stringify(event.body))
 
-    console.log(event.body.gRecaptchaToken)
+    console.log(event.body['gRecaptchaToken'])
 
 
     var grecaptchaRes = await verifyGoogleRecaptcha(
       reCaptchaSecretKey,
-      event.body.gRecaptchaToken
+      event.body['gRecaptchaToken']
     );
 
     if (
