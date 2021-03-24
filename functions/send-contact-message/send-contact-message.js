@@ -8,6 +8,90 @@ sgMail.setApiKey(process.env.SEND_GRID_API_KEY);
 const mailRecipients = ['julianzatm@gmail.com', 'maulegabriella@gmail.com'];
 const mailSender = 'contacto@studiomaule.com.ar';
 
+
+const handler = async (event, context) => {
+  try {
+
+    var requestBody = JSON.parse(event.body);
+
+    if (requestBody && Object.prototype.hasOwnProperty.call(requestBody, 'body')) {
+      requiredParams.forEach(param => {
+        if (!Object.prototype.hasOwnProperty.call(requestBody, param)) {
+          return {
+            statusCode: 400,
+            body: JSON.stringify({
+              status: 'ERR',
+              desc: `Invalid Parameter ${param}`
+            })
+          };
+        }
+      });
+    } else {
+      return {
+        statusCode: 400,
+        body: JSON.stringify({
+          status: 'ERR',
+          desc: `Invalid parameters`
+        })
+      };
+    }
+
+
+
+    var grecaptchaRes = await verifyGoogleRecaptcha(
+      reCaptchaSecretKey,
+      requestBody['gRecaptchaToken']
+    );
+
+    if (
+      !Object.prototype.hasOwnProperty.call(grecaptchaRes, 'success') ||
+      grecaptchaRes.success !== true
+    ) {
+      return {
+        statusCode: 400,
+        body: JSON.stringify({
+          status: 'ERR',
+          desc: `Invalid Google Recaptcha ${JSON.stringify(grecaptchaRes)}`
+        })
+      };
+    }
+
+    var emailRes = await sendMail(
+      requestBody.ipAddress,
+      requestBody.timestamp,
+      requestBody.subject,
+      requestBody.name,
+      requestBody.email,
+      requestBody.body,
+      Object.prototype.hasOwnProperty.call(requestBody, 'phone')
+        ? requestBody.phone
+        : ''
+    );
+
+    if (emailRes.toString().includes('HTTP 202')) {
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ status: 'OK' })
+      };
+    } else {
+      return {
+        statusCode: 400,
+        body: JSON.stringify({
+          status: 'ERR',
+          desc: `Error. ${emailRes.toString()}`
+        })
+      };
+    }
+  } catch (error) {
+    return { statusCode: 500, body: error.toString() };
+  }
+};
+
+
+
+
+
+
 const reCaptchaSecretKey = process.env.GRECAPTCHA_API_KEY;
 const requiredParams = [
   'gRecaptchaToken',
@@ -66,90 +150,6 @@ const sendMail = async (
   };
   return await sgMail.send(msg);
 };
-
-
-const handler = async (event, context) => {
-  try {
-    if (event && Object.prototype.hasOwnProperty.call(event, 'body')) {
-      requiredParams.forEach(param => {
-        if (!Object.prototype.hasOwnProperty.call(event.body, param)) {
-          return {
-            statusCode: 400,
-            body: JSON.stringify({
-              status: 'ERR',
-              desc: `Invalid Parameter ${param}`
-            })
-          };
-        }
-      });
-    } else {
-      return {
-        statusCode: 400,
-        body: JSON.stringify({
-          status: 'ERR',
-          desc: `Invalid parameters`
-        })
-      };
-    }
-
-    
-    console.log(typeof event.body)
-
-    console.log(JSON.parse(event.body))
-
-    console.log(JSON.parse(event.body)['gRecaptchaToken'])
-
-
-
-    var grecaptchaRes = await verifyGoogleRecaptcha(
-      reCaptchaSecretKey,
-      event.body['gRecaptchaToken']
-    );
-
-    if (
-      !Object.prototype.hasOwnProperty.call(grecaptchaRes, 'success') ||
-      grecaptchaRes.success !== true
-    ) {
-      return {
-        statusCode: 400,
-        body: JSON.stringify({
-          status: 'ERR',
-          desc: `Invalid Google Recaptcha ${JSON.stringify(grecaptchaRes)}`
-        })
-      };
-    }
-
-    var emailRes = await sendMail(
-      event.body.ipAddress,
-      event.body.timestamp,
-      event.body.subject,
-      event.body.name,
-      event.body.email,
-      event.body.body,
-      Object.prototype.hasOwnProperty.call(event.body, 'phone')
-        ? event.body.phone
-        : ''
-    );
-
-    if (emailRes.toString().includes('HTTP 202')) {
-      return {
-        statusCode: 200,
-        body: JSON.stringify({ status: 'OK' })
-      };
-    } else {
-      return {
-        statusCode: 400,
-        body: JSON.stringify({
-          status: 'ERR',
-          desc: `Error. ${emailRes.toString()}`
-        })
-      };
-    }
-  } catch (error) {
-    return { statusCode: 500, body: error.toString() };
-  }
-};
-
 
 
 module.exports = { handler };
