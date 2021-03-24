@@ -93,14 +93,16 @@ const handler = async (event, context) => {
 
 const verifyGoogleRecaptcha = async (secretKey, userToken) => {
   const url = 'https://www.google.com/recaptcha/api/siteverify';
-  const params = new URLSearchParams();
-  params.append('secret', secretKey);
-  params.append('response', userToken)
+  const params = new URLSearchParams({
+    'secret': secretKey,
+    'response': userToken
+  });
 
-  console.log(`google recaptcha payload: ${JSON.stringify(params)}`)
+  console.log(`google recaptcha payload: ${secretKey} ${userToken} ${JSON.stringify(params)}`)
 
   var res = await fetch(url, {
     method: 'POST',
+    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
     body: params
   });
   return await res.json();
