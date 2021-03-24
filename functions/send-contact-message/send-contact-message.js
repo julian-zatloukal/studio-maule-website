@@ -8,13 +8,14 @@ sgMail.setApiKey(process.env.SEND_GRID_API_KEY);
 const mailRecipients = ['julianzatm@gmail.com', 'maulegabriella@gmail.com'];
 const mailSender = 'contacto@studiomaule.com.ar';
 
-
 const handler = async (event, context) => {
   try {
-
     var requestBody = JSON.parse(event.body);
 
-    if (requestBody && Object.prototype.hasOwnProperty.call(requestBody, 'body')) {
+    if (
+      requestBody &&
+      Object.prototype.hasOwnProperty.call(requestBody, 'body')
+    ) {
       requiredParams.forEach(param => {
         if (!Object.prototype.hasOwnProperty.call(requestBody, param)) {
           return {
@@ -35,8 +36,6 @@ const handler = async (event, context) => {
         })
       };
     }
-
-
 
     var grecaptchaRes = await verifyGoogleRecaptcha(
       reCaptchaSecretKey,
@@ -87,11 +86,6 @@ const handler = async (event, context) => {
   }
 };
 
-
-
-
-
-
 const reCaptchaSecretKey = process.env.GRECAPTCHA_API_KEY;
 const requiredParams = [
   'gRecaptchaToken',
@@ -106,13 +100,13 @@ const requiredParams = [
 const verifyGoogleRecaptcha = async (secretKey, userToken) => {
   const url = 'https://www.google.com/recaptcha/api/siteverify';
   const params = new URLSearchParams({
-    'secret': secretKey,
-    'response': userToken
+    secret: secretKey,
+    response: userToken
   });
 
   var res = await fetch(url, {
     method: 'POST',
-    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: params
   });
   return await res.json();
@@ -148,6 +142,5 @@ const sendMail = async (
   };
   return await sgMail.send(msg);
 };
-
 
 module.exports = { handler };
