@@ -1,5 +1,6 @@
 const fetch = require('node-fetch');
 const sgMail = require('@sendgrid/mail');
+const { type } = require('jquery');
 
 /* Use Netlify Enivornment Variables */
 sgMail.setApiKey(process.env.SEND_GRID_API_KEY);
@@ -92,9 +93,12 @@ const handler = async (event, context) => {
     }
 
     
-    console.log(JSON.stringify(event.body))
+    console.log(typeof event.body)
 
-    console.log(event.body['gRecaptchaToken'])
+    console.log(JSON.parse(event.body))
+
+    console.log(JSON.parse(event.body)['gRecaptchaToken'])
+
 
 
     var grecaptchaRes = await verifyGoogleRecaptcha(
