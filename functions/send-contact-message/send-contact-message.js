@@ -18,6 +18,55 @@ const requiredParams = [
   'body'
 ];
 
+const verifyGoogleRecaptcha = async (secretKey, userToken) => {
+  const url = 'https://www.google.com/recaptcha/api/siteverify';
+  const params = new URLSearchParams({
+    'secret': secretKey,
+    'response': userToken
+  });
+
+  console.log(`google recaptcha payload: ${secretKey} ${userToken} ${JSON.stringify(params)}`)
+
+  var res = await fetch(url, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+    body: params
+  });
+  return await res.json();
+};
+
+const sendMail = async (
+  ipAddress,
+  timestamp,
+  subject,
+  name,
+  email,
+  body,
+  phone
+) => {
+  /*
+    Contact Information
+      IP Address
+      Timestamp
+      Name
+      Phone (not required)
+      Email
+      Body
+  */
+
+  const msg = {
+    to: mailRecipients,
+    from: mailSender,
+    subject: 'Información de contacto 🤖',
+    text: `Se ha enviado un mensaje desde Studio Maule ✉️\n\nDirección IP: ${ipAddress}\nMarca de tiempo: ${timestamp}\nAsunto: ${subject}\nNombre: ${name}\nEmail: ${email}\nTeléfono: ${phone ||
+      '(No completado)'}\nMensaje:\n\n${body}`,
+    html: `Se ha enviado un mensaje desde <strong>Studio Maule</strong> ✉️<br><br><strong>Dirección IP</strong>: ${ipAddress}<br><strong>Marca de tiempo:</strong> ${timestamp}<br><strong>Asunto:</strong> ${subject}<br><strong>Nombre: </strong>${name}<br><strong>Email: </strong>${email}<br><strong>Teléfono: </strong>${phone ||
+      '(No completado)'}<br><strong>Mensaje:</strong><br><br>${body}`
+  };
+  return await sgMail.send(msg);
+};
+
+
 const handler = async (event, context) => {
   try {
     if (event && Object.prototype.hasOwnProperty.call(event, 'body')) {
@@ -43,7 +92,7 @@ const handler = async (event, context) => {
     }
 
 
-    console.log(event.body)
+    console.log(event.body.gRecaptchaToken)
 
 
     var grecaptchaRes = await verifyGoogleRecaptcha(
@@ -95,52 +144,6 @@ const handler = async (event, context) => {
   }
 };
 
-const verifyGoogleRecaptcha = async (secretKey, userToken) => {
-  const url = 'https://www.google.com/recaptcha/api/siteverify';
-  const params = new URLSearchParams({
-    'secret': secretKey,
-    'response': userToken
-  });
 
-  console.log(`google recaptcha payload: ${secretKey} ${userToken} ${JSON.stringify(params)}`)
-
-  var res = await fetch(url, {
-    method: 'POST',
-    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-    body: params
-  });
-  return await res.json();
-};
-
-const sendMail = async (
-  ipAddress,
-  timestamp,
-  subject,
-  name,
-  email,
-  body,
-  phone
-) => {
-  /*
-    Contact Information
-      IP Address
-      Timestamp
-      Name
-      Phone (not required)
-      Email
-      Body
-  */
-
-  const msg = {
-    to: mailRecipients,
-    from: mailSender,
-    subject: 'Información de contacto 🤖',
-    text: `Se ha enviado un mensaje desde Studio Maule ✉️\n\nDirección IP: ${ipAddress}\nMarca de tiempo: ${timestamp}\nAsunto: ${subject}\nNombre: ${name}\nEmail: ${email}\nTeléfono: ${phone ||
-      '(No completado)'}\nMensaje:\n\n${body}`,
-    html: `Se ha enviado un mensaje desde <strong>Studio Maule</strong> ✉️<br><br><strong>Dirección IP</strong>: ${ipAddress}<br><strong>Marca de tiempo:</strong> ${timestamp}<br><strong>Asunto:</strong> ${subject}<br><strong>Nombre: </strong>${name}<br><strong>Email: </strong>${email}<br><strong>Teléfono: </strong>${phone ||
-      '(No completado)'}<br><strong>Mensaje:</strong><br><br>${body}`
-  };
-  return await sgMail.send(msg);
-};
 
 module.exports = { handler };
