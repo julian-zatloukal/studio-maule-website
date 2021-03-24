@@ -110,8 +110,6 @@ const verifyGoogleRecaptcha = async (secretKey, userToken) => {
     'response': userToken
   });
 
-  console.log(`google recaptcha payload: ${secretKey} ${userToken} ${JSON.stringify(params)}`)
-
   var res = await fetch(url, {
     method: 'POST',
     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
