@@ -10,6 +10,7 @@ The user is able to explore all the services offered and then send a contact mes
 - JavaScript with jQuery
 - Git Version Control
 - WebPack 4
+- Handlebars template engine
 - Netlify hosting
 - Netlify Serverless Functions (previously using AWS Lambda and GCP Functions)
 - Google Recaptcha V2
