@@ -5,17 +5,22 @@ The project is about a landing page for a certified translation service based in
 The user is able to explore all the services offered and then send a contact message through a contact form. After the first contact, the communication continues via email.
 
 ## Technologies Used
-- HTML5 and CSS3 with SASS
-- Bootstrap 4.4
-- JavaScript with jQuery
-- Git Version Control
-- WebPack 4
-- Handlebars template engine
-- Netlify hosting
-- Netlify Serverless Functions (previously using AWS Lambda and GCP Functions)
-- Google Recaptcha V2
-- VSCode IDE with Prettier and ESLint (Airbnb style) 
-- SendGrid Mail API (previously using Amazon SES)
+- Front-end
+  - HTML5 and CSS3 with SASS
+  - Bootstrap 4.4
+  - JavaScript with jQuery
+  - Google Recaptcha V2
+- Back-end
+  - Netlify Serverless Functions (previously using AWS Lambda and GCP Functions)
+  - SendGrid Mail API (previously using Amazon SES)
+- Project
+  - WebPack 4
+  - Handlebars template engine
+  - Git Version Control
+  - Netlify hosting
+  - Google Analytics and Google Search Console
+  - VSCode IDE with Prettier and ESLint (Airbnb style) 
+
 
 ## Screenshots
 
