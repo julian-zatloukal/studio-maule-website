@@ -28,7 +28,7 @@
     "eslint-plugin-react-hooks": "^2.5.1",
     "fast-sass-loader": "^1.5.0",
     "file-loader": "^6.0.0",
-    "handlebars": "^4.7.4",
+    "handlebars": "^4.7.7",
     "handlebars-loader": "^1.7.1",
     "handlebars-webpack-plugin": "^1.8.1",
     "html-loader": "^0.5.5",
