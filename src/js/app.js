@@ -45,13 +45,13 @@ var app = {
           'https://studiomaule.com.ar/.netlify/functions/send-contact-message';
 
         fetch(apiEndpoint, {
-          method: 'POST', 
+          method: 'POST',
           mode: 'cors',
           headers: {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify(data_form)
-        }).then((res) => {
+        }).then(res => {
           if (res.ok) {
             // clear form and show a success message
             $('#contact-form').trigger('reset');
@@ -155,23 +155,30 @@ var app = {
         }
       }
 
-      static getIPAddrPromise() {
-        return new Promise(function(resolve, reject) {
-          $.ajax({
-            type: 'GET',
-            timeout: 1200,
-            url: 'https://www.cloudflare.com/cdn-cgi/trace',
-            success: function(data) {
-              const regexp = RegExp(`[\n\r].*ip=\s*([^\n\r]*)`, 'g');
-              var ip_string = regexp.exec(data)[1];
-              if (ip_string !== null) {
-                resolve(ip_string);
-              } else {
-                reject('Could not fetch ip');
-              }
-            }
-          });
-        });
+      static async getIPAddrPromise() {
+        try {
+          let response = await fetch('https://ipapi.co/json/');
+          return (await response.json()).ip;
+        } catch (ex) {
+          return '(No se pudo obtener)';
+        }
+
+        // return new Promise(function(resolve, reject) {
+        //   $.ajax({
+        //     type: 'GET',
+        //     timeout: 1200,
+        //     url: 'https://www.cloudflare.com/cdn-cgi/trace',
+        //     success: function(data) {
+        //       const regexp = RegExp(`[\n\r].*ip=\s*([^\n\r]*)`, 'g');
+        //       var ip_string = regexp.exec(data)[1];
+        //       if (ip_string !== null) {
+        //         resolve(ip_string);
+        //       } else {
+        //         reject('Could not fetch ip');
+        //       }
+        //     }
+        //   });
+        // });
       }
 
       static verifyField(field_id) {
