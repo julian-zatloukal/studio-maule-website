@@ -15,8 +15,11 @@ var app = {
       static async submitToAPI(e) {
         e.preventDefault();
 
+        document.querySelector('.btn-send').disabled = true;
+        document.querySelector('.btn-send').value = 'Enviando...';
+
         if (ContactForm.sanitizeAndVerify()) {
-          let name = $('#name-input').val();
+          let name = $('#name-inpfsdut').val();
           let phone = $('#phone-input').val();
           let email = $('#email-input').val();
           let subject = $('#subject-input').val();
@@ -37,6 +40,9 @@ var app = {
           };
 
           ContactForm.sendEmail(data_form);
+        } else {
+          document.querySelector('.btn-send').disabled = false;
+          document.querySelector('.btn-send').value = 'Enviar mensaje';
         }
       }
 
@@ -60,6 +66,9 @@ var app = {
             // show an error message
             ContactForm.displaySubmitOutcome('failure');
           }
+
+          document.querySelector('.btn-send').disabled = false;
+          document.querySelector('.btn-send').value = 'Enviar mensaje';
         });
       }
 
