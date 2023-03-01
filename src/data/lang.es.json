@@ -143,6 +143,17 @@
     "image_directory": "./data/img/",
     "customers": [
       {
+        "name": "Juan y Carla",
+        "tag": "Ciudadana Italiana",
+        "short_body": "Gabriella es una GRAN profesional. No sólo las traducciones estuvieron perfectas sino que también nos ayudo con muchos trámites que nosotros a distancia (somos de Río Negro) no podíamos hacer.",
+        "image": {
+          "checksum": "ea9077f3d65e572e6060d5b07476e42d",
+          "position": "50% 50%"
+        },
+        "viewMoreStatus": "enabled",
+        "large_body": "Gabriella es una GRAN profesional. No sólo las traducciones estuvieron perfectas sino que también nos ayudo con muchos trámites que nosotros a distancia (somos de Río Negro) no podíamos hacer. Siempre muy atenta y predispuesta a ayudarnos, recomendadísima 😁"
+      },
+      {
         "name": "Mali I.",
         "tag": "Ciudadana Italiana",
         "short_body": "Gabriella me guio atentamente a través del ofuscado proceso para obtener mi ciudadanía. Logró un excelente compromiso profesional aun con las fechas bastante ajustadas. Nunca voy a dejar de agradecerte por todo el trabajo y el apoyo.",
