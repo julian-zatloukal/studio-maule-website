@@ -19,7 +19,7 @@ var app = {
         document.querySelector('.btn-send').value = 'Enviando...';
 
         if (ContactForm.sanitizeAndVerify()) {
-          let name = $('#name-inpfsdut').val();
+          let name = $('#name-input').val();
           let phone = $('#phone-input').val();
           let email = $('#email-input').val();
           let subject = $('#subject-input').val();
